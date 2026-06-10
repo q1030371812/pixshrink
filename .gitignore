@@ -1,0 +1,12 @@
+﻿# Top-level ignores for the Pixshrink repo.
+
+# Preview-server logs written by squoosh-app\启动预览.bat
+.preview-*.log
+.preview-*.pid
+
+# Editor / OS noise
+.vs/
+.vscode/
+Thumbs.db
+desktop.ini
+*.tmp

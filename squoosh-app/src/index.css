@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f4f2;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-accent: #10b981;
+  --color-accent-soft: rgba(16, 185, 129, 0.12);
+  --color-danger: #ef4444;
+  color-scheme: light;
+}
+
+.dark {
+  --color-bg: #0b0b0f;
+  --color-surface: #14141a;
+  --color-surface-2: #1c1c24;
+  --color-text: #e5e7eb;
+  --color-muted: #94a3b8;
+  --color-border: rgba(229, 231, 235, 0.08);
+  --color-accent: #34d399;
+  --color-accent-soft: rgba(52, 211, 153, 0.14);
+  --color-danger: #f87171;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18);
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18);
+  cursor: pointer;
+}
+
+input[type='range']:focus {
+  outline: none;
+}
+
+input[type='range']:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+@layer utilities {
+  .checkerboard {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+  .dark .checkerboard {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+  }
+}

@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Pixshrink - compress images locally in your browser. Nothing is uploaded." />
+  <title>Pixshrink &middot; Local image compressor</title>
+  <style>
+    :root {
+      --color-bg: #fafaf9;
+      --color-surface: #ffffff;
+      --color-surface-2: #f4f4f2;
+      --color-text: #0f172a;
+      --color-muted: #64748b;
+      --color-border: rgba(15, 23, 42, 0.08);
+      --color-accent: #10b981;
+      --color-accent-soft: rgba(16, 185, 129, 0.12);
+      --color-danger: #ef4444;
+      --topbar-bg: rgba(250, 250, 249, 0.8);
+      color-scheme: light;
+    }
+    .dark {
+      --color-bg: #0b0b0f;
+      --color-surface: #14141a;
+      --color-surface-2: #1c1c24;
+      --color-text: #e5e7eb;
+      --color-muted: #94a3b8;
+      --color-border: rgba(229, 231, 235, 0.08);
+      --color-accent: #34d399;
+      --color-accent-soft: rgba(52, 211, 153, 0.14);
+      --color-danger: #f87171;
+      --topbar-bg: rgba(11, 11, 15, 0.8);
+      color-scheme: dark;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    ::selection { background: var(--color-accent-soft); color: var(--color-text); }
+    button { font-family: inherit; font-size: inherit; cursor: pointer; }
+    button:disabled, a[aria-disabled="true"] { cursor: not-allowed; }
+    a { text-decoration: none; color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px;
+      background: var(--color-surface-2); outline: none; width: 100%; margin: 0; padding: 0;
+      border: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none; height: 16px; width: 16px; border-radius: 50%;
+      background: var(--color-accent); border: 2px solid var(--color-surface);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18); cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      height: 16px; width: 16px; border-radius: 50%;
+      background: var(--color-accent); border: 2px solid var(--color-surface);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18); cursor: pointer;
+    }
+    input[type="range"]:focus-visible::-webkit-slider-thumb {
+      box-shadow: 0 0 0 4px var(--color-accent-soft);
+    }
+    input[type="range"]:disabled { opacity: 0.6; }
+
+    .app-root { height: 100%; display: flex; flex-direction: column; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; display: flex; height: 64px;
+      align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--topbar-bg); padding: 0 24px;
+      backdrop-filter: saturate(180%) blur(10px); -webkit-backdrop-filter: saturate(180%) blur(10px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+      display: grid; place-items: center; width: 36px; height: 36px;
+      border-radius: 12px; background: var(--color-accent); color: white;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name {
+      font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-text);
+    }
+    .brand-sub { margin-top: 2px; font-size: 11px; color: var(--color-muted); }
+    .theme-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 9999px;
+      border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text);
+      transition: background 150ms ease;
+    }
+    .theme-btn:hover { background: var(--color-surface-2); }
+    .theme-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .privacy { border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
+    .privacy-inner {
+      max-width: 72rem; margin: 0 auto; padding: 8px 24px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; color: var(--color-muted);
+    }
+    .privacy-icon { color: var(--color-accent); flex-shrink: 0; }
+    main { flex: 1; overflow: auto; }
+    .main-inner {
+      max-width: 64rem; margin: 0 auto; padding: 32px 16px 48px; width: 100%;
+    }
+    @media (min-width: 640px) { .main-inner { padding: 48px 24px 64px; } }
+
+    .dropzone {
+      margin: 0 auto; max-width: 48rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      border: 2px dashed var(--color-border);
+      background: var(--color-surface);
+      border-radius: 16px;
+      padding: 48px 24px;
+      transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+      cursor: pointer;
+    }
+    .dropzone:hover { border-color: var(--color-accent); background: var(--color-surface-2); }
+    .dropzone.hovering { border-color: var(--color-accent); background: var(--color-accent-soft); }
+    .dropzone:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+    .dropzone.disabled { cursor: not-allowed; opacity: 0.6; }
+    .dropzone-icon {
+      display: grid; place-items: center; width: 56px; height: 56px;
+      border-radius: 16px; background: var(--color-accent-soft); color: var(--color-accent);
+    }
+    .dropzone-title {
+      margin-top: 24px; font-size: 24px; font-weight: 600; letter-spacing: -0.01em;
+      color: var(--color-text);
+    }
+    .dropzone-subtitle { margin-top: 8px; max-width: 28rem; font-size: 14px; color: var(--color-muted); }
+    .dropzone-actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 9999px; background: var(--color-accent); color: white;
+      padding: 10px 20px; font-size: 14px; font-weight: 500; border: none;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+      transition: transform 150ms ease;
+    }
+    .btn-primary:hover { transform: scale(1.02); }
+    .btn-primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .paste-hint { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-muted); }
+    .formats { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+    .format-chip {
+      border-radius: 9999px; border: 1px solid var(--color-border); background: var(--color-surface-2);
+      padding: 4px 10px; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--color-muted);
+    }
+    .hidden-input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+    .result { animation: fade-in 240ms ease-out; }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .result-header {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 24px;
+    }
+    .file-meta { display: flex; min-width: 0; align-items: center; gap: 12px; }
+    .file-icon {
+      display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 12px; background: var(--color-surface-2); color: var(--color-accent);
+    }
+    .file-name {
+      font-size: 14px; font-weight: 600; color: var(--color-text);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.2;
+    }
+    .file-info { font-size: 12px; color: var(--color-muted); line-height: 1.2; margin-top: 2px; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      border-radius: 9999px; border: 1px solid var(--color-border); background: var(--color-surface);
+      padding: 6px 12px; font-size: 12px; color: var(--color-text);
+      transition: background 150ms ease;
+    }
+    .btn-ghost:hover { background: var(--color-surface-2); }
+    .btn-ghost:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+    .result-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 1024px) { .result-grid { grid-template-columns: 1fr 320px; } }
+
+    .preview {
+      position: relative; overflow: hidden; border-radius: 16px;
+      border: 1px solid var(--color-border); background: var(--color-surface);
+    }
+    .checkerboard {
+      width: 100%; aspect-ratio: 4/3;
+      background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+    .dark .checkerboard {
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+    }
+    .preview-img { height: 100%; width: 100%; object-fit: contain; display: block; }
+    .preview-empty {
+      display: flex; height: 100%; width: 100%; align-items: center; justify-content: center;
+      color: var(--color-muted);
+    }
+    .preview-error {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      max-width: 24rem; padding: 0 24px; text-align: center; color: var(--color-muted); font-size: 14px;
+    }
+    .preview-error-icon { color: var(--color-danger); }
+    .preview-error-detail { font-size: 12px; color: var(--color-muted); }
+    .working-overlay {
+      position: absolute; inset: 0; display: grid; place-items: center;
+      background: rgba(11, 11, 15, 0.4); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+      pointer-events: none;
+    }
+    .working-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 9999px; background: var(--color-surface);
+      padding: 6px 12px; font-size: 12px; color: var(--color-muted);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+    .working-spinner { color: var(--color-accent); }
+    .spinner { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .sidebar {
+      display: flex; flex-direction: column; gap: 20px;
+      border-radius: 16px; border: 1px solid var(--color-border); background: var(--color-surface); padding: 20px;
+    }
+    .sidebar-label {
+      font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--color-muted);
+    }
+    .output-size { margin-top: 8px; display: flex; align-items: baseline; gap: 8px; }
+    .output-size-value {
+      font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--color-text);
+    }
+    .savings-chip {
+      border-radius: 9999px; background: var(--color-accent-soft);
+      padding: 2px 8px; font-size: 12px; font-weight: 500; color: var(--color-accent);
+    }
+    .output-meta { margin-top: 4px; font-size: 12px; color: var(--color-muted); }
+
+    .slider { display: flex; flex-direction: column; gap: 8px; }
+    .slider-header { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--color-muted); }
+    .slider-label { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; color: var(--color-muted); }
+    .slider-value { font-weight: 600; color: var(--color-text); }
+    .slider-value-tag { margin-left: 4px; color: var(--color-muted); font-weight: 400; }
+    .slider-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--color-muted); }
+    .slider-labels span:nth-child(2) { transform: translateX(-50%); position: relative; left: 50%; }
+
+    .actions { display: flex; flex-direction: column; gap: 8px; }
+    .btn-download-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 9999px; background: var(--color-accent); color: white;
+      padding: 10px 16px; font-size: 14px; font-weight: 500;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+      transition: transform 150ms ease;
+    }
+    .btn-download-primary:hover { transform: scale(1.02); }
+    .btn-download-primary[aria-disabled="true"] { pointer-events: none; opacity: 0.6; }
+    .btn-download-primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .btn-download-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: 9999px; background: var(--color-surface);
+      border: 1px solid var(--color-border); color: var(--color-text);
+      padding: 10px 16px; font-size: 14px;
+      transition: background 150ms ease;
+    }
+    .btn-download-secondary:hover { background: var(--color-surface-2); }
+    .btn-download-secondary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  </style>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('pixshrink-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = stored || (prefersDark ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div id="app" class="app-root"></div>
+
+  <!-- Embedded mozpeg encoder source. Replaced at build time. -->
+  <script type="text/plain" id="mozjpeg-source">__ENC_JS__</script>
+
+  <!-- Embedded WASM as base64. Replaced at build time. -->
+  <script type="text/plain" id="wasm-b64">__WASM_B64__</script>
+
+  <script type="module">
+    // ====== Pixshrink static preview ======
+    // All processing happens in this tab. Nothing is uploaded.
+
+    // -- Constants ---------------------------------------------------------
+    const MOZJPEG_OPTIONS = {
+      quality: 75,
+      baseline: false,
+      arithmetic: false,
+      progressive: true,
+      optimize_coding: true,
+      smoothing: 0,
+      color_space: 3,
+      quant_table: 3,
+      trellis_multipass: false,
+      trellis_opt_zero: false,
+      trellis_opt_table: false,
+      trellis_loops: 1,
+      auto_subsample: true,
+      chroma_subsample: 2,
+      separate_chroma_quality: false,
+      chroma_quality: 75
+    };
+    const STORAGE_KEY = 'pixshrink-theme';
+    const ACCEPT = 'image/png,image/jpeg,image/webp,image/avif,image/gif,image/bmp';
+
+    // -- State -------------------------------------------------------------
+    const state = {
+      file: null,
+      decoded: null,
+      output: null,
+      previewUrl: null,
+      originalUrl: null,
+      quality: 75,
+      status: 'idle',
+      error: null,
+      theme: 'light',
+      engineError: null
+    };
+
+    function readTheme() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored === 'dark' || stored === 'light') return stored;
+      } catch (e) {}
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    state.theme = readTheme();
+
+    // -- MoJS loader -------------------------------------------------------
+    let mozjpegPromise = null;
+    function loadMozjpeg() {
+      if (mozjpegPromise) return mozjpegPromise;
+      const encSource = document.getElementById('mozjpeg-source').textContent;
+      const wasmB64 = document.getElementById('wasm-b64').textContent;
+      const wasmBytes = base64ToBytes(wasmB64);
+      const blob = new Blob([encSource], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      mozjpegPromise = (async () => {
+        try {
+          const mod = await import(url);
+          const runtime = await mod.default({
+            wasmBinary: wasmBytes,
+            noInitialRun: true,
+            locateFile: () => ''
+          });
+          return runtime;
+        } finally {
+          URL.revokeObjectURL(url);
+        }
+      })();
+      return mozjpegPromise;
+    }
+    function base64ToBytes(b64) {
+      const bin = atob(b64);
+      const arr = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+      return arr;
+    }
+
+    // -- Image decode/encode -----------------------------------------------
+    async function decodeImage(file) {
+      const bitmap = await createImageBitmap(file);
+      const { width, height } = bitmap;
+      if (width === 0 || height === 0) {
+        bitmap.close();
+        throw new Error('Image has zero dimensions.');
+      }
+      const MAX_PIXELS = 64 * 1024 * 1024;
+      if (width * height > MAX_PIXELS) {
+        bitmap.close();
+        throw new Error('Image is too large (' + width + ' \u00d7 ' + height + '). Please resize it below 64 megapixels first.');
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (!ctx) {
+        bitmap.close();
+        throw new Error('Canvas 2D context not available in this browser.');
+      }
+      ctx.drawImage(bitmap, 0, 0);
+      const imageData = ctx.getImageData(0, 0, width, height);
+      bitmap.close();
+      return { data: imageData.data, width, height };
+    }
+    async function encodeImage(data, width, height, quality) {
+      const module = await loadMozjpeg();
+      const bytes = module.encode(data, width, height, Object.assign({}, MOZJPEG_OPTIONS, { quality }));
+      const buffer = new ArrayBuffer(bytes.byteLength);
+      new Uint8Array(buffer).set(bytes);
+      return { bytes: buffer, mime: 'image/jpeg', extension: 'jpg' };
+    }
+
+    // -- Theme -------------------------------------------------------------
+    function setTheme(theme) {
+      state.theme = theme;
+      const root = document.documentElement;
+      if (theme === 'dark') root.classList.add('dark');
+      else root.classList.remove('dark');
+      try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
+      render();
+    }
+    function toggleTheme() {
+      setTheme(state.theme === 'dark' ? 'light' : 'dark');
+    }
+
+    // -- Helpers -----------------------------------------------------------
+    function formatBytes(n) {
+      if (!Number.isFinite(n) || n < 0) return '0 B';
+      if (n < 1024) return n + ' B';
+      const units = ['KB', 'MB', 'GB'];
+      let value = n / 1024;
+      let i = 0;
+      while (value >= 1024 && i < units.length - 1) { value /= 1024; i++; }
+      const digits = value >= 100 ? 0 : value >= 10 ? 1 : 2;
+      return value.toFixed(digits) + ' ' + units[i];
+    }
+    function percentSaved(before, after) {
+      if (before <= 0) return 0;
+      return Math.max(0, Math.round(((before - after) / before) * 100));
+    }
+    function baseName(name) {
+      const dot = name.lastIndexOf('.');
+      return dot > 0 ? name.slice(0, dot) : name;
+    }
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // -- Cleanup -----------------------------------------------------------
+    function cleanupPreview() {
+      if (state.previewUrl) { URL.revokeObjectURL(state.previewUrl); state.previewUrl = null; }
+    }
+    function cleanupOriginal() {
+      if (state.originalUrl) { URL.revokeObjectURL(state.originalUrl); state.originalUrl = null; }
+    }
+    function cleanupAll() { cleanupPreview(); cleanupOriginal(); }
+
+    // -- File handling -----------------------------------------------------
+    async function handleFile(file) {
+      if (!file || !file.type || !file.type.startsWith('image/')) return;
+      cleanupAll();
+      state.file = file;
+      state.output = null;
+      state.decoded = null;
+      state.quality = 75;
+      state.error = null;
+      state.originalUrl = URL.createObjectURL(file);
+      setStatus('decoding');
+      try {
+        const decoded = await decodeImage(file);
+        state.decoded = decoded;
+        setStatus('encoding');
+        const encoded = await encodeImage(decoded.data, decoded.width, decoded.height, 75);
+        state.output = encoded;
+        cleanupPreview();
+        const blob = new Blob([encoded.bytes], { type: encoded.mime });
+        state.previewUrl = URL.createObjectURL(blob);
+        setStatus('done');
+      } catch (err) {
+        setStatus('error', err && err.message ? err.message : String(err));
+      }
+    }
+    let sliderTimer = null;
+    function onSliderInput(value) {
+      state.quality = value;
+      updateSliderStyle(value);
+      updateSliderValueLabel(value);
+      if (sliderTimer) clearTimeout(sliderTimer);
+      sliderTimer = setTimeout(() => { sliderTimer = null; runEncode(value); }, 280);
+    }
+    async function runEncode(quality) {
+      if (!state.decoded) return;
+      setStatus('encoding');
+      try {
+        const encoded = await encodeImage(state.decoded.data, state.decoded.width, state.decoded.height, quality);
+        state.output = encoded;
+        cleanupPreview();
+        const blob = new Blob([encoded.bytes], { type: encoded.mime });
+        state.previewUrl = URL.createObjectURL(blob);
+        setStatus('done');
+      } catch (err) {
+        setStatus('error', err && err.message ? err.message : String(err));
+      }
+    }
+    function handleReset() {
+      cleanupAll();
+      state.file = null;
+      state.decoded = null;
+      state.output = null;
+      state.quality = 75;
+      state.error = null;
+      setStatus('idle');
+    }
+    function setStatus(status, error) {
+      state.status = status;
+      state.error = error || null;
+      if (status !== 'error' && status !== 'decoding' && status !== 'encoding') {
+        updatePreview();
+      } else {
+        updatePreview();
+      }
+    }
+
+    // -- Icons (inline SVGs) ----------------------------------------------
+    function svg(content, size) {
+      const s = size || 16;
+      return '<svg viewBox="0 0 24 24" width="' + s + '" height="' + s + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + content + '</svg>';
+    }
+    const ICONS = {
+      lock: () => svg('<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'),
+      sun: () => svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'),
+      moon: () => svg('<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'),
+      imageDown: () => svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
+      upload: () => svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'),
+      clipboard: () => svg('<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>'),
+      fileImage: () => svg('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="2"/><path d="M20 17l-1.5-1.5L13 21"/>'),
+      rotate: () => svg('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-7 3"/><path d="M3 4v5h5"/>'),
+      gauge: () => svg('<path d="M12 14l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>'),
+      download: () => svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),
+      loader: () => svg('<line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>'),
+      alert: () => svg('<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>')
+    };
+
+    // -- Render ------------------------------------------------------------
+    const app = document.getElementById('app');
+    function shell(inner) {
+      return ''
+        + '<div class="topbar">'
+        +   '<div class="brand">'
+        +     '<span class="brand-logo" aria-hidden="true">'
+        +       '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
+        +         '<rect x="3" y="4" width="18" height="16" rx="3"/>'
+        +         '<circle cx="9" cy="10" r="1.5"/>'
+        +         '<path d="M21 17l-5-5-7 7"/>'
+        +       '</svg>'
+        +     '</span>'
+        +     '<div class="brand-text">'
+        +       '<span class="brand-name">Pixshrink</span>'
+        +       '<span class="brand-sub">Local image compressor</span>'
+        +     '</div>'
+        +   '</div>'
+        +   '<button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle theme" title="Toggle theme">'
+        +     (state.theme === 'dark' ? ICONS.sun() : ICONS.moon())
+        +   '</button>'
+        + '</div>'
+        + '<div class="privacy">'
+        +   '<div class="privacy-inner">'
+        +     '<span class="privacy-icon">' + ICONS.lock() + '</span>'
+        +     '<span>Images are processed locally in your browser. Nothing is uploaded to any server.</span>'
+        +   '</div>'
+        + '</div>'
+        + '<main><div class="main-inner">' + inner + '</div></main>';
+    }
+    function renderDropZone() {
+      const engineError = state.engineError;
+      const formats = ['PNG', 'JPEG', 'WebP', 'AVIF', 'GIF', 'BMP']
+        .map(function (l) { return '<span class="format-chip">' + l + '</span>'; })
+        .join('');
+      return shell(
+        '<div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Drop or choose an image">'
+        + '<div class="dropzone-icon">' + ICONS.imageDown() + '</div>'
+        + '<h1 class="dropzone-title">Drop an image to compress</h1>'
+        + '<p class="dropzone-subtitle">We will recompress it as JPEG in your browser. The original file never leaves this tab.</p>'
+        + '<div class="dropzone-actions">'
+        +   '<button class="btn-primary" id="choose-btn" type="button">' + ICONS.upload() + '<span>Choose image</span></button>'
+        +   '<span class="paste-hint">' + ICONS.clipboard() + '<span>or paste with Ctrl/&#x2318; + V</span></span>'
+        + '</div>'
+        + '<div class="formats">' + formats + '</div>'
+        + (engineError
+            ? '<p style="margin-top:24px;font-size:13px;color:var(--color-danger);max-width:32rem;">Engine failed to load: ' + escapeHtml(engineError) + '</p>'
+            : '')
+        + '<input class="hidden-input" type="file" id="file-input" accept="' + ACCEPT + '"/>'
+        + '</div>'
+      );
+    }
+    function renderResult() {
+      const f = state.file;
+      const savings = state.output ? percentSaved(f.size, state.output.bytes.byteLength) : 0;
+      const base = baseName(f.name);
+      const ext = state.output ? state.output.extension : 'jpg';
+      const outputSize = state.output ? state.output.bytes.byteLength : 0;
+      const isWorking = state.status === 'decoding' || state.status === 'encoding';
+      const isError = state.status === 'error';
+      const range = 95 - 20;
+      const pct = ((state.quality - 20) / range) * 100;
+      const qualityLabel = state.quality >= 80 ? 'High' : state.quality >= 60 ? 'Balanced' : 'Aggressive';
+      const dim = state.decoded ? (state.decoded.width + ' \u00d7 ' + state.decoded.height + ' \u00b7 ') : '';
+      return shell(
+        '<section class="result">'
+        + '<div class="result-header">'
+        +   '<div class="file-meta">'
+        +     '<span class="file-icon">' + ICONS.fileImage() + '</span>'
+        +     '<div style="min-width:0;">'
+        +       '<div class="file-name" title="' + escapeHtml(f.name) + '">' + escapeHtml(f.name) + '</div>'
+        +       '<div class="file-info">' + dim + formatBytes(f.size) + ' original</div>'
+        +     '</div>'
+        +   '</div>'
+        +   '<button class="btn-ghost" id="reset-btn" type="button">' + ICONS.rotate() + '<span>Start over</span></button>'
+        + '</div>'
+        + '<div class="result-grid">'
+        +   '<div class="preview">'
+        +     '<div class="checkerboard">'
+        +       (state.previewUrl
+            ? '<img class="preview-img" src="' + state.previewUrl + '" alt="Compressed preview of ' + escapeHtml(f.name) + '"/>'
+            : '<div class="preview-empty">'
+              + (isError
+                  ? '<div class="preview-error">'
+                    + '<span class="preview-error-icon">' + ICONS.alert() + '</span>'
+                    + '<span>Could not process this image.</span>'
+                    + (state.error ? '<span class="preview-error-detail">' + escapeHtml(state.error) + '</span>' : '')
+                  + '</div>'
+                  : '<span class="spinner">' + ICONS.loader() + '</span>')
+            + '</div>')
+        +     '</div>'
+        +     (isWorking
+            ? '<div class="working-overlay">'
+                + '<div class="working-badge">'
+                  + '<span class="working-spinner spinner">' + ICONS.loader() + '</span>'
+                  + '<span>' + (state.status === 'decoding' ? 'Decoding' : 'Recompressing') + '</span>'
+                + '</div>'
+              + '</div>'
+            : '')
+        +   '</div>'
+        +   '<aside class="sidebar">'
+        +     '<div>'
+        +       '<div class="sidebar-label">Output</div>'
+        +       '<div class="output-size">'
+        +         '<span class="output-size-value">' + (outputSize > 0 ? formatBytes(outputSize) : '\u2014') + '</span>'
+        +         (savings > 0 ? '<span class="savings-chip">\u2212' + savings + '%</span>' : '')
+        +       '</div>'
+        +       '<div class="output-meta">JPEG \u00b7 mozpeg encoder</div>'
+        +     '</div>'
+        +     '<div class="slider">'
+        +       '<div class="slider-header">'
+        +         '<span class="slider-label">' + ICONS.gauge() + '<span>Quality</span></span>'
+        +         '<span class="slider-value" id="slider-value">' + state.quality + '<span class="slider-value-tag"> \u00b7 ' + qualityLabel + '</span></span>'
+        +       '</div>'
+        +       '<input type="range" id="quality-slider" min="20" max="95" step="1" value="' + state.quality + '"' + (!state.decoded || isWorking ? ' disabled' : '') + ' style="background: linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ' + pct + '%, var(--color-surface-2) ' + pct + '%, var(--color-surface-2) 100%);"/>'
+        +       '<div class="slider-labels"><span>Smaller</span><span>20</span><span>95</span><span>Better</span></div>'
+        +     '</div>'
+        +     '<div class="actions">'
+        +       '<a class="btn-download-primary" id="download-btn" href="' + (state.previewUrl || '#') + '" download="' + escapeHtml(base) + '-min.' + ext + '"' + (state.previewUrl ? '' : ' aria-disabled="true"') + '>' + ICONS.download() + '<span>Download compressed</span></a>'
+        +       (state.originalUrl ? '<a class="btn-download-secondary" id="download-original-btn" href="' + state.originalUrl + '" download="' + escapeHtml(f.name) + '">' + ICONS.download() + '<span>Download original</span></a>' : '')
+        +     '</div>'
+        +   '</aside>'
+        + '</div>'
+        + '</section>'
+      );
+    }
+    function render() {
+      app.innerHTML = state.file ? renderResult() : renderDropZone();
+      attachHandlers();
+    }
+    function updatePreview() {
+      if (state.file) {
+        app.innerHTML = renderResult();
+        attachHandlers();
+      }
+    }
+    function updateSliderStyle(value) {
+      const slider = document.getElementById('quality-slider');
+      if (!slider) return;
+      const range = 95 - 20;
+      const pct = ((value - 20) / range) * 100;
+      slider.style.background = 'linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ' + pct + '%, var(--color-surface-2) ' + pct + '%, var(--color-surface-2) 100%)';
+    }
+    function updateSliderValueLabel(value) {
+      const label = document.getElementById('slider-value');
+      if (!label) return;
+      const qualityLabel = value >= 80 ? 'High' : value >= 60 ? 'Balanced' : 'Aggressive';
+      label.innerHTML = value + '<span class="slider-value-tag"> \u00b7 ' + qualityLabel + '</span>';
+    }
+
+    // -- Event wiring ------------------------------------------------------
+    function attachHandlers() {
+      const themeBtn = document.getElementById('theme-btn');
+      if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+      if (!state.file) {
+        const dz = document.getElementById('dropzone');
+        const input = document.getElementById('file-input');
+        const chooseBtn = document.getElementById('choose-btn');
+        if (dz && input) {
+          dz.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('#choose-btn')) return;
+            if (state.engineError) return;
+            input.click();
+          });
+          dz.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); }
+          });
+          dz.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            dz.classList.add('hovering');
+          });
+          dz.addEventListener('dragleave', function () { dz.classList.remove('hovering'); });
+          dz.addEventListener('drop', function (e) {
+            e.preventDefault();
+            dz.classList.remove('hovering');
+            const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+            if (f) handleFile(f);
+          });
+          dz.addEventListener('paste', function (e) {
+            const f = e.clipboardData && e.clipboardData.files && e.clipboardData.files[0];
+            if (f) handleFile(f);
+          });
+        }
+        if (input) {
+          input.addEventListener('change', function (e) {
+            const f = e.target.files && e.target.files[0];
+            if (f) handleFile(f);
+            e.target.value = '';
+          });
+        }
+        if (chooseBtn) {
+          chooseBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            input.click();
+          });
+        }
+      } else {
+        const resetBtn = document.getElementById('reset-btn');
+        if (resetBtn) resetBtn.addEventListener('click', handleReset);
+        const slider = document.getElementById('quality-slider');
+        if (slider) slider.addEventListener('input', function (e) { onSliderInput(Number(e.target.value)); });
+      }
+    }
+
+    // -- Init --------------------------------------------------------------
+    render();
+    loadMozjpeg().then(function () {
+      // Engine is ready. Nothing else to do; first encode pays no extra tax.
+    }).catch(function (err) {
+      state.engineError = (err && err.message) ? err.message : String(err);
+      console.error('MozJPEG load failed:', err);
+      render();
+    });
+
+    // Re-render when system theme preference changes (only if user has not set a manual choice).
+    try {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const onChange = function (e) {
+        try {
+          if (localStorage.getItem(STORAGE_KEY)) return;
+        } catch (err) {}
+        setTheme(e.matches ? 'dark' : 'light');
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    } catch (e) {}
+  </script>
+</body>
+</html>
