@@ -3,28 +3,56 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #fafaf9;
+  /* Warm-paper light palette. Accent is teal-700, with warm and cool
+     neutrals flanking it so the UI doesn't read as one-note green. */
+  --color-bg: #f7f4ec;
+  --color-bg-2: #efeae0;
   --color-surface: #ffffff;
-  --color-surface-2: #f4f4f2;
-  --color-text: #0f172a;
-  --color-muted: #64748b;
-  --color-border: rgba(15, 23, 42, 0.08);
-  --color-accent: #10b981;
-  --color-accent-soft: rgba(16, 185, 129, 0.12);
-  --color-danger: #ef4444;
+  --color-surface-2: #f1ede4;
+  --color-surface-3: #e8e2d4;
+  --color-text: #1c1917;
+  --color-text-strong: #0c0a09;
+  --color-muted: #2a241c;
+  --color-muted-2: #5a5040;
+  --color-border: rgba(28, 25, 23, 0.08);
+  --color-border-strong: rgba(28, 25, 23, 0.16);
+  --color-accent: #0d9488;
+  --color-accent-strong: #0f766e;
+  --color-accent-soft: rgba(13, 148, 136, 0.10);
+  --color-accent-ring: rgba(13, 148, 136, 0.18);
+  --color-amber: #b45309;
+  --color-amber-soft: rgba(180, 83, 9, 0.10);
+  --color-rose: #be123c;
+  --color-danger: #dc2626;
+  --color-danger-soft: rgba(220, 38, 38, 0.10);
+  --shadow-soft: 0 1px 1px rgba(28, 25, 23, 0.04), 0 8px 24px -8px rgba(28, 25, 23, 0.10);
+  --shadow-card: 0 1px 1px rgba(28, 25, 23, 0.04), 0 12px 32px -16px rgba(28, 25, 23, 0.14);
   color-scheme: light;
 }
 
 .dark {
-  --color-bg: #0b0b0f;
-  --color-surface: #14141a;
-  --color-surface-2: #1c1c24;
-  --color-text: #e5e7eb;
-  --color-muted: #94a3b8;
-  --color-border: rgba(229, 231, 235, 0.08);
-  --color-accent: #34d399;
-  --color-accent-soft: rgba(52, 211, 153, 0.14);
+  --color-bg: #0c0a09;
+  --color-bg-2: #16140f;
+  --color-surface: #1a1814;
+  --color-surface-2: #221f19;
+  --color-surface-3: #2c2820;
+  --color-text: #f5f1e8;
+  --color-text-strong: #ffffff;
+  --color-muted: #d6cdb4;
+  --color-muted-2: #ada48b;
+  --color-border: rgba(245, 241, 232, 0.08);
+  --color-border-strong: rgba(245, 241, 232, 0.16);
+  --color-accent: #2dd4bf;
+  --color-accent-strong: #5eead4;
+  --color-accent-soft: rgba(45, 212, 191, 0.14);
+  --color-accent-ring: rgba(45, 212, 191, 0.24);
+  --color-amber: #fbbf24;
+  --color-amber-soft: rgba(251, 191, 36, 0.14);
+  --color-rose: #fb7185;
   --color-danger: #f87171;
+  --color-danger-soft: rgba(248, 113, 113, 0.14);
+  --shadow-soft: 0 1px 1px rgba(0, 0, 0, 0.4), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 1px 1px rgba(0, 0, 0, 0.4), 0 16px 36px -16px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
@@ -40,56 +68,141 @@ body {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background: var(--color-bg);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60% 40% at 12% 0%, var(--color-accent-soft) 0%, transparent 60%),
+    radial-gradient(40% 30% at 100% 12%, var(--color-amber-soft) 0%, transparent 65%);
+  opacity: 0.6;
+}
+
+.dark body::before {
+  opacity: 0.35;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 ::selection {
   background: var(--color-accent-soft);
-  color: var(--color-text);
+  color: var(--color-text-strong);
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 0%,
+    var(--color-accent) var(--range-pct, 0%),
+    var(--color-surface-3) var(--range-pct, 0%),
+    var(--color-surface-3) 100%
+  );
+}
+
+input[type='range']::-moz-range-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-surface-3);
+}
+
+input[type='range']::-moz-range-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-accent);
 }
 
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
-  background: var(--color-accent);
-  border: 2px solid var(--color-surface);
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18);
-  cursor: pointer;
+  background: #ffffff;
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.18), 0 0 0 4px transparent;
+  margin-top: -6px;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+input[type='range']:hover::-webkit-slider-thumb,
+input[type='range']:focus::-webkit-slider-thumb {
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.18), 0 0 0 6px var(--color-accent-ring);
+}
+
+input[type='range']:active::-webkit-slider-thumb {
+  transform: scale(1.08);
 }
 
 input[type='range']::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
-  background: var(--color-accent);
-  border: 2px solid var(--color-surface);
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18);
-  cursor: pointer;
+  background: #ffffff;
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.18);
 }
 
 input[type='range']:focus {
   outline: none;
 }
 
-input[type='range']:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px var(--color-accent-soft);
+input[type='range']:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 @layer utilities {
   .checkerboard {
-    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    background-image: linear-gradient(45deg, rgba(28, 25, 23, 0.06) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(28, 25, 23, 0.06) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(28, 25, 23, 0.06) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(28, 25, 23, 0.06) 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
   }
   .dark .checkerboard {
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+    background-image: linear-gradient(45deg, rgba(245, 241, 232, 0.06) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(245, 241, 232, 0.06) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(245, 241, 232, 0.06) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(245, 241, 232, 0.06) 75%);
+  }
+  .ring-accent-soft {
+    box-shadow: 0 0 0 4px var(--color-accent-ring);
+  }
+  .dot-grid {
+    background-image: radial-gradient(circle at 1px 1px, var(--color-border-strong) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(28, 25, 23, 0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+    opacity: 0.4;
+  }
+  .dark .grain::after {
+    background-image: radial-gradient(rgba(245, 241, 232, 0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.5;
   }
 }

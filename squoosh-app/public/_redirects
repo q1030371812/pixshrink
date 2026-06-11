@@ -1,0 +1,4 @@
+# SPA fallback: any unknown path is served the React app, which then
+# routes client-side. Required for Cloudflare Pages (and any other
+# static host) when the user hits a deep link like /about directly.
+/*    /index.html   200

@@ -1,12 +1,63 @@
 ﻿# Top-level ignores for the Pixshrink repo.
 
-# Preview-server logs written by squoosh-app\启动预览.bat
+# --- Dependencies (must NEVER be committed) -------------------------------
+node_modules/
+**/node_modules/
+
+# --- Build output ---------------------------------------------------------
+# `dist` (literal) covers the top-level case; the per-app rules catch the rest.
+dist/
+**/dist/
+**/dist-ssr/
+
+# --- Preview / dev server logs and pids ----------------------------------
+*.log
+**/*.log
 .preview-*.log
 .preview-*.pid
+.preview-pixshrink.png
+**/.dev-*.log
+**/build-out.log
+**/preview.*.log
+**/preview-err*.log
+**/preview-out*.log
+**/dev-err.log
+**/dev-out.log
 
-# Editor / OS noise
+# --- Local-only dev helpers and Chinese bat files ------------------------
+# These are convenient one-offs for the original author's machine, not part
+# of the project. Anyone cloning the repo uses `npm install` + `npm run`
+# scripts defined in package.json instead.
+启动预览.bat
+停止预览.bat
+preview-pixshrink.bat
+build-only.ps1
+probe-build.ps1
+smoke-test.ps1
+typecheck-only.ps1
+**/.run-preview.bat
+**/.run-preview.ps1
+**/.run-server.cmd
+**/start.cmd
+**/start-preview.cmd
+**/preview-dist.cmd
+**/static-preview.html
+**/scripts/fetch-page.ps1
+**/scripts/probe-dev.ps1
+**/scripts/start-dev-bg.ps1
+**/scripts/preview-detached.cjs
+**/scripts/preview-server.mjs
+**/scripts/static-template.html
+
+# --- Editor / OS noise ----------------------------------------------------
 .vs/
 .vscode/
+.idea/
 Thumbs.db
 desktop.ini
 *.tmp
+*.swp
+
+# --- Public sample assets -------------------------------------------------
+# The bundled sample is .webp; .png samples are generated locally and ignored.
+public/samples/*.png

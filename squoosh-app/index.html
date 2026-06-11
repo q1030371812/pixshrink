@@ -2,16 +2,17 @@
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0d9488" />
     <meta
       name="description"
-      content="Pixshrink — compress images locally in your browser. Nothing is uploaded."
+      content="Pixshrink shrinks PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Drop your images, drag the quality slider, and download everything as a ZIP. Files never leave your device."
     />
+    <meta property="og:title" content="Pixshrink · Local image compressor" />
+    <meta property="og:description" content="Shrink PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Files stay on your device, fully offline." />
     <title>Pixshrink · Local image compressor</title>
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <script>
       (function () {
         try {
@@ -25,6 +26,6 @@
   </head>
   <body class="h-full bg-bg text-text antialiased">
     <div id="root" class="h-full"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>

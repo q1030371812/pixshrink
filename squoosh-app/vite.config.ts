@@ -6,6 +6,9 @@ import react from '@vitejs/plugin-react';
 // so the mozjpeg WASM module can be loaded from /codecs/... at runtime.
 export default defineConfig({
   plugins: [react()],
+  // Relative base so the built `dist/` works no matter where it's
+  // hosted (Cloudflare Pages subpath, GitHub Pages project page, etc.).
+  base: './',
   worker: {
     format: 'es',
   },
@@ -16,6 +19,9 @@ export default defineConfig({
   },
   build: {
     target: 'es2022',
+    // Keep the WASM file as a separate asset so the encoder can stream
+    // it at runtime rather than being inlined into a base64 bundle.
+    assetsInlineLimit: 0,
     sourcemap: false,
   },
   optimizeDeps: {

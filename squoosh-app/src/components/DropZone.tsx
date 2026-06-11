@@ -1,25 +1,38 @@
 import { useCallback, useRef, useState } from 'react';
-import { ImageDown, Upload, ClipboardPaste } from 'lucide-react';
+import {
+  ImageDown,
+  Upload,
+  FilePlus2,
+  ShieldCheck,
+  Zap,
+  ImageIcon,
+  Cpu,
+  Layers,
+  Check,
+} from 'lucide-react';
 
 interface DropZoneProps {
-  onFile: (file: File) => void;
+  onFiles: (files: File[]) => void;
   disabled?: boolean;
 }
 
 const ACCEPT = 'image/png,image/jpeg,image/webp,image/avif,image/gif,image/bmp';
 
-export function DropZone({ onFile, disabled }: DropZoneProps) {
-  const [hover, setHover] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+const IMAGE_EXT = /\.(png|jpe?g|webp|avif|gif|bmp)$/i;
+const isImage = (f: File) =>
+  f.type.startsWith('image/') || IMAGE_EXT.test(f.name);
 
-  const handleFiles = useCallback(
+export function DropZone({ onFiles, disabled }: DropZoneProps) {
+  const [hover, setHover] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const submit = useCallback(
     (files: FileList | File[] | null | undefined) => {
       if (!files) return;
-      const list = Array.from(files);
-      const image = list.find((f) => f.type.startsWith('image/'));
-      if (image) onFile(image);
+      const list = Array.from(files).filter(isImage);
+      if (list.length > 0) onFiles(list);
     },
-    [onFile]
+    [onFiles]
   );
 
   const onDrop = useCallback(
@@ -27,101 +40,223 @@ export function DropZone({ onFile, disabled }: DropZoneProps) {
       event.preventDefault();
       setHover(false);
       if (disabled) return;
-      handleFiles(event.dataTransfer.files);
+      // Only accept file drops -- folders are intentionally NOT walked.
+      // A "pick files" picker that opens a folder view and still asks
+      // the user to multi-select the contents is a bad UX, so we drop
+      // folder support entirely. The native picker can already pick
+      // hundreds of files in one go.
+      submit(event.dataTransfer.files);
     },
-    [handleFiles, disabled]
+    [disabled, onFiles, submit]
   );
 
   const onPaste = useCallback(
     (event: React.ClipboardEvent<HTMLDivElement>) => {
       if (disabled) return;
-      handleFiles(event.clipboardData.files);
+      submit(event.clipboardData.files);
     },
-    [handleFiles, disabled]
+    [disabled, submit]
   );
 
-  const openPicker = useCallback(() => {
-    if (!disabled) inputRef.current?.click();
-  }, [disabled]);
-
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={openPicker}
-      onKeyDown={(e) => {
-        if (disabled) return;
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openPicker();
-        }
-      }}
-      onDragOver={(e) => {
-        e.preventDefault();
-        if (!hover && !disabled) setHover(true);
-      }}
-      onDragLeave={() => setHover(false)}
-      onDrop={onDrop}
-      onPaste={onPaste}
-      className={[
-        'group relative mx-auto flex w-full max-w-3xl flex-col items-center justify-center rounded-2xl border-2 border-dashed bg-surface px-6 py-12 text-center transition-all duration-200 sm:px-10 sm:py-16',
-        disabled
-          ? 'cursor-not-allowed border-border opacity-60'
-          : 'cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
-        hover
-          ? 'border-accent bg-accent-soft/40 shadow-soft'
-          : 'border-border hover:border-accent/60 hover:bg-surface-2',
-      ].join(' ')}
-    >
-      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-accent-soft text-accent">
-        <ImageDown size={26} strokeWidth={2} />
-      </div>
-      <h1 className="mt-6 text-2xl font-semibold tracking-tight text-text">
-        Drop an image to compress
-      </h1>
-      <p className="mt-2 max-w-md text-sm text-muted">
-        We&rsquo;ll recompress it as JPEG in your browser. The original file never leaves this tab.
-      </p>
-
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            openPicker();
-          }}
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white shadow-soft transition-transform hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-        >
-          <Upload size={15} />
-          Choose image
-        </button>
-        <span className="inline-flex items-center gap-1.5 text-xs text-muted">
-          <ClipboardPaste size={12} />
-          or paste with Ctrl/⌘ + V
+    <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-14">
+      {/* Left: copy + CTA */}
+      <div className="flex flex-col">
+        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent-strong shadow-sm">
+          <Cpu size={12} strokeWidth={2.4} />
+          Runs in your browser
         </span>
-      </div>
+        <h1 className="mt-5 text-[34px] font-semibold leading-[1.05] tracking-tight text-text-strong sm:text-[44px]">
+          Shrink photos to the size you need,
+          <br className="hidden sm:block" />
+          <span className="text-accent-strong">without uploading a single one.</span>
+        </h1>
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
+          Drop in JPEG, PNG, WebP, or AVIF, drag the quality slider, and download the
+          whole batch as a single ZIP. Every byte is re-encoded inside this tab -- the
+          originals never touch a server.
+        </p>
 
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
-        {['PNG', 'JPEG', 'WebP', 'AVIF', 'GIF', 'BMP'].map((label) => (
-          <span
-            key={label}
-            className="rounded-full border border-border bg-surface-2 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-muted"
+        <div className="mt-7 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              fileInputRef.current?.click();
+            }}
+            className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full px-7 py-3 text-[15px] font-semibold text-white shadow-[0_18px_36px_-8px_rgba(13,148,136,0.55),0_2px_0_inset_rgba(255,255,255,0.18)] ring-1 ring-inset ring-white/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_22px_48px_-10px_rgba(13,148,136,0.75),0_2px_0_inset_rgba(255,255,255,0.25)] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            style={{
+              background:
+                'linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%)',
+            }}
           >
-            {label}
+            <span
+              aria-hidden
+              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-white/0 via-white/35 to-white/0 transition-transform duration-700 group-hover:translate-x-full"
+            />
+            <Upload size={16} strokeWidth={2.6} />
+            Select images
+          </button>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[13px] text-text">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent-soft px-2.5 py-1 font-semibold text-accent-strong">
+            <Layers size={12} strokeWidth={2.4} />
+            Batch-friendly
           </span>
-        ))}
+          <span className="text-muted">
+            A few or a few thousand -- the queue keeps moving while you keep working.
+          </span>
+        </div>
+
+        <div className="mt-2.5 inline-flex items-center gap-1.5 text-[13px] text-muted">
+          <FilePlus2 size={12} className="text-accent" strokeWidth={2.4} />
+          <span>Or paste straight from the clipboard with <kbd className="rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10.5px] font-semibold text-text-strong">Ctrl</kbd> / <kbd className="rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10.5px] font-semibold text-text-strong">⌘</kbd> + V</span>
+        </div>
+
+        <ul className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px]">
+          <li className="inline-flex items-center gap-1.5 font-medium text-text">
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-accent-soft text-accent-strong">
+              <ShieldCheck size={12} strokeWidth={2.4} />
+            </span>
+            Stays on your device
+          </li>
+          <li className="inline-flex items-center gap-1.5 font-medium text-text">
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-amber-soft text-amber">
+              <Zap size={12} strokeWidth={2.4} />
+            </span>
+            Handles large batches
+          </li>
+          <li className="inline-flex items-center gap-1.5 font-medium text-text">
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-amber-soft text-amber">
+              <ImageIcon size={12} strokeWidth={2.4} />
+            </span>
+            PNG / JPEG / WebP / AVIF / GIF / BMP
+          </li>
+        </ul>
       </div>
 
-      <input
-        ref={inputRef}
-        type="file"
-        accept={ACCEPT}
-        className="hidden"
-        onChange={(e) => {
-          handleFiles(e.target.files);
-          e.target.value = '';
+      {/* Right: drop surface */}
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => !disabled && fileInputRef.current?.click()}
+        onKeyDown={(e) => {
+          if (disabled) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            fileInputRef.current?.click();
+          }
         }}
-      />
+        onDragOver={(e) => {
+          e.preventDefault();
+          if (!hover && !disabled) setHover(true);
+        }}
+        onDragLeave={() => setHover(false)}
+        onDrop={onDrop}
+        onPaste={onPaste}
+        className={[
+          'grain relative isolate flex aspect-[5/6] w-full flex-col items-center justify-center overflow-hidden rounded-[28px] border-2 border-dashed text-center transition-all duration-200',
+          disabled
+            ? 'cursor-not-allowed border-border opacity-60'
+            : 'cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
+          hover
+            ? 'scale-[1.005] border-accent bg-accent-soft/50 shadow-card'
+            : 'border-border bg-surface hover:border-accent/50 hover:bg-surface',
+        ].join(' ')}
+      >
+        {/* dot grid backdrop */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 dot-grid opacity-50"
+          style={{
+            maskImage:
+              'radial-gradient(ellipse at center, black 30%, transparent 80%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse at center, black 30%, transparent 80%)',
+          }}
+        />
+        {/* corner brackets */}
+        <CornerBracket pos="tl" />
+        <CornerBracket pos="tr" />
+        <CornerBracket pos="bl" />
+        <CornerBracket pos="br" />
+
+        <div
+          className={[
+            'relative grid h-20 w-20 place-items-center rounded-3xl text-white shadow-[0_18px_30px_-12px_rgba(13,148,136,0.55)] transition-transform duration-200',
+            hover ? 'scale-110 rotate-3' : '',
+          ].join(' ')}
+          style={{
+            background:
+              'linear-gradient(135deg, #0f766e 0%, #14b8a6 60%, #5eead4 100%)',
+          }}
+        >
+          <ImageDown size={32} strokeWidth={2.2} />
+          <span
+            aria-hidden
+            className="absolute -right-2 -top-2 grid h-7 w-7 place-items-center rounded-full text-white shadow"
+            style={{ background: 'linear-gradient(135deg, #d97706, #f59e0b)' }}
+          >
+            <Layers size={13} strokeWidth={2.4} />
+          </span>
+        </div>
+
+        <p className="mt-6 text-base font-semibold text-text-strong">
+          {hover ? 'Release to add to the queue' : 'Drop images here'}
+        </p>
+        <p className="mt-1.5 text-[13px] text-muted">
+          Keep this tab open -- the queue finishes on its own
+        </p>
+
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5">
+          {['PNG', 'JPEG', 'WebP', 'AVIF', 'GIF', 'BMP'].map((label) => (
+            <span
+              key={label}
+              className="rounded-full border border-border bg-surface-2 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-text"
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+
+        {/* in-zone secondary action — just a styled hint, not a separate
+            button: the entire drop area is already clickable. */}
+        <div className="mt-5 flex items-center gap-1.5 text-[12px] font-medium text-accent-strong">
+          <Check size={13} strokeWidth={2.6} />
+          <span>Pick a few or a few thousand</span>
+        </div>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept={ACCEPT}
+          multiple
+          className="hidden"
+          onChange={(e) => {
+            submit(e.target.files);
+            e.target.value = '';
+          }}
+        />
+      </div>
     </div>
+  );
+}
+
+function CornerBracket({ pos }: { pos: 'tl' | 'tr' | 'bl' | 'br' }) {
+  const map: Record<typeof pos, string> = {
+    tl: 'top-3 left-3 border-t-2 border-l-2 rounded-tl-md',
+    tr: 'top-3 right-3 border-t-2 border-r-2 rounded-tr-md',
+    bl: 'bottom-3 left-3 border-b-2 border-l-2 rounded-bl-md',
+    br: 'bottom-3 right-3 border-b-2 border-r-2 rounded-br-md',
+  };
+  return (
+    <span
+      aria-hidden
+      className={[
+        'pointer-events-none absolute h-5 w-5 border-accent/40 transition-colors',
+        map[pos],
+      ].join(' ')}
+    />
   );
 }

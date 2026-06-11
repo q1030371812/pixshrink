@@ -1,0 +1,10 @@
+# Tell Cloudflare to keep the WASM module around -- mozjpeg's encoder
+# payload is a few hundred KB and shouldn't be revalidated on every
+# page load.
+/codecs/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Long-cache the main JS/CSS bundles too. Vite already hashes the file
+# names, so cache-busting happens automatically on the next deploy.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
