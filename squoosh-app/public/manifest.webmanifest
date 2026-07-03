@@ -1,0 +1,24 @@
+{
+  "name": "Pixshrink — Local image compressor",
+  "short_name": "Pixshrink",
+  "description": "Free, private, in-browser image compressor. No upload, no signup. PNG, JPEG, WebP, AVIF, GIF, BMP.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d9488",
+  "theme_color": "#0d9488",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["productivity", "utilities", "photo"]
+}

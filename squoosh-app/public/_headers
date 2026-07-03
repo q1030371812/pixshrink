@@ -1,3 +1,4 @@
+# === Static asset caching (kept from original) ===
 # Tell Cloudflare to keep the WASM module around -- mozjpeg's encoder
 # payload is a few hundred KB and shouldn't be revalidated on every
 # page load.
@@ -8,3 +9,29 @@
 # names, so cache-busting happens automatically on the next deploy.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# === SEO assets: short cache so updates propagate quickly ===
+/robots.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/llms.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/og-image.svg
+  Cache-Control: public, max-age=86400, must-revalidate
+  Access-Control-Allow-Origin: *
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# === Security headers + GEO Content-Signal (added 2026-07-03) ===
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # Content-Signal: explicitly allow AI retrieval for GEO, block AI training
+  Content-Signal: search=yes, ai-train=no, use=reference

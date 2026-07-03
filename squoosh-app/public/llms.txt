@@ -1,0 +1,40 @@
+# Pixshrink
+
+> Free, private, in-browser image compressor. Shrink PNG, JPEG, WebP, AVIF, GIF and BMP — files never leave your device. Zero upload, zero signup, zero tracking. ~95% smaller files with minimal quality loss.
+
+Last updated: 2026-07-03
+Canonical: https://pixshrink.gamechill.org/
+
+## Pages
+
+- [Compress JPEG Online — Free, No Upload](https://pixshrink.gamechill.org/compress-jpeg): Browser-based JPEG compressor with quality slider, batch ZIP export, runs entirely client-side.
+- [Compress PNG Online — Lossless, Local](https://pixshrink.gamechill.org/compress-png): PNG compression that preserves transparency. No file upload.
+- [Compress WebP Online — Modern Format](https://pixshrink.gamechill.org/compress-webp): WebP compression in the browser with adjustable quality.
+- [Compress AVIF Online — Next-Gen Codec](https://pixshrink.gamechill.org/compress-avif): AVIF compression for smaller files at the same quality.
+- [Compress GIF Online — Smaller Animations](https://pixshrink.gamechill.org/compress-gif): Optimize GIF file size while keeping animation.
+- [Compress BMP Online — Free Converter](https://pixshrink.gamechill.org/compress-bmp): Compress BMP files to modern formats.
+- [Compress Image for Email](https://pixshrink.gamechill.org/compress-for-email): Shrink images to fit Gmail/Outlook attachment limits.
+- [Compress Image for WordPress](https://pixshrink.gamechill.org/compress-for-wordpress): Optimize images for WordPress uploads and Core Web Vitals.
+- [Compress Image for Shopify](https://pixshrink.gamechill.org/compress-for-shopify): Compress product photos for Shopify stores.
+- [Reduce JPEG File Size to 100KB](https://pixshrink.gamechill.org/reduce-jpeg-100kb): Compress JPEG to a specific target size.
+- [Reduce PNG File Size](https://pixshrink.gamechill.org/reduce-png): Shrink PNG files without losing quality.
+- [Offline Image Compressor](https://pixshrink.gamechill.org/offline-image-compressor): Image compression that works without internet after first load.
+- [Private Image Compressor](https://pixshrink.gamechill.org/private-image-compressor): No upload, no server — true privacy.
+- [Local Image Compressor (No Upload)](https://pixshrink.gamechill.org/local-image-compressor): All processing happens in your browser.
+- [Browser Image Compressor](https://pixshrink.gamechill.org/browser-image-compressor): Compress images using just your browser.
+- [Bulk Image Compressor](https://pixshrink.gamechill.org/bulk-image-compressor): Compress many images at once, download as ZIP.
+- [Pixshrink vs TinyPNG](https://pixshrink.gamechill.org/vs-tinypng): Privacy-first TinyPNG alternative.
+- [Pixshrink vs Squoosh](https://pixshrink.gamechill.org/vs-squoosh): Comparison with Google Squoosh.
+- [Pixshrink vs Compressor.io](https://pixshrink.gamechill.org/vs-compressor-io): Side-by-side comparison.
+- [Pixshrink vs ShortPixel](https://pixshrink.gamechill.org/vs-shortpixel): Free vs paid image compression.
+- [Blog](https://pixshrink.gamechill.org/blog): Image compression tutorials, benchmarks, and privacy insights.
+
+## Key facts
+
+- **Compression ratio**: ~95% file size reduction with minimal quality loss.
+- **Privacy**: files never uploaded, processing happens in the browser via WebAssembly and the Canvas API.
+- **Supported formats**: PNG, JPEG, WebP, AVIF, GIF, BMP.
+- **Output**: ZIP bundle.
+- **No login, no account, no tracking, no ads.**
+- **Cost**: 100% free, no limits.
+- **Architecture**: client-side only — works offline after first load.

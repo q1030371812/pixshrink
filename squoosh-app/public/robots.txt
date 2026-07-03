@@ -1,0 +1,17 @@
+# Pixshrink · robots.txt
+# Updated 2026-07-03:放行所有爬虫(含 AI bot),适配 GEO 流量
+
+User-agent: *
+Allow: /
+
+# 不要禁任何爬虫。Cloudflare 默认模板把所有 AI bot 都 Disallow 了,
+# 等于自断 ChatGPT/Perplexity/Claude/Gemini 引用流量。
+# GEO 阶段会被反复用到,务必保留。
+
+# 阻止恶意爬虫(可选,免费版 WAF 规则有限,这部分用 Cloudflare 防护更合适)
+# User-agent: AhrefsBot
+# Disallow: /
+# User-agent: SemrushBot
+# Disallow: /
+
+Sitemap: https://pixshrink.gamechill.org/sitemap.xml

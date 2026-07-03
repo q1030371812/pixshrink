@@ -2,3 +2,14 @@
 # routes client-side. Required for Cloudflare Pages (and any other
 # static host) when the user hits a deep link like /about directly.
 /*    /index.html   200
+
+# === SEO redirect hints (optional; uncomment when adding landing pages) ===
+# /compress-jpeg   /index.html   200
+# /compress-png    /index.html   200
+# /compress-webp   /index.html   200
+# /compress-avif   /index.html   200
+# /compress-gif    /index.html   200
+# /compress-bmp    /index.html   200
+# /vs-tinypng      /index.html   200
+# /vs-squoosh      /index.html   200
+# /blog/*          /index.html   200

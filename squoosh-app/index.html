@@ -6,13 +6,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#0d9488" />
+
+    <!-- Primary meta -->
+    <title>Pixshrink · Local image compressor — PNG, JPEG, WebP, AVIF, GIF, BMP</title>
     <meta
       name="description"
-      content="Pixshrink shrinks PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Drop your images, drag the quality slider, and download everything as a ZIP. Files never leave your device."
+      content="Pixshrink shrinks PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Drop your images, drag the quality slider, and download everything as a ZIP. Files never leave your device — zero upload, zero signup, zero tracking. ~95% smaller files with minimal quality loss."
     />
-    <meta property="og:title" content="Pixshrink · Local image compressor" />
-    <meta property="og:description" content="Shrink PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Files stay on your device, fully offline." />
-    <title>Pixshrink · Local image compressor</title>
+    <meta name="keywords" content="compress image online, image compressor, compress jpeg, compress png, compress webp, compress avif, offline image compressor, private image compressor, local image compressor, browser image compressor, no upload, client side image compression" />
+    <meta name="author" content="Pixshrink" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://pixshrink.gamechill.org/" />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="en" href="https://pixshrink.gamechill.org/" />
+    <link rel="alternate" hreflang="x-default" href="https://pixshrink.gamechill.org/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pixshrink" />
+    <meta property="og:title" content="Pixshrink · Local image compressor — 95% smaller, zero upload" />
+    <meta property="og:description" content="Compress PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Files stay on your device, fully offline, fully private." />
+    <meta property="og:url" content="https://pixshrink.gamechill.org/" />
+    <meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+    <meta property="og:image:secure_url" content="https://pixshrink.gamechill.org/og-image.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pixshrink — shrink images locally, 95% smaller, zero upload" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pixshrink · Local image compressor" />
+    <meta name="twitter:description" content="Compress PNG, JPEG, WebP, AVIF, GIF and BMP in your browser. Files never leave your device. ~95% smaller with minimal quality loss." />
+    <meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+    <meta name="twitter:image:alt" content="Pixshrink — shrink images locally, 95% smaller, zero upload" />
+
+    <!-- App + PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Pixshrink" />
+    <link rel="apple-touch-icon" href="/og-image.svg" />
+
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Pixshrink",
+      "alternateName": "Pixshrink Local Image Compressor",
+      "url": "https://pixshrink.gamechill.org/",
+      "description": "Free, private, in-browser image compressor. Shrink PNG, JPEG, WebP, AVIF, GIF and BMP — files never leave your device.",
+      "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "Image Compression",
+      "operatingSystem": "Any (browser-based)",
+      "browserRequirements": "Requires modern browser with WebAssembly and Canvas API support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Local image compression — files never uploaded",
+        "Supports PNG, JPEG, WebP, AVIF, GIF, BMP",
+        "Adjustable quality slider",
+        "Batch compression with ZIP download",
+        "No signup, no login, no tracking",
+        "Works offline after first load",
+        "~95% file size reduction with minimal quality loss",
+        "100% free, no limits"
+      ],
+      "screenshot": "https://pixshrink.gamechill.org/og-image.svg",
+      "softwareVersion": "1.0",
+      "datePublished": "2026-06-12",
+      "dateModified": "2026-07-03",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "creator": {
+        "@type": "Organization",
+        "name": "Pixshrink",
+        "url": "https://pixshrink.gamechill.org/"
+      }
+    }
+    </script>
+
+    <!-- Structured data: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Pixshrink really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100% free with no limits. No signup, no payment, no hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do my images get uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Pixshrink runs entirely in your browser using WebAssembly and the Canvas API. Your images never leave your device — this is what makes it private and offline-capable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formats does Pixshrink support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG, JPEG, WebP, AVIF, GIF, and BMP. You can mix formats in one batch and download everything as a ZIP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much can I compress my images?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically 80-95% file size reduction with minimal visible quality loss, depending on the source image and chosen quality level."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Pixshrink work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After the first load, Pixshrink works without internet. You can install it as a PWA from your browser for offline access anytime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Pixshrink different from TinyPNG or Squoosh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Like Squoosh, Pixshrink is fully client-side (no upload). Unlike Squoosh, Pixshrink is built for batch compression with a ZIP download workflow. Unlike TinyPNG, your images never touch any server."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Pixshrink",
+      "url": "https://pixshrink.gamechill.org/",
+      "logo": "https://pixshrink.gamechill.org/og-image.svg",
+      "description": "Privacy-first, local image compression tool."
+    }
+    </script>
+
+    <!-- Cloudflare Content-Signal hint -->
+    <meta http-equiv="Content-Signal" content="search=yes, ai-train=no, use=reference" />
+
     <script>
       (function () {
         try {
