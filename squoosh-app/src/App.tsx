@@ -398,10 +398,10 @@ export default function App() {
   })();
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex min-h-full flex-col">
       <TopBar theme={theme} onToggleTheme={toggleTheme} />
       <PrivacyBadge />
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1">
         <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
           <BatchNotice notice={notice} onDismiss={() => setNotice(null)} />
           {hasItems ? (

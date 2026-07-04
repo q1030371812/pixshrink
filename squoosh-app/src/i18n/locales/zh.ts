@@ -42,6 +42,19 @@ const zh = {
   themeDark: '深色',
   languageLabel: '语言',
   footerTagline: '面向网页的本地图片压缩工具，开源。',
+  aboutTitle: 'Pixshrink 的工作原理',
+  aboutSub: 'WebAssembly 编解码器在你的浏览器标签页中运行，绝不上传至服务器。',
+  aboutP1: 'Pixshrink 使用 WebAssembly 版的成熟开源编解码器 —— mozjpeg、oxipng、libwebp、libavif —— 全部在浏览器标签页中本地运行，与桌面级压缩工具性能相当。',
+  aboutP2: '所有处理均在本设备完成：通过 Canvas API 解码、WebAssembly 编码、再次编码输出。文件从不离开你的浏览器，断网后仍可继续使用。',
+  aboutStep1Title: '拖入图片',
+  aboutStep1Body: '把任意 6 种格式（JPG、PNG、WebP、AVIF、GIF、BMP）的图片一次性拖入，支持批量处理。',
+  aboutStep2Title: 'WebAssembly 编码',
+  aboutStep2Body: '多张图片通过 Web Workers 并行编码，自动调度到多核 CPU，速度极快。',
+  aboutStep3Title: '下载 ZIP',
+  aboutStep3Body: '获取一个包含全部 -min 压缩文件的 ZIP，整个过程文件不会上传。',
+  faqTitle: '常见问题',
+  faqSub: '关于 Pixshrink 如何处理你的图片，一一解答。',
+  footerPrivacyTagline: '以隐私为核心设计，文件始终保留在你的设备上。',
   formatBytes: (b: number) =>
     b < 1024
       ? b + ' B'
