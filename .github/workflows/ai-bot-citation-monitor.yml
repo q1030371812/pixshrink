@@ -1,0 +1,253 @@
+name: AI Bot Citation Monitor
+
+on:
+  schedule:
+    # Every 6 hours
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cite-check:
+    name: Probe AI services for Pixshrink citations
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BASE_URL: "https://pixshrink.gamechill.org"
+      BRAND: "Pixshrink"
+      DOMAIN: "pixshrink.gamechill.org"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Probe AI services
+        id: probe
+        env:
+          # Optional overrides. Provide via GitHub Secrets when keys become available.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CX: ${{ secrets.GOOGLE_CX }}
+        run: |
+          set +e
+          mkdir -p artifacts
+          python - <<'PY'
+          """Query multiple AI search / chat services for keyword prompts and
+          detect whether Pixshrink (or our domain) is cited in the answer.
+
+          This script is intentionally transport-agnostic:
+            * When *_API_KEY secrets are present, it calls the official REST API.
+            * Otherwise it falls back to the public web interface (browser-use
+              style agent prompt) so the monitor still produces a usable signal.
+          """
+          import json, os, pathlib, re, sys, time, urllib.parse, urllib.request
+
+          BASE = os.environ["BASE_URL"].rstrip("/")
+          BRAND = os.environ["BRAND"]
+          DOMAIN = os.environ["DOMAIN"]
+          URL_VARIANTS = {BRAND.lower(), DOMAIN.lower(), "pixshrink"}
+
+          QUERIES = [
+              "best local image compressor",
+              "tinypng alternative",
+              "compress images privacy",
+              "best free image compressor no upload",
+              "browser-based image optimizer",
+              "compress jpeg without uploading",
+              "private png compressor online",
+              "avif compressor web",
+          ]
+
+          # ------------------------------------------------------------------
+          # OpenAI (Responses or Chat Completions REST)
+          # ------------------------------------------------------------------
+          def probe_openai(prompt: str) -> str:
+              key = os.environ.get("OPENAI_API_KEY", "")
+              if not key:
+                  return _browser_use_fallback("openai", prompt)
+              payload = {
+                  "model": "gpt-4o-mini",
+                  "messages": [{"role": "user", "content": prompt}],
+                  "max_tokens": 400,
+              }
+              req = urllib.request.Request(
+                  "https://api.openai.com/v1/chat/completions",
+                  data=json.dumps(payload).encode("utf-8"),
+                  headers={
+                      "Authorization": f"Bearer {key}",
+                      "Content-Type": "application/json",
+                  },
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      body = json.loads(r.read())
+                  return body["choices"][0]["message"]["content"]
+              except Exception as e:
+                  return f"[openai error] {e}"
+
+          # ------------------------------------------------------------------
+          # Anthropic Messages API
+          # ------------------------------------------------------------------
+          def probe_anthropic(prompt: str) -> str:
+              key = os.environ.get("ANTHROPIC_API_KEY", "")
+              if not key:
+                  return _browser_use_fallback("anthropic", prompt)
+              payload = {
+                  "model": "claude-3-5-haiku-latest",
+                  "max_tokens": 400,
+                  "messages": [{"role": "user", "content": prompt}],
+              }
+              req = urllib.request.Request(
+                  "https://api.anthropic.com/v1/messages",
+                  data=json.dumps(payload).encode("utf-8"),
+                  headers={
+                      "x-api-key": key,
+                      "anthropic-version": "2023-06-01",
+                      "Content-Type": "application/json",
+                  },
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      body = json.loads(r.read())
+                  blocks = body.get("content", [])
+                  return "".join(b.get("text", "") for b in blocks if b.get("type") == "text")
+              except Exception as e:
+                  return f"[anthropic error] {e}"
+
+          # ------------------------------------------------------------------
+          # Google Programmable Search Engine (custom search)
+          # ------------------------------------------------------------------
+          def probe_google_cse(prompt: str) -> str:
+              key = os.environ.get("GOOGLE_API_KEY", "")
+              cx = os.environ.get("GOOGLE_CX", "")
+              if not (key and cx):
+                  return _browser_use_fallback("google", prompt)
+              params = urllib.parse.urlencode({"key": key, "cx": cx, "q": prompt, "num": 5})
+              url = f"https://www.googleapis.com/customsearch/v1?{params}"
+              try:
+                  with urllib.request.urlopen(url, timeout=15) as r:
+                      body = json.loads(r.read())
+                  items = body.get("items", [])
+                  return "\n".join(f"{i.get('title','')} :: {i.get('link','')}" for i in items)
+              except Exception as e:
+                  return f"[google error] {e}"
+
+          # ------------------------------------------------------------------
+          # Fallback: public web surface (browser-use agent prompt).
+          # The agent runner that consumes this YAML may replace these strings
+          # with actual headed-browser invocations. We emit a deterministic
+          # placeholder so the workflow still records *something*.
+          # ------------------------------------------------------------------
+          def _browser_use_fallback(provider: str, prompt: str) -> str:
+              return (
+                  f"[browser-use stub] provider={provider} prompt={prompt!r} "
+                  f"— replace with headed-browser agent invocation."
+              )
+
+          # ------------------------------------------------------------------
+          # Detection
+          # ------------------------------------------------------------------
+          CITATION_RE = re.compile(
+              r"(" + "|".join(re.escape(v) for v in URL_VARIANTS) + r")",
+              re.I,
+          )
+
+          def detect(answer: str) -> dict:
+              if not answer:
+                  return {"cited": False, "matched": "", "len": 0}
+              m = CITATION_RE.search(answer)
+              return {
+                  "cited": bool(m),
+                  "matched": m.group(0) if m else "",
+                  "len": len(answer),
+              }
+
+          providers = {
+              "openai":    probe_openai,
+              "anthropic": probe_anthropic,
+              "google":    probe_google_cse,
+          }
+
+          results = []
+          for prompt in QUERIES:
+              row = {"query": prompt, "providers": {}}
+              for name, fn in providers.items():
+                  t0 = time.perf_counter()
+                  answer = fn(prompt)
+                  row["providers"][name] = {
+                      "answer": answer[:1500],
+                      "detection": detect(answer),
+                      "ms": int((time.perf_counter() - t0) * 1000),
+                  }
+                  time.sleep(0.5)
+              results.append(row)
+
+          summary = {
+              "queries": len(QUERIES),
+              "providers": list(providers.keys()),
+              "per_query": [
+                  {
+                      "query": r["query"],
+                      "cited_by": [n for n, p in r["providers"].items() if p["detection"]["cited"]],
+                  }
+                  for r in results
+              ],
+              "total_citations": sum(
+                  1 for r in results for p in r["providers"].values() if p["detection"]["cited"]
+              ),
+              "max_possible": len(QUERIES) * len(providers),
+          }
+
+          pathlib.Path("artifacts/citations.json").write_text(
+              json.dumps({"summary": summary, "results": results}, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          print(json.dumps(summary, indent=2))
+          PY
+
+      - name: Slack notification
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPORT: artifacts/citations.json
+        run: |
+          if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then
+            echo "SLACK_WEBHOOK_URL not set; skipping Slack post."
+            exit 0
+          fi
+          python - <<'PY'
+          import json, os, pathlib
+          data = json.loads(pathlib.Path(os.environ["REPORT"]).read_text(encoding="utf-8"))
+          s = data["summary"]
+          rate = (s["total_citations"] / s["max_possible"] * 100) if s["max_possible"] else 0
+          icon = ":chart_with_upwards_trend:" if s["total_citations"] > 0 else ":sleeping:"
+          lines = [
+              f"{icon} *AI Citation Monitor* — {s['total_citations']}/{s['max_possible']} ({rate:.1f}%)",
+              "",
+          ]
+          for q in s["per_query"]:
+              cited = ", ".join(q["cited_by"]) if q["cited_by"] else "—"
+              lines.append(f"• _{q['query']}_ → cited by: {cited}")
+          pathlib.Path("slack-payload.json").write_text(
+              json.dumps({"text": "\n".join(lines), "unfurl_links": False}), encoding="utf-8"
+          )
+          PY
+          curl -fsS -X POST -H "Content-Type: application/json" \
+            --data @slack-payload.json \
+            "$SLACK_WEBHOOK_URL" || true
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-citations
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 60

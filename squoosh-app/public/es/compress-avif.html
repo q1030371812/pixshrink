@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Comprimir AVIF en línea — Códec de próxima generación | Pixshrink</title>
+<meta name="description" content="Comprime archivos AVIF en línea sin subirlos. El codificador libavif + rav1e en el navegador produce archivos AVIF de próxima generación 20–30% más pequeños que WebP a la misma calidad perceptual. Gratis y privado." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Comprimir AVIF en línea — Códec de próxima generación" />
+<meta property="og:description" content="Reduce archivos AVIF en tu navegador. 20–30% más pequeño que WebP a la misma calidad. Sin subir, sin registro." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="es" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Comprimir AVIF en línea — Códec de próxima generación" />
+<meta name="twitter:description" content="Reduce archivos AVIF en tu navegador. 20–30% más pequeño que WebP a la misma calidad. Sin subir, sin registro." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="es" href="https://pixshrink.gamechill.org/es/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/es/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Comprimir AVIF en línea — Códec de próxima generación</h1>
+    <p class="subtitle">Recodifica o recomprime archivos AVIF con el wrapper libavif del códec AV1. A una calidad perceptual equivalente, AVIF suele ser un 20–30% más pequeño que WebP y un 50%+ más pequeño que JPEG.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/es/">Comprimir un AVIF ahora</a>
+      <a class="btn btn-ghost" href="#how">Cómo funciona</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>más pequeño que WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>codificador de referencia</span></div>
+      <div class="stat"><strong>10/12 bits</strong><span>profundidad de color, gama amplia</span></div>
+    </div>
+
+    <article id="how">
+      <h2>¿Qué es AVIF y por qué debería importarme?</h2>
+      <p>AVIF (AV1 Image File Format) es el contenedor de imagen fija alrededor del códec de vídeo AV1. Fue diseñado desde cero para reemplazar a JPEG y WebP en la web: mejor predicción intra, transformadas de bloque más grandes, síntesis de grano de película y soporte nativo para color de 10 y 12 bits. Las ganancias de compresión son reales y visibles en los benchmarks: Netflix, YouTube y la mayoría de los sitios de contenido grandes ahora distribuyen AVIF a los usuarios cuyos navegadores pueden decodificarlo.</p>
+      <p>Pixshrink usa libavif, que envuelve el codificador AV1 (rav1e por defecto). Obtienes el mismo códec que usan los sitios grandes, con una interfaz limpia en el navegador.</p>
+
+      <h2>¿Cuánto más pequeño es AVIF en la práctica?</h2>
+      <p>En un lote típico de fotos de producto, cambiar de JPEG calidad 80 a AVIF calidad 50 (perceptualmente equivalente en SSIM2) reduce el tamaño del archivo aproximadamente un 50%. Cambiar de un WebP por defecto a AVIF de calidad equivalente típicamente reduce otro 20–30%. Para una imagen principal en una landing page, esto es la diferencia entre una carga de 280&nbsp;KB y una de 95&nbsp;KB, directamente visible en Core Web Vitals y en las puntuaciones de Lighthouse.</p>
+      <p>El deslizador <strong>speed</strong> controla el preajuste del codificador. Speed 0 es el más lento y más pequeño; speed 6 es rápido y ligeramente más grande. Speed 4 es un buen valor predeterminado para trabajos puntuales; speed 8 es adecuado para procesamiento por lotes.</p>
+
+      <h2>Soporte de navegadores y herramientas</h2>
+      <p>AVIF es soportado en Chrome 85+, Firefox 93+, Edge 121+ y Safari 16+ (lanzado en 2022). La cobertura de la población web global ya supera con creces el 95%. Si necesitas soportar navegadores más antiguos, el patrón correcto es enviar un elemento <code>&lt;picture&gt;</code> con un fallback <a href="/compress-webp">WebP</a> o <a href="/compress-jpeg">JPEG</a>: la misma página en Pixshrink puede producir los tres desde una sola carga.</p>
+
+      <h2>Otros formatos que quizás quieras</h2>
+      <p>Para transparencia total sin cambio de color, <a href="/compress-png">PNG</a> sin pérdida sigue siendo la opción segura. Para animaciones, AVIF las soporta pero las herramientas están menos maduras que <a href="/compress-gif">GIF</a> y WebP animado; empieza con WebP animado a menos que realmente necesites el ahorro extra.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿Qué codificador AV1 usa Pixshrink?</summary>
+        <p>libavif con rav1e como codificador AV1 por defecto. Es el mismo camino de codificador que usan la mayoría de servidores de producción, y está compilado a WebAssembly para que la codificación se ejecute en tu navegador.</p>
+      </details>
+      <details>
+        <summary>¿Es AVIF más pequeño que WebP?</summary>
+        <p>Sí. A calidad perceptual equivalente, AVIF suele ser un 20–30% más pequeño que WebP y alrededor de un 50% más pequeño que JPEG. El costo es tiempo de codificación y un ecosistema de herramientas algo más limitado.</p>
+      </details>
+      <details>
+        <summary>¿Qué navegadores pueden mostrar AVIF?</summary>
+        <p>Chrome 85+, Edge (todos los recientes), Firefox 93+, Safari 16+, Opera y todos los navegadores móviles lanzados en los últimos tres años. Para navegadores más antiguos, usa un fallback WebP o JPEG.</p>
+      </details>
+      <details>
+        <summary>¿AVIF soporta transparencia y animación?</summary>
+        <p>Sí a ambas. Se soportan alfa de 8 y 10 bits, y AVIF puede llevar múltiples fotogramas, aunque WebP animado sigue siendo la opción más segura para la mayoría de los casos hoy.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — compresión de imágenes gratuita, privada, en el navegador.</div>
+    <div class="links">
+      <a href="/es/">Inicio</a>
+      <a href="/es/compress-jpeg">Comprimir JPEG</a>
+      <a href="/es/compress-png">Comprimir PNG</a>
+      <a href="/es/compress-webp">Comprimir WebP</a>
+      <a href="/es/compress-gif">Comprimir GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Compresor AVIF de Pixshrink",
+      "url": "https://pixshrink.gamechill.org/es/compress-avif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Requiere un navegador moderno con soporte para WebAssembly y decodificación AV1",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "es",
+      "description": "Compresor AVIF gratuito en el navegador que usa libavif y el códec AV1. 20–30% más pequeño que WebP a calidad equivalente. Sin subir.",
+      "featureList": ["Códec AV1", "Color 10/12 bits", "Sin subir", "Soporte alfa"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "es",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué codificador AV1 usa Pixshrink?",
+          "acceptedAnswer": { "@type": "Answer", "text": "libavif con rav1e como codificador AV1 por defecto, compilado a WebAssembly para que se ejecute en el navegador." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es AVIF más pequeño que WebP?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí. A calidad perceptual equivalente, AVIF suele ser un 20–30% más pequeño que WebP y alrededor de un 50% más pequeño que JPEG." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué navegadores pueden mostrar AVIF?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+ y todos los navegadores móviles modernos." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿AVIF soporta transparencia y animación?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí a ambas. Se soportan alfa de 8 y 10 bits, y AVIF puede llevar múltiples fotogramas." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

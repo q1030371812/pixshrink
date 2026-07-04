@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-04",
+  "baseUrl": "https://pixshrink.gamechill.org",
+  "pages": [
+    {
+      "slug": "compress-jpeg",
+      "file": "compress-jpeg.html",
+      "url": "https://pixshrink.gamechill.org/compress-jpeg",
+      "format": "JPEG",
+      "codec": "mozjpeg",
+      "title": "Compress JPEG Online — 95% Smaller, No Upload",
+      "priority": 0.9,
+      "changefreq": "monthly"
+    },
+    {
+      "slug": "compress-png",
+      "file": "compress-png.html",
+      "url": "https://pixshrink.gamechill.org/compress-png",
+      "format": "PNG",
+      "codec": "oxipng",
+      "title": "Compress PNG Online — Lossless, No Upload",
+      "priority": 0.9,
+      "changefreq": "monthly"
+    },
+    {
+      "slug": "compress-webp",
+      "file": "compress-webp.html",
+      "url": "https://pixshrink.gamechill.org/compress-webp",
+      "format": "WebP",
+      "codec": "libwebp",
+      "title": "Compress WebP Online — 95% Smaller, No Upload",
+      "priority": 0.9,
+      "changefreq": "monthly"
+    },
+    {
+      "slug": "compress-avif",
+      "file": "compress-avif.html",
+      "url": "https://pixshrink.gamechill.org/compress-avif",
+      "format": "AVIF",
+      "codec": "libavif",
+      "title": "Compress AVIF Online — Next-Gen Codec",
+      "priority": 0.9,
+      "changefreq": "monthly"
+    },
+    {
+      "slug": "compress-gif",
+      "file": "compress-gif.html",
+      "url": "https://pixshrink.gamechill.org/compress-gif",
+      "format": "GIF",
+      "codec": "gifsicle",
+      "title": "Compress GIF Online — Smaller Animations",
+      "priority": 0.9,
+      "changefreq": "monthly"
+    }
+  ]
+}

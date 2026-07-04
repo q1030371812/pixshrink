@@ -1,0 +1,147 @@
+name: Weekly llms.txt Rebuild
+
+on:
+  schedule:
+    # Mondays 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild-and-ping:
+    name: Rebuild llms.txt & ping indexers
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Probe live llms.txt + sitemap
+        id: probe
+        env:
+          BASE_URL: "https://pixshrink.gamechill.org"
+        run: |
+          set -e
+          mkdir -p artifacts
+          curl -fsSL "$BASE_URL/llms.txt" -o artifacts/llms.remote.txt || true
+          curl -fsSL "$BASE_URL/sitemap.xml" -o artifacts/sitemap.xml || true
+          python - <<'PY'
+          import json, pathlib, re
+          out = {"base_url": "https://pixshrink.gamechill.org", "llms_exists": False, "sitemap_urls": []}
+          llms = pathlib.Path("artifacts/llms.remote.txt")
+          if llms.exists() and llms.stat().st_size > 0:
+              out["llms_exists"] = True
+              out["llms_bytes"] = llms.stat().st_size
+              out["llms_sections"] = llms.read_text(encoding="utf-8").count("\n## ")
+          sm = pathlib.Path("artifacts/sitemap.xml")
+          if sm.exists():
+              out["sitemap_urls"] = re.findall(r"<loc>([^<]+)</loc>", sm.read_text(encoding="utf-8", errors="replace"))
+          pathlib.Path("artifacts/probe.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+          print(json.dumps(out, indent=2))
+          PY
+
+      - name: Build consolidated llms.txt
+        env:
+          BASE_URL: "https://pixshrink.gamechill.org"
+        run: |
+          set -e
+          # If a checked-in llms.txt exists, prefer it; otherwise assemble from probe.
+          python - <<'PY'
+          import os, pathlib, json
+          base = os.environ["BASE_URL"].rstrip("/")
+          checked_in = pathlib.Path("squoosh-app/public/llms.txt")
+          if checked_in.exists():
+              content = checked_in.read_text(encoding="utf-8")
+              src = "checked-in"
+          else:
+              remote = pathlib.Path("artifacts/llms.remote.txt")
+              content = remote.read_text(encoding="utf-8") if remote.exists() else ""
+              src = "remote"
+          header_lines = [
+              "# Pixshrink",
+              "",
+              "> Free, private, in-browser image compressor — PNG, JPEG, WebP, AVIF, GIF.",
+              "No uploads. No tracking. Works offline once loaded.",
+              "",
+              f"Homepage: {base}/",
+              "",
+              "## Landing Pages",
+              "",
+              f"- [{base}/compress-jpeg.html]({base}/compress-jpeg.html) — Compress JPEG without upload",
+              f"- [{base}/compress-png.html]({base}/compress-png.html) — Compress PNG without upload",
+              f"- [{base}/compress-webp.html]({base}/compress-webp.html) — Compress WebP without upload",
+              f"- [{base}/compress-avif.html]({base}/compress-avif.html) — Compress AVIF without upload",
+              f"- [{base}/compress-gif.html]({base}/compress-gif.html) — Compress GIF without upload",
+              "",
+              "## Static Resources",
+              "",
+              f"- [llms.txt]({base}/llms.txt)",
+              f"- [sitemap.xml]({base}/sitemap.xml)",
+              f"- [robots.txt]({base}/robots.txt)",
+              f"- [manifest.webmanifest]({base}/manifest.webmanifest)",
+              "",
+          ]
+          extra = content if content else ""
+          final = "\n".join(header_lines) + "\n" + extra
+          pathlib.Path("artifacts/llms.generated.txt").write_text(final, encoding="utf-8")
+          print(f"Built llms.txt ({len(final)} bytes, source={src})")
+          PY
+
+      - name: Smoke test generated llms.txt
+        run: |
+          python - <<'PY'
+          import pathlib, re, sys
+          p = pathlib.Path("artifacts/llms.generated.txt")
+          text = p.read_text(encoding="utf-8")
+          assert text.startswith("# "), "missing leading H1"
+          assert "## Landing Pages" in text, "missing Landing Pages section"
+          assert "pixshrink" in text.lower(), "brand not mentioned"
+          for needle in ("compress-jpeg", "compress-png", "compress-webp", "compress-avif", "compress-gif"):
+              assert needle in text, f"missing landing page: {needle}"
+          print("llms.txt OK:", len(text), "bytes")
+          PY
+
+      - name: Ping Google
+        run: |
+          curl -fsS -A "PixshrinkWeeklyBot/1.0" \
+            "https://www.google.com/ping?sitemap=https%3A%2F%2Fpixshrink.gamechill.org%2Fsitemap.xml" \
+            -o artifacts/ping-google.html -w "google=%{http_code}\n" || true
+
+      - name: Ping Bing
+        run: |
+          curl -fsS -A "PixshrinkWeeklyBot/1.0" \
+            "https://www.bing.com/ping?sitemap=https%3A%2F%2Fpixshrink.gamechill.org%2Fsitemap.xml" \
+            -o artifacts/ping-bing.html -w "bing=%{http_code}\n" || true
+
+      - name: Submit llms.txt to IndexNow (Bing)
+        run: |
+          set +e
+          curl -fsS -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$(cat <<JSON
+          {
+            "host": "pixshrink.gamechill.org",
+            "key": "pixshrink-indexnow",
+            "keyLocation": "https://pixshrink.gamechill.org/indexnow-key.txt",
+            "urlList": [
+              "https://pixshrink.gamechill.org/llms.txt"
+            ]
+          }
+          JSON
+          )" \
+            -o artifacts/indexnow.json -w "indexnow=%{http_code}\n"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-llms
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 30

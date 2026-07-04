@@ -1,0 +1,153 @@
+name: Weekly Redirect & Sitemap Audit
+
+on:
+  schedule:
+    # Sundays 04:00 UTC
+    - cron: "0 4 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Assert every sitemap URL returns 200
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch sitemap.xml
+        id: sitemap
+        env:
+          BASE_URL: "https://pixshrink.gamechill.org"
+        run: |
+          set -e
+          mkdir -p artifacts
+          curl -fsSL "$BASE_URL/sitemap.xml" -o artifacts/sitemap.xml
+          ls -la artifacts/sitemap.xml
+
+      - name: Probe every URL
+        id: probe
+        env:
+          BASE_URL: "https://pixshrink.gamechill.org"
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, re, sys, time, urllib.error, urllib.request
+
+          base = os.environ["BASE_URL"].rstrip("/")
+          sitemap_path = pathlib.Path("artifacts/sitemap.xml")
+          text = sitemap_path.read_text(encoding="utf-8", errors="replace")
+          urls = re.findall(r"<loc>([^<]+)</loc>", text)
+          # Deduplicate while preserving order
+          seen = set()
+          unique_urls = []
+          for u in urls:
+              if u not in seen:
+                  seen.add(u)
+                  unique_urls.append(u)
+
+          results = []
+          failures = 0
+          redirects = 0
+          for u in unique_urls:
+              t0 = time.perf_counter()
+              try:
+                  req = urllib.request.Request(u, method="HEAD", headers={"User-Agent": "PixshrinkAudit/1.0"})
+                  with urllib.request.urlopen(req, timeout=10) as resp:
+                      status = resp.status
+                      final_url = resp.geturl()
+                  # Some servers refuse HEAD; fall back to GET if so.
+                  if status in (405, 403):
+                      req = urllib.request.Request(u, headers={"User-Agent": "PixshrinkAudit/1.0"})
+                      with urllib.request.urlopen(req, timeout=10) as resp:
+                          status = resp.status
+                          final_url = resp.geturl()
+              except urllib.error.HTTPError as e:
+                  status = e.code
+                  final_url = u
+              except Exception as e:
+                  status = 0
+                  final_url = u
+
+              ms = int((time.perf_counter() - t0) * 1000)
+              ok = 200 <= status < 300
+              was_redirect = final_url.rstrip("/") != u.rstrip("/")
+              if not ok:
+                  failures += 1
+              if was_redirect:
+                  redirects += 1
+              results.append({
+                  "url": u,
+                  "status": status,
+                  "final_url": final_url,
+                  "redirected": was_redirect,
+                  "ms": ms,
+                  "ok": ok,
+              })
+
+          report = {
+              "base_url": base,
+              "total": len(unique_urls),
+              "passed": sum(1 for r in results if r["ok"]),
+              "failed": failures,
+              "redirects": redirects,
+              "results": results,
+          }
+          pathlib.Path("artifacts/redirect-audit.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+          print(f"Probed {len(unique_urls)} URLs, {failures} failures, {redirects} redirects.")
+          if failures:
+              for r in results:
+                  if not r["ok"]:
+                      print(f"  FAIL: {r['url']} -> {r['status']}")
+              sys.exit(1)
+          PY
+
+      - name: Slack notification
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPORT: artifacts/redirect-audit.json
+        run: |
+          if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then
+            echo "SLACK_WEBHOOK_URL not set; skipping Slack post."
+            exit 0
+          fi
+          python - <<'PY'
+          import json, os, pathlib
+          data = json.loads(pathlib.Path(os.environ["REPORT"]).read_text(encoding="utf-8"))
+          ok = data["failed"] == 0
+          icon = ":white_check_mark:" if ok else ":rotating_light:"
+          msg = (f"{icon} *Pixshrink Weekly Redirect Audit*\n"
+                 f"Probed {data['total']} sitemap URLs · "
+                 f"Passed: {data['passed']} · "
+                 f"Failed: {data['failed']} · "
+                 f"Redirects: {data['redirects']}")
+          if not ok:
+              lines = ["*Failed URLs:*"]
+              for r in data["results"]:
+                  if not r["ok"]:
+                      lines.append(f"• `{r['url']}` -> {r['status']}")
+              msg += "\n" + "\n".join(lines)
+          pathlib.Path("slack-payload.json").write_text(
+              json.dumps({"text": msg, "unfurl_links": False}), encoding="utf-8"
+          )
+          PY
+          curl -fsS -X POST -H "Content-Type: application/json" \
+            --data @slack-payload.json \
+            "$SLACK_WEBHOOK_URL" || true
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: redirect-audit
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 30

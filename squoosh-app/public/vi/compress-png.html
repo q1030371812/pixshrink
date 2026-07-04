@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nén PNG trực tuyến — Không mất dữ liệu, không cần tải lên | Pixshrink</title>
+<meta name="description" content="Nén file PNG trực tuyến không cần tải lên. oxipng và libspng trong trình duyệt thu nhỏ PNG không mất dữ liệu, bảo toàn độ trong suốt và màu sắc. Miễn phí và riêng tư." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Nén PNG trực tuyến — Không mất dữ liệu, không cần tải lên" />
+<meta property="og:description" content="Thu nhỏ PNG không mất dữ liệu trong trình duyệt. Độ trong suốt và màu sắc được bảo toàn." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="vi" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Nén PNG trực tuyến — Không mất dữ liệu, không cần tải lên" />
+<meta name="twitter:description" content="Thu nhỏ PNG không mất dữ liệu. Độ trong suốt và màu sắc được bảo toàn." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="vi" href="https://pixshrink.gamechill.org/vi/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/vi/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Nén PNG trực tuyến — Không mất dữ liệu, không cần tải lên</h1>
+    <p class="subtitle">Thu nhỏ PNG không mất dữ liệu trong trình duyệt của bạn. oxipng và libspng tìm các luồng deflate nhỏ hơn và loại bỏ các chunk không sử dụng — pixel, độ trong suốt và độ sâu màu vẫn giống byte đối với bản gốc.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/vi/">Nén PNG ngay</a>
+      <a class="btn btn-ghost" href="#how">Cách hoạt động</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>tiết kiệm không mất dữ liệu điển hình</span></div>
+      <div class="stat"><strong>oxipng</strong><span>bộ mã hóa cấp sản xuất</span></div>
+      <div class="stat"><strong>Pixel hoàn hảo</strong><span>đầu ra giống bit-by-bit</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Thuật ngữ "không mất dữ liệu" PNG nghĩa là gì?</h2>
+      <p>PNG đã là định dạng không mất dữ liệu — mỗi pixel gốc sống sót qua quá trình giải mã nguyên vẹn. Những gì bộ mã hóa oxipng và libspng làm là tìm một cách nhỏ hơn để thể hiện cùng dữ liệu pixel.</p>
+
+      <h2>PNG có thể thu nhỏ bao nhiêu?</h2>
+      <p>Phụ thuộc hoàn toàn vào hình ảnh. Logo màu phẳng có độ trong suốt có thể giảm 50–80%. Ảnh chụp lưu dưới dạng PNG thường chỉ giảm 5–15%, vì nhiễu trong ảnh đánh bại các thủ thuật dựa trên bảng màu.</p>
+
+      <h2>Còn độ trong suốt thì sao?</h2>
+      <p>Các kênh alpha được bảo toàn chính xác. Alpha 8-bit của PNG sống sót qua round-trip, và Pixshrink không "nhân trước" bất cứ thứ gì sẽ thay đổi cách hình ảnh của bạn kết hợp với nền.</p>
+
+      <h2>Khi nào nên dùng định dạng khác</h2>
+      <p>Nếu bạn kiểm soát đích đến của file, hãy cân nhắc chuyển PNG sang <a href="/compress-webp">WebP</a> để tiết kiệm thêm 25–35% ở cùng chất lượng, hoặc sang <a href="/compress-avif">AVIF</a> để tiết kiệm 40–50%.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Câu hỏi thường gặp</h2>
+
+      <details>
+        <summary>Nén không mất dữ liệu có thay đổi hình ảnh của tôi không?</summary>
+        <p>Không. Pixel được giải mã giống hệt nhau từng bit.</p>
+      </details>
+      <details>
+        <summary>Tại sao PNG của tôi chỉ nhỏ hơn 5%?</summary>
+        <p>Ảnh chụp có entropy cao mà deflate không thể khai thác. Để có sự giảm thực sự, hãy mã hóa lại sang JPEG, WebP hoặc AVIF.</p>
+      </details>
+      <details>
+        <summary>Độ trong suốt alpha có được bảo toàn không?</summary>
+        <p>Có. Các kênh alpha 8 và 16-bit được truyền qua không thay đổi.</p>
+      </details>
+      <details>
+        <summary>Có an toàn khi nén PNG hàng loạt không?</summary>
+        <p>Có. Thả một thư mục, trang sẽ xử lý từng file độc lập. Không có gì được tải lên.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — nén hình ảnh miễn phí, riêng tư, trong trình duyệt.</div>
+    <div class="links">
+      <a href="/vi/">Trang chủ</a>
+      <a href="/vi/compress-jpeg">Nén JPEG</a>
+      <a href="/vi/compress-webp">Nén WebP</a>
+      <a href="/vi/compress-avif">Nén AVIF</a>
+      <a href="/vi/compress-gif">Nén GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Trình nén PNG Pixshrink",
+      "url": "https://pixshrink.gamechill.org/vi/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Yêu cầu trình duyệt hiện đại hỗ trợ WebAssembly",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "vi",
+      "description": "Trình nén PNG miễn phí trong trình duyệt sử dụng oxipng và libspng. Không mất dữ liệu, không tải lên, bảo toàn độ trong suốt.",
+      "featureList": ["Không mất dữ liệu", "Không tải lên", "Bảo toàn alpha", "Xử lý hàng loạt"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "vi",
+      "mainEntity": [
+        {"@type": "Question", "name": "Nén không mất dữ liệu có thay đổi ảnh?", "acceptedAnswer": {"@type": "Answer", "text": "Không. Pixel giống nhau từng bit."}},
+        {"@type": "Question", "name": "PNG chỉ giảm 5%?", "acceptedAnswer": {"@type": "Answer", "text": "Entropy ảnh chụp cao. Mã hóa lại sang JPEG, WebP hoặc AVIF."}},
+        {"@type": "Question", "name": "Alpha được bảo toàn?", "acceptedAnswer": {"@type": "Answer", "text": "Có. Các kênh alpha 8 và 16-bit không thay đổi."}},
+        {"@type": "Question", "name": "Nén PNG hàng loạt?", "acceptedAnswer": {"@type": "Answer", "text": "Có. Mỗi file được xử lý độc lập."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

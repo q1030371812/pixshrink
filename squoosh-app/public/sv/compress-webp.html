@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Komprimera WebP online — 95% mindre, ingen uppladdning | Pixshrink</title>
+<meta name="description" content="Komprimera WebP-filer online utan uppladdning. libwebp-encodern producerar WebP-filer 25–35% mindre än JPEG vid samma kvalitet. Gratis och privat." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-webp" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Komprimera WebP online — 95% mindre, ingen uppladdning" />
+<meta property="og:description" content="Krymp WebP-filer i din webbläsare med libwebp. 25–35% mindre än JPEG vid samma kvalitet." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-webp" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="sv" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Komprimera WebP online — 95% mindre, ingen uppladdning" />
+<meta name="twitter:description" content="Krymp WebP med libwebp. 25–35% mindre än JPEG vid samma kvalitet." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="sv" href="https://pixshrink.gamechill.org/sv/compress-webp" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/sv/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Komprimera WebP online — 95% mindre, ingen uppladdning</h1>
+    <p class="subtitle">Omkoda eller komprimera om WebP-filer med libwebp. Vid samma synliga kvalitet är en WebP vanligtvis 25–35% mindre än motsvarande JPEG.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/sv/">Komprimera en WebP nu</a>
+      <a class="btn btn-ghost" href="#how">Så fungerar det</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>25–35%</strong><span>mindre än JPEG vid samma kvalitet</span></div>
+      <div class="stat"><strong>libwebp</strong><span>referensencoder</span></div>
+      <div class="stat"><strong>Förlustfri &amp; förstörande</strong><span>lägen stöds</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Varför WebP, och varför komprimera det igen?</h2>
+      <p>WebP är Googles moderna bildformat, stöttat av alla stora webbläsare sedan 2020 och nu nästan universellt.</p>
+
+      <h2>WebP med förlust vs förlustfri</h2>
+      <p>Förstörande WebP använder VP8-liknande intra-frame-prediktion. <strong>quality</strong>-reglaget går 0–100; värden runt 75–80 är visuellt omöjliga att skilja från källan för de flesta foton.</p>
+
+      <h2>Fungerar det i varje webbläsare?</h2>
+      <p>Ja — Chrome, Edge, Firefox, Safari 14+ och alla mobila webbläsare.</p>
+
+      <h2>Överväg AVIF för ännu mindre filer</h2>
+      <p>WebP är den säkra moderna standarden. Om du kontrollerar destination och målgrupp, levererar <a href="/compress-avif">AVIF</a> ytterligare 20–30% vid samma upplevda kvalitet.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Vanliga frågor</h2>
+
+      <details>
+        <summary>Ska jag använda förstörande eller förlustfritt?</summary>
+        <p>Förstörande för foton, förlustfritt för skärmbilder och linjekonst.</p>
+      </details>
+      <details>
+        <summary>WebP jämfört med JPEG?</summary>
+        <p>WebP förstörande är vanligtvis 25–35% mindre vid samma SSIM2.</p>
+      </details>
+      <details>
+        <summary>Fungerar transparens?</summary>
+        <p>Ja. Båda lägen stöder 8-bitars alfakanal.</p>
+      </details>
+      <details>
+        <summary>I webbläsaren?</summary>
+        <p>Ja — libwebp kompilerad till WebAssembly.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — gratis, privat bildkomprimering i webbläsaren.</div>
+    <div class="links">
+      <a href="/sv/">Hem</a>
+      <a href="/sv/compress-jpeg">Komprimera JPEG</a>
+      <a href="/sv/compress-png">Komprimera PNG</a>
+      <a href="/sv/compress-avif">Komprimera AVIF</a>
+      <a href="/sv/compress-gif">Komprimera GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink WebP-kompressor",
+      "url": "https://pixshrink.gamechill.org/sv/compress-webp",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Kräver modern webbläsare med WebAssembly-stöd",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "sv",
+      "description": "Gratis WebP-kompressor i webbläsaren med libwebp-referensencodern. Stöder förstörande, förlustfri och animerade lägen. Ingen uppladdning.",
+      "featureList": ["Förstörande och förlustfritt", "Animerad WebP", "Ingen uppladdning", "Alfa bevarad"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "sv",
+      "mainEntity": [
+        {"@type": "Question", "name": "Förstörande eller förlustfritt?", "acceptedAnswer": {"@type": "Answer", "text": "Förstörande för foton, förlustfritt för skärmbilder."}},
+        {"@type": "Question", "name": "WebP vs JPEG?", "acceptedAnswer": {"@type": "Answer", "text": "WebP är 25–35% mindre."}},
+        {"@type": "Question", "name": "Transparens?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, alfa 8-bit."}},
+        {"@type": "Question", "name": "I webbläsaren?", "acceptedAnswer": {"@type": "Answer", "text": "Ja — WebAssembly."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

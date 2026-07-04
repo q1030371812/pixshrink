@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>在线压缩 AVIF — 下一代编解码器 | Pixshrink</title>
+<meta name="description" content="在线压缩 AVIF 文件，无需上传。基于浏览器的 libavif + rav1e 编码器可在相同感知质量下产生比 WebP 小 20–30% 的下一代 AVIF 文件。免费且私密。" />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="在线压缩 AVIF — 下一代编解码器" />
+<meta property="og:description" content="在浏览器中缩小 AVIF 文件。在相同质量下比 WebP 小 20–30%。无需上传、无需注册。" />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="zh" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="在线压缩 AVIF — 下一代编解码器" />
+<meta name="twitter:description" content="在浏览器中缩小 AVIF 文件。相同质量下比 WebP 小 20–30%。无需上传、无需注册。" />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="zh" href="https://pixshrink.gamechill.org/zh/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/zh/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>在线压缩 AVIF — 下一代编解码器</h1>
+    <p class="subtitle">使用围绕 AV1 编解码器的 libavif 包装重新编码或重新压缩 AVIF 文件。在匹配的感知质量下，AVIF 通常比 WebP 小 20–30%，比 JPEG 小 50% 以上。</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/zh/">立即压缩 AVIF</a>
+      <a class="btn btn-ghost" href="#how">工作原理</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>比 WebP 更小</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>参考编码器</span></div>
+      <div class="stat"><strong>10/12 位</strong><span>色深，宽色域</span></div>
+    </div>
+
+    <article id="how">
+      <h2>什么是 AVIF？为何要使用它？</h2>
+      <p>AVIF（AV1 图像文件格式）是围绕 AV1 视频编解码器的静止图像容器格式。它从一开始就被设计用于在 Web 上取代 JPEG 和 WebP：更好的帧内预测、更大的块变换、胶片颗粒合成以及原生支持 10 位和 12 位颜色。压缩增益是真实可见的——Netflix、YouTube 以及大多数大型内容网站现在都为支持解码的浏览器用户提供 AVIF。</p>
+      <p>Pixshrink 使用 libavif，它包装了 AV1 编码器（默认 rav1e）。您将获得与大型网站相同的编解码器，并拥有简洁的浏览器内界面。</p>
+
+      <h2>AVIF 在实践中小多少？</h2>
+      <p>在典型的商品照片批处理中，从 JPEG 质量 80 切换到 AVIF 质量 50（在 SSIM2 上感知等效）可将文件大小减少约 50%。从默认的 WebP 切换到匹配质量的 AVIF 通常再减少 20–30%。对于落地页上的主图，这是 280&nbsp;KB 与 95&nbsp;KB 加载之间的差异——直接反映在 Core Web Vitals 和 Lighthouse 评分中。</p>
+      <p><strong>speed</strong> 滑块控制编码器预设。Speed 0 最慢且最小；Speed 6 较快但稍大。Speed 4 是单次工作的良好默认值；Speed 8 适合批处理。</p>
+
+      <h2>浏览器和工具支持</h2>
+      <p>AVIF 在 Chrome 85+、Firefox 93+、Edge 121+ 和 Safari 16+（2022 年发布）中得到支持。全球网络人口的覆盖率现已远超 95%。如果您需要支持旧版浏览器，正确的模式是提供带 <a href="/compress-webp">WebP</a> 或 <a href="/compress-jpeg">JPEG</a> 后备的 <code>&lt;picture&gt;</code> 元素——Pixshrink 上的同一页面可以从一次上传生成全部三种格式。</p>
+
+      <h2>您可能想要的其他格式</h2>
+      <p>对于完全透明且无颜色偏移的情况，<a href="/compress-png">PNG</a> 无损仍然是安全的选择。对于动画，AVIF 支持它们，但工具链不如 <a href="/compress-gif">GIF</a> 和动画 WebP 成熟——除非您真的需要额外的节省，否则请从动画 WebP 开始。</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>常见问题</h2>
+
+      <details>
+        <summary>Pixshrink 使用什么 AV1 编码器？</summary>
+        <p>使用 libavif，rav1e 作为默认的 AV1 编码器。这是大多数生产服务器使用的相同编码路径，并被编译为 WebAssembly 以便在浏览器中运行。</p>
+      </details>
+      <details>
+        <summary>AVIF 是否比 WebP 更小？</summary>
+        <p>是的。在匹配的感知质量下，AVIF 通常比 WebP 小 20–30%，比 JPEG 小约 50%。代价是编码时间和稍显受限的工具生态系统。</p>
+      </details>
+      <details>
+        <summary>哪些浏览器可以显示 AVIF？</summary>
+        <p>Chrome 85+、Edge（所有最新版本）、Firefox 93+、Safari 16+、Opera 以及过去三年发布的每个移动浏览器。对于旧版浏览器，请使用 WebP 或 JPEG 后备。</p>
+      </details>
+      <details>
+        <summary>AVIF 支持透明度和动画吗？</summary>
+        <p>两者都支持。支持 8 位和 10 位 alpha，AVIF 可以承载多帧，尽管动画 WebP 在当今的大多数用例中仍是更安全的选择。</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 免费、私密的浏览器内图像压缩。</div>
+    <div class="links">
+      <a href="/zh/">首页</a>
+      <a href="/zh/compress-jpeg">压缩 JPEG</a>
+      <a href="/zh/compress-png">压缩 PNG</a>
+      <a href="/zh/compress-webp">压缩 WebP</a>
+      <a href="/zh/compress-gif">压缩 GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink AVIF 压缩器",
+      "url": "https://pixshrink.gamechill.org/zh/compress-avif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "需要支持 WebAssembly 和 AV1 解码的现代浏览器",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "zh",
+      "description": "使用 libavif 和 AV1 编解码器的免费浏览器内 AVIF 压缩器。在匹配质量下比 WebP 小 20–30%。无需上传。",
+      "featureList": ["AV1 编解码器", "10/12 位颜色", "无需上传", "支持 alpha"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "zh",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Pixshrink 使用什么 AV1 编码器？",
+          "acceptedAnswer": { "@type": "Answer", "text": "使用 libavif，rav1e 作为默认的 AV1 编码器，编译为 WebAssembly 以便在浏览器中运行。" }
+        },
+        {
+          "@type": "Question",
+          "name": "AVIF 是否比 WebP 更小？",
+          "acceptedAnswer": { "@type": "Answer", "text": "是的。在匹配的感知质量下，AVIF 通常比 WebP 小 20–30%，比 JPEG 小约 50%。" }
+        },
+        {
+          "@type": "Question",
+          "name": "哪些浏览器可以显示 AVIF？",
+          "acceptedAnswer": { "@type": "Answer", "text": "Chrome 85+、Edge、Firefox 93+、Safari 16+ 以及所有现代移动浏览器。" }
+        },
+        {
+          "@type": "Question",
+          "name": "AVIF 支持透明度和动画吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "两者都支持。支持 8 位和 10 位 alpha，AVIF 可以承载多帧。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

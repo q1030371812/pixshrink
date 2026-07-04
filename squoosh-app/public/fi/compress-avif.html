@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pakkaa AVIF verkossa — seuraavan sukupolven koodekki | Pixshrink</title>
+<meta name="description" content="Pakkaa AVIF-tiedostoja verkossa ilman latausta. libavif + rav1e-enkooderi tuottaa AVIF-tiedostoja 20–30% pienempiä kuin WebP samalla koetulla laadulla." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Pakkaa AVIF verkossa" />
+<meta property="og:description" content="Pienennä AVIF 20–30% pienemmäksi kuin WebP." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="fi" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pakkaa AVIF verkossa" />
+<meta name="twitter:description" content="libavif + AV1 selaimessa." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="fi" href="https://pixshrink.gamechill.org/fi/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/fi/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Pakkaa AVIF verkossa — seuraavan sukupolven koodekki</h1>
+    <p class="subtitle">Uudelleenkoodaa tai pakkaa AVIF-tiedostoja libavif-kääreen avulla AV1-koodekin ympärille. AVIF on tyypillisesti 20–30% pienempi kuin WebP.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/fi/">Pakkaa AVIF nyt</a>
+      <a class="btn btn-ghost" href="#how">Miten se toimii</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>pienempi kuin WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>referenssienkooderi</span></div>
+      <div class="stat"><strong>10/12-bittinen</strong><span>värin syvyys, laaja gamut</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Mikä AVIF on ja miksi se on tärkeä?</h2>
+      <p>AVIF (AV1 Image File Format) on still-kuvasäiliö AV1-videokoodekin ympärille.</p>
+
+      <h2>Kuinka paljon pienempi AVIF on käytännössä?</h2>
+      <p>JPEG 80 → AVIF 50 pienentää tyypillisesti tiedostokokoa noin 50%.</p>
+
+      <h2>Selain- ja työkalujen tuki</h2>
+      <p>AVIF tuetaan Chrome 85+, Firefox 93+, Edge 121+ ja Safari 16+ -selaimissa.</p>
+
+      <h2>Muut formaatit joita saatat haluta</h2>
+      <p>Täydelliseen läpinäkyvyyteen ilman väriä siirtymää, <a href="/compress-png">PNG</a> häviötön on edelleen turvallinen valinta.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Usein kysytyt kysymykset</h2>
+
+      <details>
+        <summary>Mitä AV1-enkooderia Pixshrink käyttää?</summary>
+        <p>libavif ja rav1e.</p>
+      </details>
+      <details>
+        <summary>Onko AVIF pienempi kuin WebP?</summary>
+        <p>Kyllä, tyypillisesti 20–30%.</p>
+      </details>
+      <details>
+        <summary>Mitkä selaimet näyttävät AVIF:iä?</summary>
+        <p>Chrome 85+, Edge, Firefox 93+, Safari 16+.</p>
+      </details>
+      <details>
+        <summary>Tukeeko AVIF läpinäkyvyyttä/animaatiota?</summary>
+        <p>Kyllä molempia.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — ilmainen, yksityinen kuvanpakkaus selaimessa.</div>
+    <div class="links">
+      <a href="/fi/">Etusivu</a>
+      <a href="/fi/compress-jpeg">Pakkaa JPEG</a>
+      <a href="/fi/compress-png">Pakkaa PNG</a>
+      <a href="/fi/compress-webp">Pakkaa WebP</a>
+      <a href="/fi/compress-gif">Pakkaa GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink AVIF-pakkaaja",
+      "url": "https://pixshrink.gamechill.org/fi/compress-avif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Vaatii modernin selaimen WebAssembly- ja AV1-dekoodaus-tuella",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "fi",
+      "description": "Ilmainen AVIF-pakkaus selaimessa libavif- ja AV1-koodekilla. 20–30% pienempi kuin WebP vastaavalla laadulla.",
+      "featureList": ["AV1-koodekki", "10/12-bittinen väri", "Ei latausta", "Alfa-tuki"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "fi",
+      "mainEntity": [
+        {"@type": "Question", "name": "AV1-enkooderi?", "acceptedAnswer": {"@type": "Answer", "text": "libavif + rav1e."}},
+        {"@type": "Question", "name": "AVIF vs WebP?", "acceptedAnswer": {"@type": "Answer", "text": "20-30% pienempi."}},
+        {"@type": "Question", "name": "AVIF-selaimet?", "acceptedAnswer": {"@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+."}},
+        {"@type": "Question", "name": "Läpinäkyvyys?", "acceptedAnswer": {"@type": "Answer", "text": "Kyllä."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

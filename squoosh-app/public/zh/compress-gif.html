@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>在线压缩 GIF — 更小的动画 | Pixshrink</title>
+<meta name="description" content="在线压缩 GIF 文件，无需上传。基于浏览器的 gifsicle 编码器通过减少颜色和移除冗余帧可将动画 GIF 缩小 30–60%。免费且私密。" />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-gif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="在线压缩 GIF — 更小的动画" />
+<meta property="og:description" content="在浏览器中将动画 GIF 缩小 30–60%。由 gifsicle 驱动。无需上传、无需注册。" />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-gif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="zh" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="在线压缩 GIF — 更小的动画" />
+<meta name="twitter:description" content="在浏览器中将动画 GIF 缩小 30–60%。由 gifsicle 驱动。无需上传、无需注册。" />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="zh" href="https://pixshrink.gamechill.org/zh/compress-gif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/zh/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>在线压缩 GIF — 更小的动画</h1>
+    <p class="subtitle">使用 gifsicle 在浏览器中缩小动画 GIF。拖入一个 4&nbsp;MB 的屏幕录像，得到一个仍可随处播放的 1.2&nbsp;MB 循环——帧数相同、颜色更少、每帧调色板更小。</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/zh/">立即压缩 GIF</a>
+      <a class="btn btn-ghost" href="#how">工作原理</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>30–60%</strong><span>典型膨胀 GIF 的节省</span></div>
+      <div class="stat"><strong>gifsicle</strong><span>生产级编码器</span></div>
+      <div class="stat"><strong>无损</strong><span>不丢失帧数据</span></div>
+    </div>
+
+    <article id="how">
+      <h2>为什么 GIF 这么大，我们如何缩小它们？</h2>
+      <p>GIF 在 256 色索引调色板上使用 LZW 压缩。这是一个 1989 年的格式，并未为当今人们向其扔去的全彩屏幕录像而设计。大多数膨胀的 GIF 都有三个共同的问题：应用于每一帧的全局调色板、没有帧处理优化、以及没有移除冗余或近乎重复的帧。Gifsicle 解决了这三个问题。</p>
+      <p>Pixshrink 在 WebAssembly 中运行 gifsicle。它分析每一帧，在需要时选择每帧调色板、优化透明度，并合并或丢弃没有任何贡献的帧。可见动画相同；文件则显著变小。</p>
+
+      <h2>应该预期能缩小多少？</h2>
+      <p>对于 480×270、8 秒 15 fps 的屏幕录像 GIF，gifsicle 通常可在无可见变化的情况下将文件减少 30–60%。第一次编码是无损的——完全相同的像素输出，只是存储得更高效。如果您接受有损颜色减少（每帧从 256 色减到 128 或 64 色），可以进一步压缩；编码器会使用类 NeuQuant 算法自动选择合适的调色板。</p>
+      <p>如果即使经过优化的 GIF 对于您的用例仍然太大，下一步的正确做法是转换为 <a href="/compress-webp">动画 WebP</a>——通常在相同视觉质量下比同等 GIF 小 4–8 倍——并检查您的目标位置是否支持它。</p>
+
+      <h2>我可以丢帧或更改循环吗？</h2>
+      <p>可以。选项面板允许您设置目标帧率（跳过每 N 帧）、强制使用全局调色板，以及调整优化器的激进程度。您还可以反转、缩放或裁剪动画，无需通过单独的工具重新编码。</p>
+
+      <h2>何时切换格式</h2>
+      <p>GIF 是现存兼容性最高的动画格式。如果您的受众包括在不解码视频的平台上的用户（罕见但确实存在），GIF 仍然是正确的答案。对于 Web、社交媒体和大多数应用程序，<a href="/compress-webp">动画 WebP</a> 或简短的 <a href="/compress-avif">AVIF</a> 序列在尺寸、色深和电池消耗方面都胜过 GIF。Pixshrink 可从同一源输出两种格式。</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>常见问题</h2>
+
+      <details>
+        <summary>GIF 压缩会丢失任何帧吗？</summary>
+        <p>默认模式是无损的——每一帧都被保留，编码器只是更高效地存储它。您可以选择启用跳帧以丢弃重复帧或更改播放帧率。</p>
+      </details>
+      <details>
+        <summary>为什么我的 GIF 压缩后仍为 3 MB？</summary>
+        <p>长而全运动的 GIF 本身就很大。例如，20 秒 30 fps 600×400 的屏幕录像即使使用紧凑调色板，每帧约 50&nbsp;KB，总计约 360 帧。真正的解决方案是转换为动画 WebP，而不是进一步压缩 GIF。</p>
+      </details>
+      <details>
+        <summary>我可以将 GIF 转换为视频格式吗？</summary>
+        <p>可以——同一页面可以将 GIF 输入重新编码为 <a href="/compress-webp">动画 WebP</a>，或为全面覆盖，您可以在本地使用 ffmpeg 等免费工具。Pixshrink 专注于在浏览器中运行。</p>
+      </details>
+      <details>
+        <summary>动画在每个浏览器中仍能播放吗？</summary>
+        <p>可以。GIF 是全球兼容性最广的动画格式。压缩后的文件使用相同的容器和解码器，因此兼容性不变。</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 免费、私密的浏览器内图像压缩。</div>
+    <div class="links">
+      <a href="/zh/">首页</a>
+      <a href="/zh/compress-jpeg">压缩 JPEG</a>
+      <a href="/zh/compress-png">压缩 PNG</a>
+      <a href="/zh/compress-webp">压缩 WebP</a>
+      <a href="/zh/compress-avif">压缩 AVIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink GIF 压缩器",
+      "url": "https://pixshrink.gamechill.org/zh/compress-gif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "需要支持 WebAssembly 的现代浏览器",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "zh",
+      "description": "使用 gifsicle 的免费浏览器内动画 GIF 压缩器。在无可察觉质量损失的情况下将文件大小减少 30–60%。无需上传。",
+      "featureList": ["动画 GIF", "无损优化", "无需上传", "跳帧选项"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "zh",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "GIF 压缩会丢失任何帧吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "默认模式是无损的——每一帧都被保留。您可以选择启用跳帧以丢弃重复帧或更改播放帧率。" }
+        },
+        {
+          "@type": "Question",
+          "name": "为什么我的 GIF 压缩后仍为 3 MB？",
+          "acceptedAnswer": { "@type": "Answer", "text": "长而全运动的 GIF 本身就很大。转换为动画 WebP 通常能得到 4–8 倍更小的文件。" }
+        },
+        {
+          "@type": "Question",
+          "name": "我可以将 GIF 转换为视频格式吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以——同一页面可以将 GIF 输入重新编码为动画 WebP。" }
+        },
+        {
+          "@type": "Question",
+          "name": "动画在每个浏览器中仍能播放吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以。GIF 是全球兼容性最广的动画格式，压缩后的文件使用相同的容器。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

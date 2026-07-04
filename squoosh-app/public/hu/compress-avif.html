@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AVIF tömörítés online — következő generációs kodek | Pixshrink</title>
+<meta description="Tömörítsd az AVIF fájlokat online feltöltés nélkül. A libavif + rav1e 20–30%-kal kisebb AVIF fájlokat készít, mint a WebP." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="AVIF tömörítés online — következő generációs kodek" />
+<meta property="og:description" content="Csökkentsd az AVIF-et a böngésződben." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="hu" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AVIF tömörítés online" />
+<meta name="twitter:description" content="libavif + AV1 a böngészőben." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="hu" href="https://pixshrink.gamechill.org/hu/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/hu/">Pixshrink</a>
+  </header>
+  <main>
+    <h1>AVIF tömörítés online — következő generációs kodek</h1>
+    <p class="subtitle">Kódolja újra vagy tömörítse újra az AVIF fájlokat a libavif csomagolóval az AV1 kodek körül.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="/hu/">Tömöríts AVIF-et most</a>
+      <a class="btn btn-ghost" href="#how">Hogyan működik</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>kisebb mint a WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>referencia kódoló</span></div>
+      <div class="stat"><strong>10/12-bites</strong><span>színmélység</span></div>
+    </div>
+    <article id="how">
+      <h2>Mi az AVIF és miért fontos?</h2><p>Az AVIF (AV1 Image File Format) az AV1 videokodek körüli állókép-konténer.</p>
+      <h2>Mennyivel kisebb az AVIF a gyakorlatban?</h2><p>Egy tipikus termékfotó-tételben a JPEG 80-ról AVIF 50-re váltás 50%-kal csökkenti a fájlméretet.</p>
+      <h2>Böngésző- és eszköztámogatás</h2><p>Az AVIF támogatott a Chrome 85+, Firefox 93+, Edge 121+ és Safari 16+ rendszerekben.</p>
+      <h2>Egyéb formátumok, amelyek érdekelhetik</h2><p>A teljes átlátszósághoz színeltolódás nélkül az <a href="/compress-png">PNG</a> veszteségmentes továbbra is biztonságos választás.</p>
+    </article>
+    <section class="faq" aria-label="FAQ">
+      <h2>Gyakori kérdések</h2>
+      <details><summary>Melyik AV1 kódolót használja?</summary><p>libavif rav1e-vel.</p></details>
+      <details><summary>AVIF vs WebP?</summary><p>AVIF 20-30%-kal kisebb.</p></details>
+      <details><summary>Böngészők?</summary><p>Chrome 85+, Edge, Firefox 93+, Safari 16+.</p></details>
+      <details><summary>Átlátszóság/animáció?</summary><p>Igen, mindkettő.</p></details>
+    </section>
+  </main>
+  <footer>
+    <div>Pixshrink — ingyenes, privát képtömörítés a böngészőben.</div>
+    <div class="links">
+      <a href="/hu/">Főoldal</a>
+      <a href="/hu/compress-jpeg">JPEG tömörítése</a>
+      <a href="/hu/compress-png">PNG tömörítése</a>
+      <a href="/hu/compress-webp">WebP tömörítése</a>
+      <a href="/hu/compress-gif">GIF tömörítése</a>
+    </div>
+  </footer>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebApplication", "name": "Pixshrink AVIF tömörítő", "url": "https://pixshrink.gamechill.org/hu/compress-avif", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any (browser)", "browserRequirements": "Modern böngésző WebAssembly és AV1 dekódolás támogatással", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "hu", "description": "Ingyenes AVIF tömörítés libavif és AV1 segítségével.", "featureList": ["AV1 kodek", "10/12-bites", "Nincs feltöltés", "Alfa támogatás"]},
+    {"@type": "FAQPage", "inLanguage": "hu", "mainEntity": [
+      {"@type": "Question", "name": "AV1?", "acceptedAnswer": {"@type": "Answer", "text": "libavif + rav1e."}},
+      {"@type": "Question", "name": "AVIF vs WebP?", "acceptedAnswer": {"@type": "Answer", "text": "20-30%-kal kisebb."}},
+      {"@type": "Question", "name": "Böngészők?", "acceptedAnswer": {"@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+."}},
+      {"@type": "Question", "name": "Átlátszóság?", "acceptedAnswer": {"@type": "Answer", "text": "Igen."}}
+    ]}
+  ]
+}
+</script>
+</body>
+</html>

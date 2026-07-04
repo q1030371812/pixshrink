@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>דחיסת WebP אונליין — 95% קטן יותר, בלי העלאה | Pixshrink</title>
+<meta name="description" content="דחוס קבצי WebP אונליין בלי העלאה. מקודד libwebp בדפדפן מייצר WebP ש-25–35% קטן יותר מ-JPEG באותה איכות." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-webp" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="דחיסת WebP אונליין — 95% קטן יותר" />
+<meta property="og:description" content="הקטן WebP בדפדפן שלך עם libwebp." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-webp" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="he" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="דחיסת WebP אונליין — 95% קטן יותר" />
+<meta name="twitter:description" content="דחיסת WebP מבוססת libwebp." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="he" href="https://pixshrink.gamechill.org/he/compress-webp" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Tahoma", "Arial Hebrew", sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/he/">Pixshrink</a>
+  </header>
+  <main>
+    <h1>דחיסת WebP אונליין — 95% קטן יותר, בלי העלאה</h1>
+    <p class="subtitle">קודד מחדש או דחוס שוב קבצי WebP עם libwebp.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="/he/">דחוס WebP עכשיו</a>
+      <a class="btn btn-ghost" href="#how">איך זה עובד</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>25–35%</strong><span>קטן מ-JPEG</span></div>
+      <div class="stat"><strong>libwebp</strong><span>מקודד התייחסות</span></div>
+      <div class="stat"><strong>עם ובלי אובדן</strong><span>מצבים נתמכים</span></div>
+    </div>
+    <article id="how">
+      <h2>למה WebP, ולמה לדחוס שוב?</h2><p>WebP הוא פורמט התמונה המודרני של Google, נתמך בכל הדפדפנים הגדולים משנת 2020.</p>
+      <h2>WebP עם אובדן מול ללא אובדן</h2><p>WebP עם אובדן משתמש בחיזוי תוך-מסגרת דמוי VP8.</p>
+      <h2>האם זה עובד בכל דפדפן?</h2><p>כן — Chrome, Edge, Firefox, Safari 14+ וכל הדפדפנים הניידים.</p>
+      <h2>שקול AVIF לקבצים קטנים עוד יותר</h2><p><a href="/compress-avif">AVIF</a> נותן עוד 20–30% באותה איכות נתפסת.</p>
+    </article>
+    <section class="faq" aria-label="FAQ">
+      <h2>שאלות נפוצות</h2>
+      <details><summary>עם אובדן או בלי?</summary><p>עם אובדן לתמונות.</p></details>
+      <details><summary>WebP מול JPEG?</summary><p>WebP 25-35% קטן יותר.</p></details>
+      <details><summary>שקיפות?</summary><p>כן.</p></details>
+      <details><summary>בדפדפן?</summary><p>כן — WebAssembly.</p></details>
+    </section>
+  </main>
+  <footer>
+    <div>Pixshrink — דחיסת תמונות חינמית ופרטית בדפדפן.</div>
+    <div class="links">
+      <a href="/he/">בית</a>
+      <a href="/he/compress-jpeg">דחוס JPEG</a>
+      <a href="/he/compress-png">דחוס PNG</a>
+      <a href="/he/compress-avif">דחוס AVIF</a>
+      <a href="/he/compress-gif">דחוס GIF</a>
+    </div>
+  </footer>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebApplication", "name": "Pixshrink WebP compressor", "url": "https://pixshrink.gamechill.org/he/compress-webp", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any (browser)", "browserRequirements": "דפדפן מודרני עם תמיכה ב-WebAssembly", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "he", "description": "דחיסת WebP חינמית בדפדפן עם libwebp.", "featureList": ["עם ובלי אובדן", "WebP מונפש", "בלי העלאה", "alpha נשמר"]},
+    {"@type": "FAQPage", "inLanguage": "he", "mainEntity": [
+      {"@type": "Question", "name": "מצב?", "acceptedAnswer": {"@type": "Answer", "text": "עם אובדן לתמונות."}},
+      {"@type": "Question", "name": "WebP מול JPEG?", "acceptedAnswer": {"@type": "Answer", "text": "WebP 25-35% קטן יותר."}},
+      {"@type": "Question", "name": "שקיפות?", "acceptedAnswer": {"@type": "Answer", "text": "כן."}},
+      {"@type": "Question", "name": "בדפדפן?", "acceptedAnswer": {"@type": "Answer", "text": "כן."}}
+    ]}
+  ]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Komprimovat JPEG online — o 95% menší, bez nahrávání | Pixshrink</title>
+<meta name="description" content="Komprimujte soubory JPEG online bez nahrávání. Enkodér mozjpeg v prohlížeči zmenší fotografie až o 95% při zachování vizuální kvality." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Komprimovat JPEG online — o 95% menší" />
+<meta property="og:description" content="Zmenšete JPEG fotografie až o 95% ve svém prohlížeči." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-jpeg" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="cs" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Komprimovat JPEG online" />
+<meta name="twitter:description" content="mozjpeg-poháněná JPEG komprese." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="cs" href="https://pixshrink.gamechill.org/cs/compress-jpeg" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/cs/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Komprimovat JPEG online — o 95% menší, bez nahrávání</h1>
+    <p class="subtitle">Zmenšete JPEG v prohlížeči pomocí enkodéru mozjpeg. 4&nbsp;MB fotografie z fotoaparátu typicky klesne na 200–400&nbsp;KB při kvalitě 75.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/cs/">Komprimovat JPEG nyní</a>
+      <a class="btn btn-ghost" href="#how">Jak to funguje</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>~95%</strong><span>typické zmenšení</span></div>
+      <div class="stat"><strong>mozjpeg</strong><span>produkční enkodér</span></div>
+      <div class="stat"><strong>0 bajtů</strong><span>odesláno na server</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Proč komprimovat JPEG v prohlížeči?</h2>
+      <p>JPEG je výchozí výstupní formát pro každý telefon, bezzrcadlovku a nástroj pro snímání obrazovky.</p>
+
+      <h2>Jaké zmenšení mohu očekávat?</h2>
+      <p>U typického snímku 4032×3024 v kvalitě 95 vytvoří pipeline mozjpeg v kvalitě 75 soubor o 80–90% menší bez viditelného rozdílu.</p>
+
+      <h2>Co s EXIF a metadaty?</h2>
+      <p>Ve výchozím nastavení Pixshrink odstraňuje EXIF (fotoaparát, GPS, časová razítka) z JPEG.</p>
+
+      <h2>Vyzkoušejte i další formáty</h2>
+      <p>Překódování do <a href="/compress-webp">WebP</a> nebo <a href="/compress-avif">AVIF</a> obvykle přináší dalších 20–40% úspory.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Často kladené otázky</h2>
+
+      <details>
+        <summary>Je tento JPEG kompresor opravdu zdarma?</summary>
+        <p>Ano — žádná registrace, žádná zkušební doba, žádný denní limit.</p>
+      </details>
+      <details>
+        <summary>Nahrávají se moje fotky někam?</summary>
+        <p>Ne. Soubor se načte do paměti a zpracuje se lokálně.</p>
+      </details>
+      <details>
+        <summary>Snižuje komprese kvalitu obrazu?</summary>
+        <p>JPEG je ztrátový, ale při 75–80 je ztráta neviditelná.</p>
+      </details>
+      <details>
+        <summary>Mohu komprimovat více JPEG najednou?</summary>
+        <p>Ano. Přetáhněte složku a stáhněte ZIP.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — bezplatná, soukromá komprese obrázků v prohlížeči.</div>
+    <div class="links">
+      <a href="/cs/">Domů</a>
+      <a href="/cs/compress-png">Komprimovat PNG</a>
+      <a href="/cs/compress-webp">Komprimovat WebP</a>
+      <a href="/cs/compress-avif">Komprimovat AVIF</a>
+      <a href="/cs/compress-gif">Komprimovat GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink JPEG kompresor",
+      "url": "https://pixshrink.gamechill.org/cs/compress-jpeg",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Vyžaduje moderní prohlížeč s podporou WebAssembly",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "cs",
+      "description": "Bezplatný JPEG kompresor v prohlížeči s enkodérem mozjpeg. Soubory nikdy neopustí zařízení.",
+      "featureList": ["Bez nahrávání", "Bez registrace", "Dávkové zpracování", "Offline po prvním načtení"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "cs",
+      "mainEntity": [
+        {"@type": "Question", "name": "Zdarma?", "acceptedAnswer": {"@type": "Answer", "text": "Ano."}},
+        {"@type": "Question", "name": "Nahrávání?", "acceptedAnswer": {"@type": "Answer", "text": "Ne, lokálně."}},
+        {"@type": "Question", "name": "Kvalita?", "acceptedAnswer": {"@type": "Answer", "text": "75-80 neviditelná."}},
+        {"@type": "Question", "name": "Dávka?", "acceptedAnswer": {"@type": "Answer", "text": "Ano."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

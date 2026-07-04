@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kompresuj PNG online — bezstratnie, bez przesyłania | Pixshrink</title>
+<meta name="description" content="Kompresuj pliki PNG online bez przesyłania. oxipng i libspng w przeglądarce zmniejszają PNG-i bezstratnie, zachowując przezroczystość i kolor. Za darmo i prywatnie." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Kompresuj PNG online — bezstratnie, bez przesyłania" />
+<meta property="og:description" content="Zmniejsz PNG-i bezstratnie w przeglądarce. Przezroczystość i kolor zachowane. Bez przesyłania, bez rejestracji." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="pl" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kompresuj PNG online — bezstratnie, bez przesyłania" />
+<meta name="twitter:description" content="Zmniejsz PNG-i bezstratnie w przeglądarce. Przezroczystość i kolor zachowane. Bez przesyłania, bez rejestracji." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="pl" href="https://pixshrink.gamechill.org/pl/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/pl/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Kompresuj PNG online — bezstratnie, bez przesyłania</h1>
+    <p class="subtitle">Zmniejsz PNG-i bezstratnie w przeglądarce. oxipng i libspng znajdują mniejsze strumienie deflate i usuwają nieużywane chunk-i — piksele, przezroczystość i głębia koloru pozostają identyczne bajt-do-bajtu z oryginałem.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/pl/">Skompresuj PNG teraz</a>
+      <a class="btn btn-ghost" href="#how">Jak to działa</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>typowa oszczędność bezstratna</span></div>
+      <div class="stat"><strong>oxipng</strong><span>koder klasy produkcyjnej</span></div>
+      <div class="stat"><strong>Piksel idealny</strong><span>wyjście identyczne bit-do-bitu</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Co oznacza "bezstratna" kompresja PNG?</h2>
+      <p>PNG już jest formatem bezstratnym — każdy oryginalny piksel przeżywa dekodowanie nienaruszony. To, co robią kodery oxipng i libspng, to znajdują mniejszy sposób na wyrażenie tych samych danych pikselowych. Testują różne strategie <em>filtrów</em> na wiersz, wiele poziomów kompresji zlib i redukcje palety dla obrazów z 256 lub mniej unikalnych kolorów. Wyjście dekoduje się do dokładnie tej samej siatki pikseli, ale plik jest mniejszy.</p>
+      <p>To bezpieczna opcja, gdy nie możesz pozwolić sobie na żadną zmianę jakości: zrzuty UI, logo, ikony, przezroczyste nałożenia, diagramy techniczne i assety, które później będą ponownie kodowane przez inne narzędzia.</p>
+
+      <h2>Ile może zmniejszyć się PNG?</h2>
+      <p>Zależy całkowicie od obrazu. Logo z płaskim kolorem i przezroczystością może spaść o 50–80%. Fotografia zapisana jako PNG zwykle zmniejsza się tylko o 5–15%, ponieważ szum w fotografiach pokonuje sztuczki oparte na palecie — dla nich ponowne kodowanie do <a href="/compress-jpeg">JPEG</a> lub <a href="/compress-webp">WebP</a> zrobi znacznie więcej. Pixshrink pokazuje Ci deltę bajtów przed pobraniem, więc możesz zdecydować, czy oszczędność uzasadnia ponowną kompresję.</p>
+      <p>Dla assetów UI z ostrymi krawędziami i małą paletą opcja <strong>preset = max</strong> przepycha koder przez więcej prób, zwykle dodając 10–20% dodatkowej oszczędności ponad domyślny przebieg.</p>
+
+      <h2>Co z przezroczystością?</h2>
+      <p>Kanały alfa są zachowywane dokładnie. 8-bitowa alfa PNG przeżywa rundę, a Pixshrink nie "wstępnie mnoży" niczego, co zmieniłoby sposób komponowania obrazu na jego tle. Jeśli Twój obraz ma 16-bitową głębię koloru na kanał, to też jest zachowywana — nie zostaniesz po cichu zdegradowany do 8 bitów.</p>
+
+      <h2>Kiedy użyć innego formatu</h2>
+      <p>Jeśli kontrolujesz miejsce docelowe pliku, rozważ konwersję PNG do <a href="/compress-webp">WebP</a> dla dodatkowych 25–35% oszczędności przy tej samej jakości, lub do <a href="/compress-avif">AVIF</a> dla 40–50%. Dla animowanych PNG-ów, <a href="/compress-gif">GIF</a> nie jest już jedyną opcją — większość przeglądarek teraz odtwarza animowany WebP, a Pixshrink automatycznie wybierze mniejsze wyjście.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Najczęściej zadawane pytania</h2>
+
+      <details>
+        <summary>Czy kompresja bezstratna zmienia mój obraz w jakikolwiek sposób?</summary>
+        <p>Nie. Dekodowane piksele są identyczne bit-do-bitu. To, co się zmienia, to bajtowa reprezentacja na dysku: wybór filtrów, parametry deflate i kodowanie chunk-ów.</p>
+      </details>
+      <details>
+        <summary>Dlaczego mój PNG jest tylko 5% mniejszy po kompresji?</summary>
+        <p>Fotografie i zaszumione obrazy mają wysoką entropię, której deflate nie może wykorzystać. oxipng jest już bliski teoretycznej granicy dla tych obrazów. Aby uzyskać realną redukcję rozmiaru, ponownie zakoduj do JPEG (dla zdjęć) lub WebP/AVIF (dla wszystkiego innego).</p>
+      </details>
+      <details>
+        <summary>Czy przezroczystość alfa zostanie zachowana?</summary>
+        <p>Tak. 8-bitowe i 16-bitowe kanały alfa przechodzą bez zmian. Profile kolorów i metadane gamma również są zachowywane, chyba że je wyraźnie usuniesz.</p>
+      </details>
+      <details>
+        <summary>Czy bezpiecznie jest masowo kompresować PNG-i?</summary>
+        <p>Tak. Upuść folder, strona przetworzy każdy plik niezależnie, a otrzymasz ZIP z mniejszymi wersjami. Nic nie jest przesyłane; możesz to uruchomić w samolocie bez internetu.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — darmowa, prywatna kompresja obrazów w przeglądarce.</div>
+    <div class="links">
+      <a href="/pl/">Strona główna</a>
+      <a href="/pl/compress-jpeg">Kompresuj JPEG</a>
+      <a href="/pl/compress-webp">Kompresuj WebP</a>
+      <a href="/pl/compress-avif">Kompresuj AVIF</a>
+      <a href="/pl/compress-gif">Kompresuj GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Kompresor PNG Pixshrink",
+      "url": "https://pixshrink.gamechill.org/pl/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Wymaga nowoczesnej przeglądarki z obsługą WebAssembly",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "pl",
+      "description": "Darmowy kompresor PNG w przeglądarce używający oxipng i libspng. Bezstratny, bez przesyłania, zachowuje przezroczystość.",
+      "featureList": ["Bezstratny", "Bez przesyłania", "Zachowuje alfę", "Przetwarzanie wsadowe"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "pl",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy kompresja bezstratna zmienia mój obraz w jakikolwiek sposób?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nie. Dekodowane piksele są identyczne bit-do-bitu. To, co się zmienia, to bajtowa reprezentacja na dysku." }
+        },
+        {
+          "@type": "Question",
+          "name": "Dlaczego mój PNG jest tylko 5% mniejszy po kompresji?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fotografie i zaszumione obrazy mają wysoką entropię. Dla realnej redukcji ponownie zakoduj do JPEG, WebP lub AVIF." }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy przezroczystość alfa zostanie zachowana?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tak. 8-bitowe i 16-bitowe kanały alfa przechodzą bez zmian." }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy bezpiecznie jest masowo kompresować PNG-i?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tak. Upuść folder, strona przetworzy każdy plik niezależnie. Nic nie jest przesyłane." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+// ja.ts — Japanese
+const ja = {
+  appTitle: 'Pixshrink',
+  tagline: 'ローカル画像圧縮ツール',
+  privacyBadge: '画像はすべてローカルで処理されます。アップロードされません。',
+  heroTitle: '画像をローカルで圧縮。ファイルはデバイスから出ません。',
+  heroSub: '画像をドロップし、品質スライダーを動かして、ZIP でダウンロード。約95%小さく、画質の劣化はわずか。ブラウザで動作し、オフラインでも使えます。',
+  heroBullet1: 'アップロード不要、登録不要、追跡なし',
+  heroBullet2: '約95%小さく、画質の劣化はわずか',
+  heroBullet3: 'PNG · JPEG · WebP · AVIF · GIF · BMP',
+  ctaStart: 'はじめる',
+  dropzoneIdle: '画像をここにドロップ、またはクリックして選択',
+  dropzoneActive: '離すと追加されます',
+  dropzoneHint: 'JPG、PNG、WebP、AVIF、GIF、BMP — 各50MBまで',
+  queueTitle: 'キュー',
+  queueEmpty: 'まだ画像がありません。',
+  queueCount: (n: number) => n + '枚の画像が準備完了',
+  queueTotalSaved: '節約合計',
+  qualityLabel: '品質',
+  formatLabel: '出力形式',
+  compressButton: '圧縮',
+  compressAll: 'すべて圧縮',
+  downloadAll: 'すべてダウンロード',
+  downloadZip: 'ZIP をダウンロード',
+  removeFile: '削除',
+  featuresTitle: 'Pixshrink が選ばれる理由',
+  feat1Title: '100% ローカル',
+  feat1Body: 'WebAssembly でブラウザ内処理。ファイルはサーバーに送信されません。',
+  feat2Title: '6つの形式',
+  feat2Body: 'PNG、JPEG、WebP、AVIF、GIF、BMP。1つのバッチで混在可能。',
+  feat3Title: 'バッチ圧縮',
+  feat3Body: '50枚の写真を一括圧縮、ZIPで取得。品質スライダーが全画像に適用。',
+  feat4Title: '95% 軽量化',
+  feat4Body: '通常 80〜95% の圧縮率で、品質の劣化は目立ちません。',
+  feat5Title: 'オフライン対応',
+  feat5Body: 'PWA としてインストール可能。初回ロード後はネット不要。',
+  feat6Title: '完全無料',
+  feat6Body: '登録なし、支払いなし、制限なし。オープンソース codec 使用。',
+  settingsTitle: '設定',
+  themeLabel: 'テーマ',
+  themeLight: 'ライト',
+  themeDark: 'ダーク',
+  languageLabel: '言語',
+  footerTagline: 'ウェブのためのローカル画像圧縮。オープンソース。',
+  formatBytes: (b: number) =>
+    b < 1024
+      ? b + ' B'
+      : b < 1048576
+        ? (b / 1024).toFixed(1) + ' KB'
+        : (b / 1048576).toFixed(2) + ' MB',
+  formatPercent: (n: number) => Math.round(n) + '%',
+  savedPercent: (n: number) => Math.round(n) + '% 節約',
+  localizingPromise: 'インターフェースを翻訳中...',
+  unsupportedFormat: (f: string) => '未対応の形式: ' + f,
+  fileTooLarge: (mb: number, max: number) => mb.toFixed(1) + ' MB は上限の ' + max + ' MB を超えています',
+};
+
+export default ja;

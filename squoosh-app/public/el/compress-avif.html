@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Συμπίεση AVIF online — codec επόμενης γενιάς | Pixshrink</title>
+<meta name="description" content="Συμπιέστε αρχεία AVIF online χωρίς μεταφόρτωση. Ο κωδικοποιητής libavif + rav1e παράγει AVIF 20–30% μικρότερα από WebP." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Συμπίεση AVIF online — codec επόμενης γενιάς" />
+<meta property="og:description" content="Μειώστε AVIF στον browser σας." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="el" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Συμπίεση AVIF online" />
+<meta name="twitter:description" content="libavif + AV1 στον browser." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="el" href="https://pixshrink.gamechill.org/el/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/el/">Pixshrink</a>
+  </header>
+  <main>
+    <h1>Συμπίεση AVIF online — codec επόμενης γενιάς</h1>
+    <p class="subtitle">Επανακωδικοποιήστε ή συμπιέστε ξανά αρχεία AVIF με το περιτύλιγμα libavif γύρω από τον codec AV1.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="/el/">Συμπίεση AVIF τώρα</a>
+      <a class="btn btn-ghost" href="#how">Πώς λειτουργεί</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>μικρότερο από WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>κωδικοποιητής αναφοράς</span></div>
+      <div class="stat"><strong>10/12-bit</strong><span>βάθος χρώματος, ευρύ gamut</span></div>
+    </div>
+    <article id="how">
+      <h2>Τι είναι το AVIF και γιατί έχει σημασία;</h2><p>Το AVIF (AV1 Image File Format) είναι το container στατικών εικόνων γύρω από τον video codec AV1.</p>
+      <h2>Πόσο μικρότερο είναι το AVIF στην πράξη;</h2><p>Σε μια τυπική παρτίδα φωτογραφιών προϊόντων, η μετάβαση από JPEG 80 σε AVIF 50 μειώνει το μέγεθος κατά περίπου 50%.</p>
+      <h2>Υποστήριξη browser και εργαλείων</h2><p>Το AVIF υποστηρίζεται σε Chrome 85+, Firefox 93+, Edge 121+ και Safari 16+.</p>
+      <h2>Άλλες μορφές που μπορεί να θέλετε</h2><p>Για πλήρη διαφάνεια χωρίς χρωματική μετατόπιση, το <a href="/compress-png">PNG</a> χωρίς απώλειες παραμένει ασφαλής επιλογή.</p>
+    </article>
+    <section class="faq" aria-label="FAQ">
+      <h2>Συχνές ερωτήσεις</h2>
+      <details><summary>Ποιο AV1 encoder χρησιμοποιεί;</summary><p>libavif με rav1e.</p></details>
+      <details><summary>AVIF vs WebP;</summary><p>AVIF 20-30% μικρότερο.</p></details>
+      <details><summary>Browsers;</summary><p>Chrome 85+, Edge, Firefox 93+, Safari 16+.</p></details>
+      <details><summary>Διαφάνεια/Animation;</summary><p>Ναι και τα δύο.</p></details>
+    </section>
+  </main>
+  <footer>
+    <div>Pixshrink — δωρεάν, ιδιωτική συμπίεση εικόνας στον browser.</div>
+    <div class="links">
+      <a href="/el/">Αρχική</a>
+      <a href="/el/compress-jpeg">Συμπίεση JPEG</a>
+      <a href="/el/compress-png">Συμπίεση PNG</a>
+      <a href="/el/compress-webp">Συμπίεση WebP</a>
+      <a href="/el/compress-gif">Συμπίεση GIF</a>
+    </div>
+  </footer>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebApplication", "name": "Pixshrink AVIF compressor", "url": "https://pixshrink.gamechill.org/el/compress-avif", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any (browser)", "browserRequirements": "Απαιτείται σύγχρονος browser με WebAssembly και AV1 decode", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "el", "description": "Δωρεάν AVIF compressor με libavif και AV1.", "featureList": ["AV1 codec", "10/12-bit", "Χωρίς μεταφόρτωση", "Delta"]},
+    {"@type": "FAQPage", "inLanguage": "el", "mainEntity": [
+      {"@type": "Question", "name": "AV1;", "acceptedAnswer": {"@type": "Answer", "text": "libavif + rav1e."}},
+      {"@type": "Question", "name": "AVIF vs WebP;", "acceptedAnswer": {"@type": "Answer", "text": "20-30% μικρότερο."}},
+      {"@type": "Question", "name": "Browsers;", "acceptedAnswer": {"@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+."}},
+      {"@type": "Question", "name": "Διαφάνεια;", "acceptedAnswer": {"@type": "Answer", "text": "Ναι."}}
+    ]}
+  ]
+}
+</script>
+</body>
+</html>

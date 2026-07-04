@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>在线压缩 PNG — 无损、无需上传 | Pixshrink</title>
+<meta name="description" content="在线压缩 PNG 文件，无需上传。基于浏览器的 oxipng 和 libspng 可无损缩小 PNG，保留透明度和颜色。免费且私密。" />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="在线压缩 PNG — 无损、无需上传" />
+<meta property="og:description" content="在浏览器中无损缩小 PNG。保留透明度和颜色。无需上传、无需注册。" />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="zh" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="在线压缩 PNG — 无损、无需上传" />
+<meta name="twitter:description" content="在浏览器中无损缩小 PNG。透明度和颜色保留。无需上传、无需注册。" />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="zh" href="https://pixshrink.gamechill.org/zh/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/zh/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>在线压缩 PNG — 无损、无需上传</h1>
+    <p class="subtitle">在浏览器中无损缩小 PNG。oxipng 和 libspng 会找到更小的 deflate 流并剥离未使用的 chunk——像素、透明度和颜色深度与原文件逐字节一致。</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/zh/">立即压缩 PNG</a>
+      <a class="btn btn-ghost" href="#how">工作原理</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>典型无损节省</span></div>
+      <div class="stat"><strong>oxipng</strong><span>生产级编码器</span></div>
+      <div class="stat"><strong>像素完美</strong><span>输出逐位一致</span></div>
+    </div>
+
+    <article id="how">
+      <h2>什么是 PNG 的"无损"压缩？</h2>
+      <p>PNG 已经是一种无损格式——每个原始像素在解码后都能完整保留。oxipng 和 libspng 编码器所做的是找到用更小方式表达相同像素数据的方法。它们对每行尝试不同的<em>过滤器</em>策略、多个 zlib 压缩级别，并对具有 256 种或以下独特颜色的图像进行调色板缩减。输出的解码结果与原始像素网格完全相同，但文件更小。</p>
+      <p>当您不能承受任何质量变化时，这是安全的选择：UI 截图、Logo、图标、透明叠加、技术图表以及后续会被其他工具重新编码的资源。</p>
+
+      <h2>PNG 能缩小多少？</h2>
+      <p>这完全取决于图像。一个具有透明度的纯色 Logo 可以缩小 50–80%。保存为 PNG 的照片通常仅缩小 5–15%，因为照片中的噪声会破坏基于调色板的技巧——对于这些图像，重新编码为 <a href="/compress-jpeg">JPEG</a> 或 <a href="/compress-webp">WebP</a> 会更有效。Pixshrink 会在您下载之前显示字节差异，因此您可以决定节省的空间是否值得重新压缩。</p>
+      <p>对于具有清晰边缘和小调色板的 UI 资源，<strong>预设 = max</strong> 选项会让编码器进行更多尝试，通常在默认通过的基础上额外增加 10–20% 的节省。</p>
+
+      <h2>透明度会怎样？</h2>
+      <p>Alpha 通道会被精确保留。PNG 的 8 位 alpha 在往返过程中得以保留，Pixshrink 不会做任何会改变图像与背景合成方式的"预乘"处理。如果您的图像具有每通道 16 位的色深，那也会被保留——您不会被静默降级到 8 位。</p>
+
+      <h2>何时改用其他格式？</h2>
+      <p>如果您控制文件的目标位置，请考虑将 PNG 转换为 <a href="/compress-webp">WebP</a>，可在相同质量下额外节省 25–35%；或转换为 <a href="/compress-avif">AVIF</a>，可节省 40–50%。对于动画 PNG，<a href="/compress-gif">GIF</a> 已不再是唯一选择——大多数浏览器现在可以播放动画 WebP，Pixshrink 会自动选择更小的输出。</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>常见问题</h2>
+
+      <details>
+        <summary>无损压缩会改变我的图像吗？</summary>
+        <p>不会。解码后的像素逐位相同。变化的是磁盘上的字节表示方式：过滤器选择、deflate 参数和 chunk 编码。</p>
+      </details>
+      <details>
+        <summary>为什么我的 PNG 压缩后只缩小了 5%？</summary>
+        <p>照片和噪声图像具有高熵，deflate 无法利用这一点。对于这些图像，oxipng 已接近理论极限。要获得真正的尺寸缩减，请重新编码为 JPEG（适合照片）或 WebP/AVIF（适合其他所有图像）。</p>
+      </details>
+      <details>
+        <summary>透明度会被保留吗？</summary>
+        <p>是的。8 位和 16 位的 alpha 通道会原样通过。颜色配置和 gamma 元数据也会被保留，除非您明确剥离它们。</p>
+      </details>
+      <details>
+        <summary>批量压缩 PNG 安全吗？</summary>
+        <p>是的。拖入一个文件夹，页面将独立处理每个文件，您将获得一个包含所有较小文件的 ZIP。无需上传，您可以在没有网络的飞机上运行。</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 免费、私密的浏览器内图像压缩。</div>
+    <div class="links">
+      <a href="/zh/">首页</a>
+      <a href="/zh/compress-jpeg">压缩 JPEG</a>
+      <a href="/zh/compress-webp">压缩 WebP</a>
+      <a href="/zh/compress-avif">压缩 AVIF</a>
+      <a href="/zh/compress-gif">压缩 GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink PNG 压缩器",
+      "url": "https://pixshrink.gamechill.org/zh/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "需要支持 WebAssembly 的现代浏览器",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "zh",
+      "description": "使用 oxipng 和 libspng 的免费浏览器内 PNG 压缩器。无损、无需上传、保留透明度。",
+      "featureList": ["无损", "无需上传", "保留 alpha", "批处理"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "zh",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "无损压缩会改变我的图像吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不会。解码后的像素逐位相同。改变的是磁盘上的字节表示方式。" }
+        },
+        {
+          "@type": "Question",
+          "name": "为什么我的 PNG 压缩后只缩小了 5%？",
+          "acceptedAnswer": { "@type": "Answer", "text": "照片和噪声图像具有高熵，deflate 无法利用。要获得真正的尺寸缩减，请重新编码为 JPEG、WebP 或 AVIF。" }
+        },
+        {
+          "@type": "Question",
+          "name": "透明度会被保留吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "是的。8 位和 16 位的 alpha 通道会原样通过。" }
+        },
+        {
+          "@type": "Question",
+          "name": "批量压缩 PNG 安全吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "是的。拖入一个文件夹，页面将独立处理每个文件，您将获得一个包含较小文件的 ZIP。无需上传。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

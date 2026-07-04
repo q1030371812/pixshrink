@@ -1,0 +1,11 @@
+name = "pixshrink-ai-bot-logger"
+main = "worker.js"
+compatibility_date = "2026-07-04"
+
+# D1 binding for the bot-hit log.
+# Replace database_id with the value returned by:
+#   wrangler d1 create pixshrink-ai-bot-tracker
+[[d1_databases]]
+binding = "DB"
+database_name = "pixshrink-ai-bot-tracker"
+database_id = "5007459b-e074-47a7-8e40-19f547d420cf"

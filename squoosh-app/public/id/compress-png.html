@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kompres PNG Online — Tanpa loss, tanpa upload | Pixshrink</title>
+<meta name="description" content="Kompres file PNG online tanpa upload. oxipng dan libspng berbasis browser memperkecil PNG tanpa loss, mempertahankan transparansi dan warna. Gratis dan privat." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Kompres PNG Online — Tanpa loss, tanpa upload" />
+<meta property="og:description" content="Perkecil PNG tanpa loss di browser Anda. Transparansi dan warna dipertahankan. Tanpa upload, tanpa pendaftaran." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="id" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kompres PNG Online — Tanpa loss, tanpa upload" />
+<meta name="twitter:description" content="Perkecil PNG tanpa loss di browser Anda. Tanpa upload, tanpa pendaftaran." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="id" href="https://pixshrink.gamechill.org/id/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/id/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Kompres PNG Online — Tanpa loss, tanpa upload</h1>
+    <p class="subtitle">Perkecil PNG tanpa loss di browser Anda. oxipng dan libspng menemukan stream deflate yang lebih kecil dan menghapus chunk yang tidak digunakan — piksel, transparansi, dan kedalaman warna tetap identik byte per byte dengan aslinya.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/id/">Kompres PNG sekarang</a>
+      <a class="btn btn-ghost" href="#how">Cara kerjanya</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>hemat lossless tipikal</span></div>
+      <div class="stat"><strong>oxipng</strong><span>encoder tingkat produksi</span></div>
+      <div class="stat"><strong>Piksel sempurna</strong><span>output identik bit per bit</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Apa arti kompresi PNG "tanpa loss"?</h2>
+      <p>PNG sudah merupakan format tanpa loss — setiap piksel asli bertahan decoding dengan utuh. Yang dilakukan encoder oxipng dan libspng adalah menemukan cara yang lebih kecil untuk menyatakan data piksel yang sama. Mereka mencoba strategi <em>filter</em> yang berbeda per baris, beberapa tingkat kompresi zlib, dan reduksi palet untuk gambar dengan 256 warna unik atau kurang.</p>
+
+      <h2>Berapa banyak PNG bisa menyusut?</h2>
+      <p>Tergantung sepenuhnya pada gambar. Logo warna datar dengan transparansi bisa turun 50–80%. Foto yang disimpan sebagai PNG biasanya hanya menyusut 5–15%, karena noise dalam foto mengalahkan trik berbasis palet — untuk itu, mengenkode ulang ke <a href="/compress-jpeg">JPEG</a> atau <a href="/compress-webp">WebP</a> akan lebih banyak efeknya.</p>
+
+      <h2>Bagaimana dengan transparansi?</h2>
+      <p>Saluran alfa dipertahankan secara tepat. Alfa 8-bit PNG bertahan dari round-trip, dan Pixshrink tidak "premultiply" apa pun yang akan mengubah cara gambar Anda dikomposisikan terhadap latar belakangnya.</p>
+
+      <h2>Kapan menggunakan format lain</h2>
+      <p>Jika Anda mengontrol tujuan file, pertimbangkan mengonversi PNG ke <a href="/compress-webp">WebP</a> untuk hemat tambahan 25–35% pada kualitas yang sama, atau ke <a href="/compress-avif">AVIF</a> untuk 40–50%.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Pertanyaan yang sering diajukan</h2>
+
+      <details>
+        <summary>Apakah kompresi tanpa loss mengubah gambar saya?</summary>
+        <p>Tidak. Piksel yang didekode identik bit per bit.</p>
+      </details>
+      <details>
+        <summary>Mengapa PNG saya hanya 5% lebih kecil?</summary>
+        <p>Foto dan gambar berisik memiliki entropi tinggi. Untuk reduksi nyata, enkode ulang ke JPEG, WebP, atau AVIF.</p>
+      </details>
+      <details>
+        <summary>Apakah transparansi alfa dipertahankan?</summary>
+        <p>Ya. Saluran alfa 8 dan 16-bit dilewatkan tanpa perubahan.</p>
+      </details>
+      <details>
+        <summary>Apakah aman mengompres PNG secara massal?</summary>
+        <p>Ya. Jatuhkan folder, halaman memproses setiap file secara independen. Tidak ada yang diupload.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — kompresi gambar gratis, privat, di browser.</div>
+    <div class="links">
+      <a href="/id/">Beranda</a>
+      <a href="/id/compress-jpeg">Kompres JPEG</a>
+      <a href="/id/compress-webp">Kompres WebP</a>
+      <a href="/id/compress-avif">Kompres AVIF</a>
+      <a href="/id/compress-gif">Kompres GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Kompresor PNG Pixshrink",
+      "url": "https://pixshrink.gamechill.org/id/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Memerlukan browser modern dengan dukungan WebAssembly",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "id",
+      "description": "Kompresor PNG gratis di browser menggunakan oxipng dan libspng. Tanpa loss, tanpa upload, mempertahankan transparansi.",
+      "featureList": ["Tanpa loss", "Tanpa upload", "Mempertahankan alfa", "Pemrosesan batch"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "id",
+      "mainEntity": [
+        {"@type": "Question", "name": "Apakah kompresi tanpa loss mengubah gambar?", "acceptedAnswer": {"@type": "Answer", "text": "Tidak. Piksel identik bit per bit."}},
+        {"@type": "Question", "name": "Mengapa PNG hanya 5% lebih kecil?", "acceptedAnswer": {"@type": "Answer", "text": "Entropi foto tinggi. Enkode ulang ke JPEG, WebP, atau AVIF."}},
+        {"@type": "Question", "name": "Transparansi alfa?", "acceptedAnswer": {"@type": "Answer", "text": "Ya. Saluran alfa dilewatkan tanpa perubahan."}},
+        {"@type": "Question", "name": "Kompres PNG massal?", "acceptedAnswer": {"@type": "Answer", "text": "Ya. Folder dijatuhkan, setiap file diproses independen."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

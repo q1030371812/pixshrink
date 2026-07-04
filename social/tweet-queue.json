@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "lang": "en",
+    "category": "technical",
+    "text": "Built an image compressor that runs 100% in your browser. No uploads, no servers, no tracking. WebAssembly + Web Workers do all the work locally. Try it: https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 2,
+    "lang": "en",
+    "category": "privacy",
+    "text": "Your vacation photos should NOT travel to some random server to be shrunk. Pixshrink compresses in-browser. Your files never leave your device. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 3,
+    "lang": "ja",
+    "category": "technical",
+    "text": "ブラウザ内で完結する画像圧縮ツールを作りました。アップロード不要、サーバー不要。WebAssemblyでローカル処理。https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 4,
+    "lang": "en",
+    "category": "comparison",
+    "text": "tinypng vs squoosh vs pixshrink: only pixshrink is fully client-side, ad-free, open-source, and zero-account. Same quality, way less creepy. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 5,
+    "lang": "en",
+    "category": "meme",
+    "text": "me: this photo is too large\nalso me: refuses to create an account for a 'free' compressor\npixshrink: no account, no upload, no problem\nhttps://pixshrink.gamechill.org"
+  },
+  {
+    "id": 6,
+    "lang": "zh",
+    "category": "privacy",
+    "text": "压缩图片不需要把照片发到别人服务器。Pixshrink 完全在浏览器里处理，文件不离开你的设备。https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 7,
+    "lang": "es",
+    "category": "technical",
+    "text": "Compresor de imágenes 100% en el navegador. Sin servidores, sin subidas, sin tracking. WebAssembly hace el trabajo local. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 8,
+    "lang": "en",
+    "category": "comparison",
+    "text": "Squoosh is great. But Google owns it. If that bothers you, Pixshrink is the indie, no-telemetry alternative. Drop a 50MB JPG, get a 5MB JPG, never leave your browser. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 9,
+    "lang": "fr",
+    "category": "privacy",
+    "text": "Vos photos de vacances ne devraient jamais quitter votre appareil pour être compressées. Pixshrink fonctionne entièrement dans le navigateur. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 10,
+    "lang": "en",
+    "category": "technical",
+    "text": "TIL: a 4K photo can lose 80% of its size just by re-encoding at quality 85 with mozjpeg. Pixshrink does exactly that, in your browser, in under a second. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 11,
+    "lang": "de",
+    "category": "comparison",
+    "text": "Bildkomprimierung ohne Konto, ohne Werbung, ohne Upload. Pixshrink läuft komplett im Browser. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 12,
+    "lang": "en",
+    "category": "meme",
+    "text": "POV: you need to resize 200 photos for a blog post\n* opens yet another 'free' compressor that asks for email signup *\n* closes tab *\n* opens pixshrink.gamechill.org *\n* files done in 3 minutes *"
+  },
+  {
+    "id": 13,
+    "lang": "ko",
+    "category": "technical",
+    "text": "브라우저에서만 동작하는 이미지 압축 도구. 업로드 없이 WebAssembly로 로컬 처리. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 14,
+    "lang": "en",
+    "category": "privacy",
+    "text": "GDPR? CCPA? HIPAA for screenshots? Skip the legal gymnastics. Run compression locally. No data ever leaves your machine. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 15,
+    "lang": "pt",
+    "category": "comparison",
+    "text": "tinypng, squoosh, pixshrink — qual escolher? Se privacidade e sem cadastro importam, pixshrink. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 16,
+    "lang": "en",
+    "category": "technical",
+    "text": "How does Pixshrink hit 80% compression with no quality loss? Mozjpeg at q85 + webp fallback + smart downscaling. All in your browser. All open source. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 17,
+    "lang": "en",
+    "category": "meme",
+    "text": "compressors that upload your photos to the cloud in 2026 is the same energy as restaurants that don't have a bathroom. just why. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 18,
+    "lang": "ru",
+    "category": "privacy",
+    "text": "Сжатие изображений без отправки файлов на сервер. Pixshrink работает полностью в браузере. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 19,
+    "lang": "en",
+    "category": "technical",
+    "text": "Speed test: compressed 47 photos (avg 3.2MB each) in 18 seconds with Pixshrink. Zero network requests after page load. No data sent. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 20,
+    "lang": "ar",
+    "category": "comparison",
+    "text": "أداة ضغط صور تعمل بالكامل في المتصفح. بدون رفع، بدون تتبع. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 21,
+    "lang": "en",
+    "category": "privacy",
+    "text": "If your 'free' image compressor needs an account, ask yourself: how are they paying the bills? Pixshrink is open source and ad-free. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 22,
+    "lang": "it",
+    "category": "technical",
+    "text": "Compressore immagini che funziona interamente nel browser. Nessun upload, nessun server. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 23,
+    "lang": "en",
+    "category": "comparison",
+    "text": "Spent an hour looking for an image compressor that doesn't require signup, doesn't upload files, and doesn't show ads. Found exactly one. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 24,
+    "lang": "en",
+    "category": "meme",
+    "text": "me, an engineer: 'I will build the most secure image compressor'\nme, the same engineer: 'actually let me just NOT send the image anywhere'\nhttps://pixshrink.gamechill.org"
+  },
+  {
+    "id": 25,
+    "lang": "hi",
+    "category": "privacy",
+    "text": "ब्राउज़र में चलने वाला इमेज कंप्रेसर। कोई अपलोड नहीं, कोई ट्रैकिंग नहीं। https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 26,
+    "lang": "en",
+    "category": "technical",
+    "text": "Pixshrink supports JPEG, PNG, WebP, AVIF. Batch processing. Drag-and-drop. 100% client-side. Open source on GitHub. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 27,
+    "lang": "en",
+    "category": "comparison",
+    "text": "Why pay for TinyPNG Pro when pixshrink.gamechill.org does the same thing for free, in your browser, with no limits?"
+  },
+  {
+    "id": 28,
+    "lang": "tr",
+    "category": "privacy",
+    "text": "Tarayıcınızda çalışan görsel sıkıştırma aracı. Sunucuya yükleme yok, izleme yok. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 29,
+    "lang": "en",
+    "category": "technical",
+    "text": "Did you know most 'compressors' actually re-upload your files to a CDN? Pixshrink processes everything with Web Workers. Your CPU does the work, not someone else's server. https://pixshrink.gamechill.org"
+  },
+  {
+    "id": 30,
+    "lang": "en",
+    "category": "meme",
+    "text": "the size of image compressor land: tinypng - cute but uploads. squoosh - owned by Google. compressor.io - wants your email. pixshrink - just works, no strings attached. https://pixshrink.gamechill.org"
+  }
+]

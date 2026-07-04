@@ -1,5 +1,6 @@
 import { Moon, Sun } from 'lucide-react';
 import type { Theme } from '../lib/theme';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface TopBarProps {
   theme: Theme;
@@ -20,15 +21,18 @@ export function TopBar({ theme, onToggleTheme }: TopBarProps) {
           </span>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onToggleTheme}
-        aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-        title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/80 text-text backdrop-blur transition-colors hover:border-accent/40 hover:text-accent-strong focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-      >
-        {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-      </button>
+      <div className="flex items-center gap-2">
+        <LanguageSwitcher />
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/80 text-text backdrop-blur transition-colors hover:border-accent/40 hover:text-accent-strong focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        >
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
+      </div>
     </header>
   );
 }

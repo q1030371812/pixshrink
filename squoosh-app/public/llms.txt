@@ -5,6 +5,14 @@
 Last updated: 2026-07-03
 Canonical: https://pixshrink.gamechill.org/
 
+## Landing pages (programmatic SEO)
+
+- [Compress JPEG — Free, No Upload](https://pixshrink.gamechill.org/compress-jpeg): Browser-based JPEG compressor with quality slider, batch ZIP export, runs entirely client-side.
+- [Compress PNG — Lossless, Local](https://pixshrink.gamechill.org/compress-png): PNG compression that preserves transparency. No file upload.
+- [Compress WebP — Modern Format](https://pixshrink.gamechill.org/compress-webp): WebP compression in the browser with adjustable quality.
+- [Compress AVIF — Next-Gen Codec](https://pixshrink.gamechill.org/compress-avif): AVIF compression for smaller files at the same quality.
+- [Compress GIF — Smaller Animations](https://pixshrink.gamechill.org/compress-gif): Optimize GIF file size while keeping animation.
+
 ## Pages
 
 - [Compress JPEG Online — Free, No Upload](https://pixshrink.gamechill.org/compress-jpeg): Browser-based JPEG compressor with quality slider, batch ZIP export, runs entirely client-side.

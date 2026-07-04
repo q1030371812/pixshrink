@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>דחיסת AVIF אונליין — קודק הדור הבא | Pixshrink</title>
+<meta name="description" content="דחוס קבצי AVIF אונליין בלי העלאה. מקודד libavif + rav1e מייצר AVIF ש-20–30% קטן יותר מ-WebP." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="דחיסת AVIF אונליין — קודק הדור הבא" />
+<meta property="og:description" content="הקטן AVIF בדפדפן שלך." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="he" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="דחיסת AVIF אונליין — קודק הדור הבא" />
+<meta name="twitter:description" content="libavif + AV1 בדפדפן." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="he" href="https://pixshrink.gamechill.org/he/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Tahoma", "Arial Hebrew", sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/he/">Pixshrink</a>
+  </header>
+  <main>
+    <h1>דחיסת AVIF אונליין — קודק הדור הבא</h1>
+    <p class="subtitle">קודד מחדש או דחוס שוב קבצי AVIF עם ה-wrapper של libavif סביב קודק AV1.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="/he/">דחוס AVIF עכשיו</a>
+      <a class="btn btn-ghost" href="#how">איך זה עובד</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>קטן מ-WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>מקודד התייחסות</span></div>
+      <div class="stat"><strong>10/12-bit</strong><span>עומק צבע, gamut רחב</span></div>
+    </div>
+    <article id="how">
+      <h2>מה זה AVIF ולמה זה חשוב?</h2><p>AVIF (AV1 Image File Format) הוא container של תמונות סטטיות סביב קודק הווידאו AV1.</p>
+      <h2>כמה קטן יותר AVIF בפועל?</h2><p>במנה טיפוסית של תמונות מוצרים, מעבר מ-JPEG 80 ל-AVIF 50 מקטין את גודל הקובץ בכ-50%.</p>
+      <h2>תמיכת דפדפנים וכלים</h2><p>AVIF נתמך ב-Chrome 85+, Firefox 93+, Edge 121+ ו-Safari 16+.</p>
+      <h2>פורמטים אחרים שאולי תרצו</h2><p>לשקיפות מלאה ללא הזזת צבעים, <a href="/compress-png">PNG</a> ללא אובדן עדיין בחירה בטוחה.</p>
+    </article>
+    <section class="faq" aria-label="FAQ">
+      <h2>שאלות נפוצות</h2>
+      <details><summary>איזה מקודד AV1?</summary><p>libavif עם rav1e.</p></details>
+      <details><summary>AVIF מול WebP?</summary><p>AVIF 20-30% קטן יותר.</p></details>
+      <details><summary>דפדפנים?</summary><p>Chrome 85+, Edge, Firefox 93+, Safari 16+.</p></details>
+      <details><summary>שקיפות/אנימציה?</summary><p>כן, שניהם.</p></details>
+    </section>
+  </main>
+  <footer>
+    <div>Pixshrink — דחיסת תמונות חינמית ופרטית בדפדפן.</div>
+    <div class="links">
+      <a href="/he/">בית</a>
+      <a href="/he/compress-jpeg">דחוס JPEG</a>
+      <a href="/he/compress-png">דחוס PNG</a>
+      <a href="/he/compress-webp">דחוס WebP</a>
+      <a href="/he/compress-gif">דחוס GIF</a>
+    </div>
+  </footer>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "WebApplication", "name": "Pixshrink AVIF compressor", "url": "https://pixshrink.gamechill.org/he/compress-avif", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any (browser)", "browserRequirements": "דפדפן מודרני עם תמיכה ב-WebAssembly וב-AV1 decode", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "inLanguage": "he", "description": "דחיסת AVIF חינמית בדפדפן עם libavif ו-AV1.", "featureList": ["קודק AV1", "10/12-bit", "בלי העלאה", "תמיכת alpha"]},
+    {"@type": "FAQPage", "inLanguage": "he", "mainEntity": [
+      {"@type": "Question", "name": "AV1?", "acceptedAnswer": {"@type": "Answer", "text": "libavif + rav1e."}},
+      {"@type": "Question", "name": "AVIF מול WebP?", "acceptedAnswer": {"@type": "Answer", "text": "20-30% קטן יותר."}},
+      {"@type": "Question", "name": "דפדפנים?", "acceptedAnswer": {"@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+."}},
+      {"@type": "Question", "name": "שקיפות?", "acceptedAnswer": {"@type": "Answer", "text": "כן."}}
+    ]}
+  ]
+}
+</script>
+</body>
+</html>

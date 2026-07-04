@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Komprimera AVIF online — Nästa generations codec | Pixshrink</title>
+<meta name="description" content="Komprimera AVIF-filer online utan uppladdning. libavif + rav1e-encodern producerar nästa generations AVIF-filer 20–30% mindre än WebP vid samma upplevda kvalitet. Gratis och privat." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Komprimera AVIF online — Nästa generations codec" />
+<meta property="og:description" content="Krymp AVIF-filer i din webbläsare. 20–30% mindre än WebP vid samma kvalitet." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="sv" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Komprimera AVIF online — Nästa generations codec" />
+<meta name="twitter:description" content="Krymp AVIF i din webbläsare. 20–30% mindre än WebP." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="sv" href="https://pixshrink.gamechill.org/sv/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/sv/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Komprimera AVIF online — Nästa generations codec</h1>
+    <p class="subtitle">Omkoda eller komprimera om AVIF-filer med libavif runt AV1-codec. Vid matchad upplevd kvalitet är AVIF vanligtvis 20–30% mindre än WebP och 50%+ mindre än JPEG.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/sv/">Komprimera en AVIF nu</a>
+      <a class="btn btn-ghost" href="#how">Så fungerar det</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>mindre än WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>referensencoder</span></div>
+      <div class="stat"><strong>10/12-bitars</strong><span>färgdjup, bred gamut</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Vad är AVIF och varför spelar det roll?</h2>
+      <p>AVIF (AV1 Image File Format) är den stillbildsbehållare runt AV1-videocodec.</p>
+
+      <h2>Hur mycket mindre är AVIF i praktiken?</h2>
+      <p>I ett typiskt produktfoto-batch, minskar bytet från JPEG kvalitet 80 till AVIF kvalitet 50 filstorleken med ungefär 50%.</p>
+
+      <h2>Webbläsar- och verktygsstöd</h2>
+      <p>AVIF stöds i Chrome 85+, Firefox 93+, Edge 121+ och Safari 16+.</p>
+
+      <h2>Andra format du kanske vill ha</h2>
+      <p>För full transparens utan färgskiftning är <a href="/compress-png">PNG</a> förlustfritt fortfarande det säkra alternativet.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Vanliga frågor</h2>
+
+      <details>
+        <summary>Vilken AV1-encoder använder Pixshrink?</summary>
+        <p>libavif med rav1e som standard-AV1-encoder.</p>
+      </details>
+      <details>
+        <summary>Är AVIF mindre än WebP?</summary>
+        <p>Ja, vanligtvis 20–30% mindre än WebP och 50% mindre än JPEG.</p>
+      </details>
+      <details>
+        <summary>Vilka webbläsare visar AVIF?</summary>
+        <p>Chrome 85+, Edge, Firefox 93+, Safari 16+.</p>
+      </details>
+      <details>
+        <summary>AVIF stöder transparens/animation?</summary>
+        <p>Ja för båda. Alfa 8 och 10-bitars stöds.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — gratis, privat bildkomprimering i webbläsaren.</div>
+    <div class="links">
+      <a href="/sv/">Hem</a>
+      <a href="/sv/compress-jpeg">Komprimera JPEG</a>
+      <a href="/sv/compress-png">Komprimera PNG</a>
+      <a href="/sv/compress-webp">Komprimera WebP</a>
+      <a href="/sv/compress-gif">Komprimera GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink AVIF-kompressor",
+      "url": "https://pixshrink.gamechill.org/sv/compress-avif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Kräver modern webbläsare med WebAssembly- och AV1-avkodningsstöd",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "sv",
+      "description": "Gratis AVIF-kompressor i webbläsaren med libavif och AV1-codec. 20–30% mindre än WebP vid matchad kvalitet. Ingen uppladdning.",
+      "featureList": ["AV1-codec", "10/12-bitars färg", "Ingen uppladdning", "Alfa-stöd"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "sv",
+      "mainEntity": [
+        {"@type": "Question", "name": "Vilken AV1-encoder?", "acceptedAnswer": {"@type": "Answer", "text": "libavif med rav1e, WebAssembly."}},
+        {"@type": "Question", "name": "AVIF vs WebP?", "acceptedAnswer": {"@type": "Answer", "text": "AVIF 20–30% mindre än WebP, 50% mindre än JPEG."}},
+        {"@type": "Question", "name": "Webbläsare AVIF?", "acceptedAnswer": {"@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+."}},
+        {"@type": "Question", "name": "AVIF transparens/animation?", "acceptedAnswer": {"@type": "Answer", "text": "Ja båda. Alfa 8/10-bit."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

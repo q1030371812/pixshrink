@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PNGをオンラインで圧縮 — 無損失、アップロード不要 | Pixshrink</title>
+<meta name="description" content="PNGファイルをオンラインで圧縮、アップロード不要。ブラウザベースのoxipngとlibspngが透明度と色を保持しながらPNGを无损に縮小。無料、プライベート。" />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="PNGをオンラインで圧縮 — 無損失、アップロード不要" />
+<meta property="og:description" content="ブラウザでPNGを无损に縮小。透明度と色が保持される。アップロード不要、登録不要。" />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="ja" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PNGをオンラインで圧縮 — 無損失、アップロード不要" />
+<meta name="twitter:description" content="ブラウザでPNGを无损に縮小。透明度と色が保持される。アップロード不要、登録不要。" />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="ja" href="https://pixshrink.gamechill.org/ja/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/ja/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>PNGをオンラインで圧縮 — 無損失、アップロード不要</h1>
+    <p class="subtitle">ブラウザ内でPNGを无损に縮小。oxipngとlibspngがより小さなdeflateストリームを見つけ、未使用のチャンクを削除します——ピクセル、透明度、色深度は元とバイト単位で同一のままです。</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/ja/">今すぐPNGを圧縮</a>
+      <a class="btn btn-ghost" href="#how">仕組み</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10〜35%</strong><span>典型的な无损削減</span></div>
+      <div class="stat"><strong>oxipng</strong><span>本番グレードエンコーダー</span></div>
+      <div class="stat"><strong>ピクセルパーフェクト</strong><span>ビット単位で同一の出力</span></div>
+    </div>
+
+    <article id="how">
+      <h2>PNGの「无损」圧縮とはどういう意味ですか？</h2>
+      <p>PNGは既に无损フォーマットです——元のピクセルはすべて無傷でデコードされます。oxipngとlibspngエンコーダーが行うのは、同じピクセルデータをより小さな方法で表現する方法を見つけることです。行ごとに異なる<em>フィルター</em>戦略、複数のzlib圧縮レベル、256色以下の固有色を持つ画像のパレット縮小を試みます。出力はまったく同じピクセルグリッドにデコードされますが、ファイルはより小さくなります。</p>
+      <p>これは品質変化が許されない場合の安全な選択肢です：UIスクリーンショット、ロゴ、アイコン、透明なオーバーレイ、技術図、後で他のツールで再エンコードされるアセット。</p>
+
+      <h2>PNGはどの程度縮小できますか？</h2>
+      <p>これは画像に大きく依存します。透明度を持つフラットカラーのロゴは50〜80%削減できます。PNGとして保存された写真は通常5〜15%しか縮小できません。写真のノイズがパレットベースのトリックを無効化するためです——そのような場合は、<a href="/compress-jpeg">JPEG</a>または<a href="/compress-webp">WebP</a>への再エンコードがはるかに効果的です。Pixshrinkはダウンロード前にバイト差分を表示するので、節約に見合う再圧縮かどうかを判断できます。</p>
+      <p>鮮明なエッジと小さなパレットを持つUIアセットの場合、<strong>preset = max</strong>オプションでエンコーダーがより多くの試行を行い、通常デフォルトパスに加えてさらに10〜20%の節約を追加します。</p>
+
+      <h2>透明度はどうですか？</h2>
+      <p>アルファチャンネルは正確に保持されます。PNGの8ビットアルファはラウンドトリップ後も保持され、Pixshrinkは背景に対する合成方法を変更するような「事前乗算」を行いません。画像がチャンネルあたり16ビットの色深度を持つ場合も保持されます——8ビットにサイレントダウングレードされません。</p>
+
+      <h2>代わりにいつ別のフォーマットを使うべきか</h2>
+      <p>ファイルの送信先を制御できる場合は、PNGを<a href="/compress-webp">WebP</a>に変換して同じ品質で25〜35%の追加削減を、または<a href="/compress-avif">AVIF</a>で40〜50%の削減を検討してください。アニメーションPNGの場合、<a href="/compress-gif">GIF</a>はもはや唯一の選択肢ではありません——ほとんどのブラウザは現在、アニメーションWebPを再生でき、Pixshrinkは自動的に小さい出力を選択します。</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>よくある質問</h2>
+
+      <details>
+        <summary>无损圧縮は画像を変更しますか？</summary>
+        <p>いいえ。デコードされたピクセルはビット単位で同一です。変更されるのはディスク上のバイト表現、つまりフィルター選択、deflateパラメータ、チャンクエンコーディングです。</p>
+      </details>
+      <details>
+        <summary>なぜ私のPNGは圧縮後にわずか5%しか小さくなりませんか？</summary>
+        <p>写真やノイズの多い画像は、deflateが活用できない高いエントロピーを持っています。そのような画像に対してoxipngは既に理論的限界に近い値です。本当のサイズ削減には、JPEG（写真用）またはWebP/AVIF（その他すべて）への再エンコードが必要です。</p>
+      </details>
+      <details>
+        <summary>アルファ透明度は保持されますか？</summary>
+        <p>はい。8ビットと16ビットのアルファチャンネルはそのまま渡されます。カラープロファイルとガンマメタデータも、明示的に削除しない限り保持されます。</p>
+      </details>
+      <details>
+        <summary>PNGを一括圧縮しても安全ですか？</summary>
+        <p>はい。フォルダをドロップすると、ページが各ファイルを独立して処理し、小さいバージョンのZIPを取得します。アップロードされるものはなく、インターネットのない飛行機の中でも実行できます。</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 無料、プライベート、ブラウザ内画像圧縮。</div>
+    <div class="links">
+      <a href="/ja/">ホーム</a>
+      <a href="/ja/compress-jpeg">JPEGを圧縮</a>
+      <a href="/ja/compress-webp">WebPを圧縮</a>
+      <a href="/ja/compress-avif">AVIFを圧縮</a>
+      <a href="/ja/compress-gif">GIFを圧縮</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink PNG コンプレッサー",
+      "url": "https://pixshrink.gamechill.org/ja/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "WebAssembly対応のモダンブラウザが必要",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "ja",
+      "description": "oxipngとlibspngを使用する無料ブラウザ内PNGコンプレッサー。无损、アップロード不要、透明度を保持。",
+      "featureList": ["无损", "アップロード不要", "アルファ保持", "バッチ処理"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "ja",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "无损圧縮は画像を変更しますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "いいえ。デコードされたピクセルはビット単位で同一です。変更されるのはディスク上のバイト表現です。" }
+        },
+        {
+          "@type": "Question",
+          "name": "なぜ私のPNGは圧縮後にわずか5%しか小さくなりませんか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "写真やノイズ画像はdeflateが活用できない高いエントロピーを持っています。本当のサイズ削減にはJPEG、WebP、またはAVIFへの再エンコードを行ってください。" }
+        },
+        {
+          "@type": "Question",
+          "name": "アルファ透明度は保持されますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。8ビットと16ビットのアルファチャンネルはそのまま渡されます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "PNGを一括圧縮しても安全ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。フォルダをドロップすると、ページが各ファイルを独立して処理し、小さいバージョンのZIPを取得します。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

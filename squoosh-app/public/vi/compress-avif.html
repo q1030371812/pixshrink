@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nén AVIF trực tuyến — Codec thế hệ tiếp theo | Pixshrink</title>
+<meta name="description" content="Nén file AVIF trực tuyến không cần tải lên. Bộ mã hóa libavif + rav1e trong trình duyệt tạo file AVIF thế hệ tiếp theo nhỏ hơn WebP 20–30% ở cùng chất lượng nhận thức." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Nén AVIF trực tuyến — Codec thế hệ tiếp theo" />
+<meta property="og:description" content="Thu nhỏ file AVIF trong trình duyệt. Nhỏ hơn WebP 20–30% ở cùng chất lượng." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="vi" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Nén AVIF trực tuyến — Codec thế hệ tiếp theo" />
+<meta name="twitter:description" content="Thu nhỏ file AVIF trong trình duyệt. Nhỏ hơn WebP 20–30% ở cùng chất lượng." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="vi" href="https://pixshrink.gamechill.org/vi/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/vi/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Nén AVIF trực tuyến — Codec thế hệ tiếp theo</h1>
+    <p class="subtitle">Mã hóa lại hoặc nén lại file AVIF với trình bao bọc libavif quanh codec AV1. Ở chất lượng nhận thức phù hợp, AVIF thường nhỏ hơn WebP 20–30% và nhỏ hơn JPEG 50%+.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/vi/">Nén AVIF ngay</a>
+      <a class="btn btn-ghost" href="#how">Cách hoạt động</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>20–30%</strong><span>nhỏ hơn WebP</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>bộ mã hóa tham chiếu</span></div>
+      <div class="stat"><strong>10/12-bit</strong><span>độ sâu màu, gam màu rộng</span></div>
+    </div>
+
+    <article id="how">
+      <h2>AVIF là gì và tại sao tôi nên quan tâm?</h2>
+      <p>AVIF (AV1 Image File Format) là vùng chứa hình ảnh tĩnh xung quanh codec video AV1. Nó được thiết kế từ đầu để thay thế JPEG và WebP trên web: dự đoán intra tốt hơn, biến đổi khối lớn hơn, tổng hợp hạt phim và hỗ trợ gốc cho màu 10-bit và 12-bit.</p>
+
+      <h2>Trong thực tế AVIF nhỏ hơn bao nhiêu?</h2>
+      <p>Trong một lô ảnh sản phẩm điển hình, chuyển từ JPEG chất lượng 80 sang AVIF chất lượng 50 (tương đương nhận thức trên SSIM2) cắt kích thước file khoảng 50%.</p>
+
+      <h2>Hỗ trợ trình duyệt và công cụ</h2>
+      <p>AVIF được hỗ trợ trong Chrome 85+, Firefox 93+, Edge 121+ và Safari 16+ (phát hành 2022).</p>
+
+      <h2>Các định dạng khác bạn có thể muốn</h2>
+      <p>Để có độ trong suốt hoàn toàn không lệch màu, <a href="/compress-png">PNG</a> không mất dữ liệu vẫn là lựa chọn an toàn.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Câu hỏi thường gặp</h2>
+
+      <details>
+        <summary>Bộ mã hóa AV1 nào Pixshrink sử dụng?</summary>
+        <p>libavif với rav1e làm bộ mã hóa AV1 mặc định. Được biên dịch thành WebAssembly.</p>
+      </details>
+      <details>
+        <summary>AVIF có nhỏ hơn WebP không?</summary>
+        <p>Có. AVIF thường nhỏ hơn WebP 20–30% và nhỏ hơn JPEG khoảng 50%.</p>
+      </details>
+      <details>
+        <summary>Trình duyệt nào hiển thị AVIF?</summary>
+        <p>Chrome 85+, Edge, Firefox 93+, Safari 16+ và tất cả trình duyệt di động hiện đại.</p>
+      </details>
+      <details>
+        <summary>AVIF có hỗ trợ độ trong suốt và hoạt ảnh không?</summary>
+        <p>Có cho cả hai. Alpha 8 và 10-bit được hỗ trợ.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — nén hình ảnh miễn phí, riêng tư, trong trình duyệt.</div>
+    <div class="links">
+      <a href="/vi/">Trang chủ</a>
+      <a href="/vi/compress-jpeg">Nén JPEG</a>
+      <a href="/vi/compress-png">Nén PNG</a>
+      <a href="/vi/compress-webp">Nén WebP</a>
+      <a href="/vi/compress-gif">Nén GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Trình nén AVIF Pixshrink",
+      "url": "https://pixshrink.gamechill.org/vi/compress-avif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Yêu cầu trình duyệt hiện đại hỗ trợ WebAssembly và giải mã AV1",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "vi",
+      "description": "Trình nén AVIF miễn phí trong trình duyệt sử dụng libavif và codec AV1. Nhỏ hơn WebP 20–30% ở chất lượng phù hợp.",
+      "featureList": ["Codec AV1", "Màu 10/12-bit", "Không tải lên", "Hỗ trợ alpha"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "vi",
+      "mainEntity": [
+        {"@type": "Question", "name": "Bộ mã hóa AV1?", "acceptedAnswer": {"@type": "Answer", "text": "libavif với rav1e, biên dịch WebAssembly."}},
+        {"@type": "Question", "name": "AVIF nhỏ hơn WebP?", "acceptedAnswer": {"@type": "Answer", "text": "Có — 20–30% nhỏ hơn WebP, ~50% từ JPEG."}},
+        {"@type": "Question", "name": "Trình duyệt AVIF?", "acceptedAnswer": {"@type": "Answer", "text": "Chrome 85+, Edge, Firefox 93+, Safari 16+."}},
+        {"@type": "Question", "name": "AVIF trong suốt/hoạt ảnh?", "acceptedAnswer": {"@type": "Answer", "text": "Có cả hai. Alpha 8 và 10-bit."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

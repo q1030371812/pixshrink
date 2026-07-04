@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PNG 온라인 압축 — 무손실, 업로드 불필요 | Pixshrink</title>
+<meta name="description" content="업로드 없이 PNG 파일을 온라인으로 압축하세요. 브라우저 기반 oxipng 및 libspng가 투명도와 색상을 보존하면서 PNG를 무손실로 축소합니다. 무료 및 비공개." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="PNG 온라인 압축 — 무손실, 업로드 불필요" />
+<meta property="og:description" content="브라우저에서 PNG를 무손실로 축소. 투명도와 색상 보존. 업로드 없음, 가입 없음." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="ko" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PNG 온라인 압축 — 무손실, 업로드 불필요" />
+<meta name="twitter:description" content="브라우저에서 PNG를 무손실로 축소. 투명도와 색상 보존. 업로드 없음, 가입 없음." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="ko" href="https://pixshrink.gamechill.org/ko/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/ko/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>PNG 온라인 압축 — 무손실, 업로드 불필요</h1>
+    <p class="subtitle">브라우저에서 PNG를 무손실로 축소하세요. oxipng와 libspng는 더 작은 deflate 스트림을 찾고 사용하지 않는 청크를 제거합니다 — 픽셀, 투명도, 색상 깊이는 원본과 바이트 단위로 동일합니다.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/ko/">지금 PNG 압축하기</a>
+      <a class="btn btn-ghost" href="#how">작동 방식</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10~35%</strong><span>일반적인 무손실 절약</span></div>
+      <div class="stat"><strong>oxipng</strong><span>프로덕션 등급 인코더</span></div>
+      <div class="stat"><strong>픽셀 완벽</strong><span>비트 단위로 동일한 출력</span></div>
+    </div>
+
+    <article id="how">
+      <h2>PNG "무손실" 압축이란 무엇입니까?</h2>
+      <p>PNG는 이미 무손실 형식입니다 — 모든 원본 픽셀이 그대로 디코드됩니다. oxipng와 libspng 인코더가 하는 일은 동일한 픽셀 데이터를 더 작은 방법으로 표현하는 방법을 찾는 것입니다. 행마다 다른 <em>필터</em> 전략, 여러 zlib 압축 레벨, 256개 이하의 고유 색상을 가진 이미지에 대한 팔레트 감소를 시도합니다. 출력은 정확히 동일한 픽셀 그리드로 디코딩되지만 파일은 더 작습니다.</p>
+      <p>이는 어떤 품질 변화도 허용할 수 없는 경우의 안전한 선택입니다: UI 스크린샷, 로고, 아이콘, 투명 오버레이, 기술 다이어그램, 나중에 다른 도구로 재인코딩될 자산.</p>
+
+      <h2>PNG는 얼마나 축소될 수 있습니까?</h2>
+      <p>이는 전적으로 이미지에 따라 다릅니다. 투명도가 있는 플랫 색상 로고는 50~80% 감소할 수 있습니다. PNG로 저장된 사진은 보통 5~15%만 축소됩니다. 사진의 노이즈가 팔레트 기반 트릭을 무효화하기 때문입니다 — 그러한 경우 <a href="/compress-jpeg">JPEG</a> 또는 <a href="/compress-webp">WebP</a>로 재인코딩하는 것이 훨씬 효과적입니다. Pixshrink는 다운로드 전에 바이트 델타를 보여주므로 절약이 재압축할 가치가 있는지 결정할 수 있습니다.</p>
+      <p>선명한 가장자리와 작은 팔레트를 가진 UI 자산의 경우, <strong>preset = max</strong> 옵션은 인코더를 더 많은 시도를 거치게 하여 일반적으로 기본 패스 위에 추가로 10~20%의 절약을 더합니다.</p>
+
+      <h2>투명도는 어떻게 됩니까?</h2>
+      <p>알파 채널은 정확히 보존됩니다. PNG의 8비트 알파는 라운드트립 후에도 그대로 유지되며, Pixshrink는 배경에 대한 합성 방식을 변경할 수 있는 "사전 곱셈"을 수행하지 않습니다. 이미지에 채널당 16비트 색상 깊이가 있는 경우도 보존됩니다 — 8비트로 자동 다운그레이드되지 않습니다.</p>
+
+      <h2>대신 다른 형식을 사용해야 할 때</h2>
+      <p>파일의 목적지를 제어할 수 있다면, PNG를 <a href="/compress-webp">WebP</a>로 변환하여 동일한 품질에서 25~35% 추가 절감을, 또는 <a href="/compress-avif">AVIF</a>로 40~50% 절감을 고려하세요. 애니메이션 PNG의 경우, <a href="/compress-gif">GIF</a>가 더 이상 유일한 선택이 아닙니다 — 대부분의 브라우저는 이제 애니메이션 WebP를 재생하며, Pixshrink는 자동으로 더 작은 출력을 선택합니다.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>자주 묻는 질문</h2>
+
+      <details>
+        <summary>무손실 압축이 내 이미지를 변경합니까?</summary>
+        <p>아니요. 디코드된 픽셀은 비트 단위로 동일합니다. 변경되는 것은 디스크의 바이트 표현입니다: 필터 선택, deflate 매개변수, 청크 인코딩.</p>
+      </details>
+      <details>
+        <summary>내 PNG가 압축 후 5%만 작아진 이유는?</summary>
+        <p>사진과 노이즈가 많은 이미지는 deflate가 활용할 수 없는 높은 엔트로피를 가집니다. oxipng는 그런 이미지에서 이미 이론적 한계에 가깝습니다. 진정한 크기 감소를 원한다면 JPEG(사진용) 또는 WebP/AVIF(그 외 모든 것)로 재인코딩하세요.</p>
+      </details>
+      <details>
+        <summary>알파 투명도가 보존됩니까?</summary>
+        <p>예. 8비트와 16비트 알파 채널이 변경 없이 통과됩니다. 명시적으로 제거하지 않는 한 색상 프로파일과 감마 메타데이터도 보존됩니다.</p>
+      </details>
+      <details>
+        <summary>PNG를 대량으로 압축해도 안전합니까?</summary>
+        <p>예. 폴더를 드롭하면 페이지가 각 파일을 독립적으로 처리하고 더 작은 버전의 ZIP을 받습니다. 업로드되는 것은 없으며 인터넷 없이 비행기에서 실행할 수 있습니다.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 무료, 비공개, 브라우저 내 이미지 압축.</div>
+    <div class="links">
+      <a href="/ko/">홈</a>
+      <a href="/ko/compress-jpeg">JPEG 압축</a>
+      <a href="/ko/compress-webp">WebP 압축</a>
+      <a href="/ko/compress-avif">AVIF 압축</a>
+      <a href="/ko/compress-gif">GIF 압축</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink PNG 압축기",
+      "url": "https://pixshrink.gamechill.org/ko/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "WebAssembly 지원 모던 브라우저 필요",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "ko",
+      "description": "oxipng 및 libspng를 사용하는 무료 브라우저 내 PNG 압축기. 무손실, 업로드 없음, 투명도 보존.",
+      "featureList": ["무손실", "업로드 없음", "알파 보존", "일괄 처리"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "ko",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "무손실 압축이 내 이미지를 변경합니까?",
+          "acceptedAnswer": { "@type": "Answer", "text": "아니요. 디코드된 픽셀은 비트 단위로 동일합니다. 변경되는 것은 디스크의 바이트 표현입니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "내 PNG가 압축 후 5%만 작아진 이유는?",
+          "acceptedAnswer": { "@type": "Answer", "text": "사진과 노이즈가 많은 이미지는 deflate가 활용할 수 없는 높은 엔트로피를 가집니다. 진정한 크기 감소를 원한다면 JPEG, WebP 또는 AVIF로 재인코딩하세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "알파 투명도가 보존됩니까?",
+          "acceptedAnswer": { "@type": "Answer", "text": "예. 8비트와 16비트 알파 채널이 변경 없이 통과됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "PNG를 대량으로 압축해도 안전합니까?",
+          "acceptedAnswer": { "@type": "Answer", "text": "예. 폴더를 드롭하면 페이지가 각 파일을 독립적으로 처리하고 더 작은 버전의 ZIP을 받습니다. 업로드되는 것은 없습니다." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

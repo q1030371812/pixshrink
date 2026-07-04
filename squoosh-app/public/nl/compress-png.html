@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PNG online comprimeren — verliesloos, geen upload | Pixshrink</title>
+<meta name="description" content="Comprimeer PNG-bestanden online zonder upload. Op browser gebaseerde oxipng en libspng verkleinen PNG's verliesloos, met behoud van transparantie en kleur. Gratis en privé." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="PNG online comprimeren — verliesloos, geen upload" />
+<meta property="og:description" content="Verklein PNG's verliesloos in uw browser. Transparantie en kleur behouden. Geen upload, geen registratie." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="nl" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PNG online comprimeren — verliesloos, geen upload" />
+<meta name="twitter:description" content="Verklein PNG's verliesloos in uw browser. Transparantie en kleur behouden. Geen upload, geen registratie." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="nl" href="https://pixshrink.gamechill.org/nl/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/nl/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>PNG online comprimeren — verliesloos, geen upload</h1>
+    <p class="subtitle">Verklein PNG's verliesloos in uw browser. oxipng en libspng vinden kleinere deflate-streams en verwijderen ongebruikte chunks — pixels, transparantie en kleurdiepte blijven byte-voor-byte identiek aan het origineel.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/nl/">Comprimeer nu een PNG</a>
+      <a class="btn btn-ghost" href="#how">Hoe het werkt</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>typische verliesloze besparing</span></div>
+      <div class="stat"><strong>oxipng</strong><span>productieklare encoder</span></div>
+      <div class="stat"><strong>Pixel-perfect</strong><span>bit-voor-bit identieke uitvoer</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Wat betekent "verliesloze" PNG-compressie?</h2>
+      <p>PNG is al een verliesloos formaat — elke originele pixel overleeft decodering intact. Wat de oxipng- en libspng-encoders doen, is een kleinere manier vinden om dezelfde pixelgegevens uit te drukken. Ze proberen verschillende <em>filter</em>-strategieën per rij, meerdere zlib-compressieniveaus en paletreducties voor afbeeldingen met 256 of minder unieke kleuren. De uitvoer decodeert naar exact hetzelfde pixelraster, maar het bestand is kleiner.</p>
+      <p>Dit is de veilige optie wanneer u zich geen kwaliteitsverandering kunt veroorloven: UI-screenshots, logo's, pictogrammen, transparante overlays, technische diagrammen en assets die later door andere tools opnieuw worden gecodeerd.</p>
+
+      <h2>Hoeveel kan een PNG krimpen?</h2>
+      <p>Het hangt volledig af van de afbeelding. Een logo met platte kleur en transparantie kan 50–80% dalen. Een foto opgeslagen als PNG krimpt meestal slechts 5–15%, omdat ruis in foto's op palet-gebaseerde trucs wint — voor die is herencoding naar <a href="/compress-jpeg">JPEG</a> of <a href="/compress-webp">WebP</a> veel effectiever. Pixshrink toont u de byte-delta vóór het downloaden, zodat u kunt beslissen of de besparing de hercompressie rechtvaardigt.</p>
+      <p>Voor UI-assets met scherpe randen en een klein palet duwt de optie <strong>preset = max</strong> de encoder door meer pogingen, meestal 10–20% extra besparing bovenop de standaardpass.</p>
+
+      <h2>En transparantie?</h2>
+      <p>Alfakanalen worden exact behouden. De 8-bits alfa van PNG overleeft de round-trip, en Pixshrink vermenigvuldigt niets vooraf dat zou veranderen hoe uw afbeelding samengesteld wordt tegen de achtergrond. Als uw afbeelding 16-bits kleurdiepte per kanaal heeft, wordt ook die behouden — u wordt niet stiekem teruggezet naar 8 bit.</p>
+
+      <h2>Wanneer een ander formaat gebruiken</h2>
+      <p>Als u de bestemming van het bestand beheerst, overweeg dan PNG naar <a href="/compress-webp">WebP</a> te converteren voor 25–35% extra besparing bij dezelfde kwaliteit, of naar <a href="/compress-avif">AVIF</a> voor 40–50%. Voor geanimeerde PNG's is <a href="/compress-gif">GIF</a> niet langer de enige optie — de meeste browsers spelen nu geanimeerde WebP, en Pixshrink kiest automatisch de kleinere uitvoer.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Veelgestelde vragen</h2>
+
+      <details>
+        <summary>Verandert verliesloze compressie mijn afbeelding op enige manier?</summary>
+        <p>Nee. De gedecodeerde pixels zijn bit-voor-bit identiek. Wat verandert is de byte-representatie op schijf: filterkeuzes, deflate-parameters en chunk-codering.</p>
+      </details>
+      <details>
+        <summary>Waarom is mijn PNG na compressie slechts 5% kleiner?</summary>
+        <p>Foto's en ruisige afbeeldingen hebben hoge entropie die deflate niet kan benutten. oxipng zit al dicht bij de theoretische limiet daarvoor. Voor echte verkleining codeert u opnieuw naar JPEG (voor foto's) of WebP/AVIF (voor al het andere).</p>
+      </details>
+      <details>
+        <summary>Wordt alfa-transparantie behouden?</summary>
+        <p>Ja. 8-bits en 16-bits alfakanalen gaan ongewijzigd door. Kleurprofielen en gamma-metadata worden ook behouden, tenzij u ze expliciet verwijdert.</p>
+      </details>
+      <details>
+        <summary>Is het veilig om PNG's in bulk te comprimeren?</summary>
+        <p>Ja. Sleep een map, de pagina verwerkt elk bestand onafhankelijk, en u krijgt een ZIP van de kleinere versies. Er wordt niets geüpload; u kunt het in een vliegtuig zonder internet draaien.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — gratis, privé, in-browser beeldcompressie.</div>
+    <div class="links">
+      <a href="/nl/">Home</a>
+      <a href="/nl/compress-jpeg">JPEG comprimeren</a>
+      <a href="/nl/compress-webp">WebP comprimeren</a>
+      <a href="/nl/compress-avif">AVIF comprimeren</a>
+      <a href="/nl/compress-gif">GIF comprimeren</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink PNG-compressor",
+      "url": "https://pixshrink.gamechill.org/nl/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Vereist een moderne browser met WebAssembly-ondersteuning",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "nl",
+      "description": "Gratis in-browser PNG-compressor met oxipng en libspng. Verliesloos, geen upload, behoudt transparantie.",
+      "featureList": ["Verliesloos", "Geen upload", "Behoudt alfa", "Batchverwerking"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "nl",
+      "mainEntity": [
+        {"@type": "Question", "name": "Verandert verliesloze compressie mijn afbeelding?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Gedecodeerde pixels zijn bit-voor-bit identiek. Wat verandert is de byte-representatie op schijf."}},
+        {"@type": "Question", "name": "Waarom is mijn PNG slechts 5% kleiner?", "acceptedAnswer": {"@type": "Answer", "text": "Foto's en ruisige afbeeldingen hebben hoge entropie. Codeer voor echte reductie opnieuw naar JPEG, WebP of AVIF."}},
+        {"@type": "Question", "name": "Wordt alfa-transparantie behouden?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. 8-bits en 16-bits alfakanalen gaan ongewijzigd door."}},
+        {"@type": "Question", "name": "Is het veilig om PNG's in bulk te comprimeren?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Sleep een map, de pagina verwerkt elk bestand onafhankelijk. Er wordt niets geüpload."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

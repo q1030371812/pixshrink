@@ -1,0 +1,113 @@
+name: Daily SEO Health
+
+on:
+  schedule:
+    # 14:05 UTC ≈ 22:05 CST; well outside Cloudflare deploy windows.
+    - cron: "5 14 * * *"
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Base URL to probe"
+        required: false
+        default: "https://pixshrink.gamechill.org"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-health
+  cancel-in-progress: false
+
+jobs:
+  health:
+    name: Probe pixshrink.gamechill.org
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run SEO health check
+        id: probe
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://pixshrink.gamechill.org' }}
+        run: |
+          set -e
+          mkdir -p artifacts
+          python scripts/seo-health-check.py \
+            --base "$BASE_URL" \
+            --out artifacts/seo-health.json | tee artifacts/seo-health.txt
+        continue-on-error: true
+
+      - name: Build Slack payload
+        id: slack
+        if: always()
+        env:
+          REPORT: artifacts/seo-health.json
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, sys
+          report_path = pathlib.Path(os.environ["REPORT"])
+          if not report_path.exists():
+              print("::error::report missing")
+              sys.exit(0)
+          data = json.loads(report_path.read_text(encoding="utf-8"))
+          s = data.get("summary", {})
+          ok = data.get("overall_ok", False)
+          failed = [c for c in data["checks"] if not c["ok"] and c["severity"] == "critical"]
+          warned = [c for c in data["checks"] if not c["ok"] and c["severity"] == "warn"]
+          icon = ":white_check_mark:" if ok else ":rotating_light:"
+          lines = [f"{icon} *Pixshrink SEO Health* — `{data['base_url']}`",
+                   f"Duration: {data['duration_ms']} ms · "
+                   f"Total: {s.get('total',0)} · "
+                   f"Passed: {s.get('passed',0)} · "
+                   f"Warned: {s.get('warned',0)} · "
+                   f"Failed: {s.get('failed',0)}"]
+          if failed:
+              lines.append("\n*Critical failures:*")
+              for c in failed[:15]:
+                  lines.append(f"• `{c['name']}` — {c['detail']}")
+          if warned:
+              lines.append("\n*Warnings:*")
+              for c in warned[:8]:
+                  lines.append(f"• `{c['name']}` — {c['detail']}")
+          payload = {
+              "text": "\n".join(lines),
+              "unfurl_links": False,
+          }
+          pathlib.Path("slack-payload.json").write_text(json.dumps(payload), encoding="utf-8")
+          print("payload bytes:", pathlib.Path("slack-payload.json").stat().st_size)
+          PY
+
+      - name: Post to Slack
+        if: always() && env.SLACK_WEBHOOK_URL != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -z "${SLACK_WEBHOOK_URL:-}" ]; then
+            echo "SLACK_WEBHOOK_URL not set; skipping Slack post."
+            exit 0
+          fi
+          curl -fsS -X POST -H "Content-Type: application/json" \
+            --data @slack-payload.json \
+            "$SLACK_WEBHOOK_URL"
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-health-report
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Fail job if critical checks failed
+        if: steps.probe.outcome == 'failure'
+        run: |
+          echo "::error::One or more critical SEO health checks failed. See artifacts."
+          exit 1

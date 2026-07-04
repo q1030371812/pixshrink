@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>在线压缩 JPEG — 减小 95%，无需上传 | Pixshrink</title>
+<meta name="description" content="在线压缩 JPEG 文件，无需上传。基于浏览器的 mozjpeg 编码器可在保持视觉质量的前提下将照片缩小高达 95%。免费、私密、可离线使用。" />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="在线压缩 JPEG — 减小 95%，无需上传" />
+<meta property="og:description" content="在浏览器中将 JPEG 照片缩小高达 95%。无需上传、无需注册，由 mozjpeg 驱动。免费且私密。" />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-jpeg" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="zh" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="在线压缩 JPEG — 减小 95%，无需上传" />
+<meta name="twitter:description" content="在浏览器中将 JPEG 照片缩小高达 95%。无需上传、无需注册，由 mozjpeg 驱动。" />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="zh" href="https://pixshrink.gamechill.org/zh/compress-jpeg" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/zh/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>在线压缩 JPEG — 减小 95%，无需上传</h1>
+    <p class="subtitle">使用 mozjpeg 编码器在浏览器中压缩 JPEG。一张 4&nbsp;MB 的相机照片在质量 75 下通常可降至 200–400&nbsp;KB，画面清晰而不出现马赛克。</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/zh/">立即压缩 JPEG</a>
+      <a class="btn btn-ghost" href="#how">工作原理</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>~95%</strong><span>典型尺寸缩减</span></div>
+      <div class="stat"><strong>mozjpeg</strong><span>生产级编码器</span></div>
+      <div class="stat"><strong>0 字节</strong><span>发送到任何服务器</span></div>
+    </div>
+
+    <article id="how">
+      <h2>为什么要在浏览器中压缩 JPEG？</h2>
+      <p>JPEG 是网络中每一部手机、无反相机和截图工具的默认输出格式。该格式本身已有损，但大多数相机和软件以质量 90+ 导出，并附带额外的元数据（EXIF、XMP、ICC 配置），这些数据会让每个文件膨胀 20–100&nbsp;KB。使用 mozjpeg 等现代编码器重新编码可去除这些冗余，并使用更好的量化表，因此在相同的视觉质量下占用更少的字节。</p>
+      <p>Pixshrink 将 mozjpeg 作为 WebAssembly 直接在您的浏览器标签页中运行。您选择的文件永远不会离开您的设备——无上传、无服务器队列、无注册墙。您可以在飞行途中压缩一整个婚礼照片文件夹，或为 Shopify 缩小 200 张商品图，全程不会在任何地方留下日志。</p>
+
+      <h2>应该预期多大的尺寸缩减？</h2>
+      <p>结果取决于源文件，但以典型 4032×3024 的手机照片为例，在原始质量 95 下，mozjpeg 流水线在质量 75 下产出的文件会比原文件小 80–90%，并排查看时无可见差异。如果您进一步压到质量 60，可以达到 95% 的缩减；再往下，JPEG 的 8×8 DCT 模块会在高对比边缘周围出现振铃伪影。</p>
+      <p>滑块是主要控件。一些实用的经验法则：<strong>质量 80</strong> 是网站上主图的最佳选择；<strong>质量 70</strong> 适合商品缩略图和头像；<strong>质量 50</strong> 适用于高分辨率版本之前的预览图。</p>
+
+      <h2>EXIF 和元数据会怎样？</h2>
+      <p>默认情况下，Pixshrink 会从 JPEG 中剥离 EXIF（相机、GPS、时间戳）。仅这一步通常就能节省 30–80&nbsp;KB，并消除在文件中嵌入家庭住址带来的隐私副作用。如果您出于档案目的需要保留元数据，可以在选项面板中重新启用。</p>
+
+      <h2>也可以试试其他格式</h2>
+      <p>如果您希望在保持相同视觉质量的前提下获得最小的文件，重新编码为 <a href="/compress-webp">WebP</a> 或 <a href="/compress-avif">AVIF</a> 通常比 JPEG 再小 20–40%。对于具有锐利文字和纯色区域的截图和 UI 截图，<a href="/compress-png">PNG</a> 通常已经是最优的，并可通过 oxipng 进行无损压缩。对于动画，请参阅 <a href="/compress-gif">GIF 压缩</a>。</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>常见问题</h2>
+
+      <details>
+        <summary>这款 JPEG 压缩工具真的免费吗？</summary>
+        <p>是的——无需注册、无需试用、无每日限额、无水印。编码器在您的浏览器中运行，因此没有服务器成本需要转嫁。</p>
+      </details>
+      <details>
+        <summary>我的照片会被上传到某处吗？</summary>
+        <p>不会。文件被读入内存，由编译为 WebAssembly 的 mozjpeg 处理，处理结果作为下载提供。压缩过程中的网络活动为零。您可以打开 DevTools → Network 验证，面板将保持空白。</p>
+      </details>
+      <details>
+        <summary>压缩会降低图像质量吗？</summary>
+        <p>JPEG 本身是有损格式，因此每次重新编码都会损失一些信息。质量滑块控制损失的程度。在 75–80 时，大多数观察者察觉不到损失；低于 50 时，您可能会在平滑渐变上看到振铃和色带。</p>
+      </details>
+      <details>
+        <summary>可以一次性批量压缩多个 JPEG 吗？</summary>
+        <p>可以。将一个文件夹拖到页面上，调整质量，Pixshrink 将对所有文件进行编码并下载单个 ZIP。没有文件数量限制，但非常大的批量受可用内存限制。</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 免费、私密的浏览器内图像压缩。</div>
+    <div class="links">
+      <a href="/zh/">首页</a>
+      <a href="/zh/compress-png">压缩 PNG</a>
+      <a href="/zh/compress-webp">压缩 WebP</a>
+      <a href="/zh/compress-avif">压缩 AVIF</a>
+      <a href="/zh/compress-gif">压缩 GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink JPEG 压缩器",
+      "url": "https://pixshrink.gamechill.org/zh/compress-jpeg",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "需要支持 WebAssembly 的现代浏览器",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "zh",
+      "description": "使用 mozjpeg 编码器的免费浏览器内 JPEG 压缩器。文件永不离开设备。",
+      "featureList": ["无需上传", "无需注册", "批处理", "首次加载后可离线使用"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "zh",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "这款 JPEG 压缩工具真的免费吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "是的——无需注册、无需试用、无每日限额、无水印。编码器在您的浏览器中运行，因此没有服务器成本需要转嫁。" }
+        },
+        {
+          "@type": "Question",
+          "name": "我的照片会被上传到某处吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不会。文件被读入内存，由编译为 WebAssembly 的 mozjpeg 处理，处理结果作为下载提供。" }
+        },
+        {
+          "@type": "Question",
+          "name": "压缩会降低图像质量吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "JPEG 本身是有损格式，因此每次重新编码都会损失一些信息。质量滑块控制损失程度。在 75–80 时，大多数观察者察觉不到损失。" }
+        },
+        {
+          "@type": "Question",
+          "name": "可以一次性批量压缩多个 JPEG 吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以。将一个文件夹拖到页面上，调整质量，Pixshrink 将对所有文件进行编码并下载单个 ZIP。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

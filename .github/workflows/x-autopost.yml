@@ -1,0 +1,49 @@
+name: X (Twitter) Auto-Post
+
+on:
+  schedule:
+    # Weekly: every Monday at 14:00 UTC = ~07:00 PT / ~22:00 CST
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      QUEUE_FILE: social/tweet-queue.json
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install tweepy
+        run: pip install --quiet "tweepy>=4.14"
+
+      - name: Dry-run (verify queue and secrets)
+        run: python social/post-tweet.py --dry-run
+
+      - name: Post next tweet
+        if: success()
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: python social/post-tweet.py
+
+      - name: Upload state artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-run-state
+          path: |
+            social/tweet-queue.json
+          retention-days: 7

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pakkaa PNG verkossa — häviötön, ei latausta | Pixshrink</title>
+<meta name="description" content="Pakkaa PNG-tiedostoja verkossa ilman latausta. oxipng ja libspng selaimessa pienentävät PNG-kuvia häviöttömästi säilyttäen läpinäkyvyyden ja värit." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Pakkaa PNG verkossa — häviötön" />
+<meta property="og:description" content="Pienennä PNG häviöttömästi selaimessasi." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="fi" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pakkaa PNG verkossa" />
+<meta name="twitter:description" content="oxipng + libspng, häviötön." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="fi" href="https://pixshrink.gamechill.org/fi/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/fi/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Pakkaa PNG verkossa — häviötön, ei latausta</h1>
+    <p class="subtitle">Pienennä PNG-kuvia häviöttömästi selaimessasi. oxipng ja libspng löytävät pienemmät deflate-virrat ja poistavat käyttämättömät chunkit.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/fi/">Pakkaa PNG nyt</a>
+      <a class="btn btn-ghost" href="#how">Miten se toimii</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>tyypillinen häviötön säästö</span></div>
+      <div class="stat"><strong>oxipng</strong><span>tuotantotason enkooderi</span></div>
+      <div class="stat"><strong>Pikseli-täydellinen</strong><span>bitti-bitiltä identtinen</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Mitä "häviötön" PNG-pakkaus tarkoittaa?</h2>
+      <p>PNG on jo häviötön formaatti.</p>
+
+      <h2>Entä läpinäkyvyys?</h2>
+      <p>Alfa-kanavat säilytetään tarkasti.</p>
+
+      <h2>Milloin käyttää toista formaattia</h2>
+      <p>Muunna PNG <a href="/compress-webp">WebP</a>-muotoon saadaksesi 25–35% lisäsäästön.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Usein kysytyt kysymykset</h2>
+
+      <details>
+        <summary>Muuttaako häviötön pakkaus kuvaani?</summary>
+        <p>Ei. Puretut pikselit ovat identtisiä.</p>
+      </details>
+      <details>
+        <summary>Miksi PNG pienenee vain 5%?</summary>
+        <p>Valokuvat sisältävät paljon entropiaa.</p>
+      </details>
+      <details>
+        <summary>Säilyykö alfa-läpinäkyvyys?</summary>
+        <p>Kyllä.</p>
+      </details>
+      <details>
+        <summary>Onko massapakkaus turvallista?</summary>
+        <p>Kyllä.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — ilmainen, yksityinen kuvanpakkaus selaimessa.</div>
+    <div class="links">
+      <a href="/fi/">Etusivu</a>
+      <a href="/fi/compress-jpeg">Pakkaa JPEG</a>
+      <a href="/fi/compress-webp">Pakkaa WebP</a>
+      <a href="/fi/compress-avif">Pakkaa AVIF</a>
+      <a href="/fi/compress-gif">Pakkaa GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink PNG-pakkaaja",
+      "url": "https://pixshrink.gamechill.org/fi/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Vaatii modernin selaimen WebAssembly-tuella",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "fi",
+      "description": "Ilmainen PNG-pakkaus selaimessa oxipng ja libspng -työkaluilla. Häviötön, ei latausta.",
+      "featureList": ["Häviötön", "Ei latausta", "Säilyttää alfan", "Eräkäsittely"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "fi",
+      "mainEntity": [
+        {"@type": "Question", "name": "Häviötön?", "acceptedAnswer": {"@type": "Answer", "text": "Kyllä."}},
+        {"@type": "Question", "name": "PNG 5%?", "acceptedAnswer": {"@type": "Answer", "text": "Koodaa JPEG/WebP/AVIF."}},
+        {"@type": "Question", "name": "Alfa?", "acceptedAnswer": {"@type": "Answer", "text": "Kyllä."}},
+        {"@type": "Question", "name": "Erä?", "acceptedAnswer": {"@type": "Answer", "text": "Kyllä."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

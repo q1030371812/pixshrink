@@ -1,0 +1,58 @@
+// zh.ts — Simplified Chinese
+const zh = {
+  appTitle: 'Pixshrink',
+  tagline: '本地图片压缩工具',
+  privacyBadge: '所有图片都在本地处理，绝不上传。',
+  heroTitle: '本地压缩图片。文件从不离开你的设备。',
+  heroSub: '拖入图片，拖动质量滑块，一键下载 ZIP。体积减少约 95%，画质损失极小。在浏览器中运行，支持离线使用。',
+  heroBullet1: '无需上传、无需注册、无追踪',
+  heroBullet2: '体积减少约 95%，画质损失极小',
+  heroBullet3: 'PNG · JPEG · WebP · AVIF · GIF · BMP',
+  ctaStart: '开始使用',
+  dropzoneIdle: '把图片拖到这里，或点击浏览',
+  dropzoneActive: '松开以添加图片',
+  dropzoneHint: 'JPG、PNG、WebP、AVIF、GIF、BMP — 每个最大 50 MB',
+  queueTitle: '队列',
+  queueEmpty: '还没有图片，请在上方添加。',
+  queueCount: (n: number) => n + ' 张图片已就绪',
+  queueTotalSaved: '总共节省',
+  qualityLabel: '质量',
+  formatLabel: '输出格式',
+  compressButton: '压缩',
+  compressAll: '全部压缩',
+  downloadAll: '全部下载',
+  downloadZip: '下载 ZIP',
+  removeFile: '移除',
+  featuresTitle: '为什么选择 Pixshrink',
+  feat1Title: '100% 本地',
+  feat1Body: '所有处理通过 WebAssembly 在浏览器中完成，文件从不接触服务器。',
+  feat2Title: '六种格式',
+  feat2Body: '支持 PNG、JPEG、WebP、AVIF、GIF、BMP，可在同一批次中混合格式。',
+  feat3Title: '批量压缩',
+  feat3Body: '拖入 50 张照片，得到一个 ZIP。质量滑块统一作用于所有图片。',
+  feat4Title: '体积减少 95%',
+  feat4Body: '通常压缩率在 80% 至 95% 之间，画质损失几乎察觉不到。',
+  feat5Title: '支持离线',
+  feat5Body: '可安装为 PWA，首次加载后无需网络即可使用。',
+  feat6Title: '永久免费',
+  feat6Body: '无需注册、无需付费、无任何限制。使用开源编解码器。',
+  settingsTitle: '设置',
+  themeLabel: '主题',
+  themeLight: '浅色',
+  themeDark: '深色',
+  languageLabel: '语言',
+  footerTagline: '面向网页的本地图片压缩工具，开源。',
+  formatBytes: (b: number) =>
+    b < 1024
+      ? b + ' B'
+      : b < 1048576
+        ? (b / 1024).toFixed(1) + ' KB'
+        : (b / 1048576).toFixed(2) + ' MB',
+  formatPercent: (n: number) => Math.round(n) + '%',
+  savedPercent: (n: number) => '已节省 ' + Math.round(n) + '%',
+  localizingPromise: '正在翻译界面...',
+  unsupportedFormat: (f: string) => '不支持的格式：' + f,
+  fileTooLarge: (mb: number, max: number) => mb.toFixed(1) + ' MB 超过 ' + max + ' MB 上限',
+};
+
+export default zh;

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Komprimera PNG online — Förlustfritt, ingen uppladdning | Pixshrink</title>
+<meta name="description" content="Komprimera PNG-filer online utan uppladdning. Webbläsarbaserade oxipng och libspng krymper PNG-filer förlustfritt och bevarar transparens och färg. Gratis och privat." />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Komprimera PNG online — Förlustfritt, ingen uppladdning" />
+<meta property="og:description" content="Krymp PNG-filer förlustfritt i din webbläsare. Transparens och färg bevarade." />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-png" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="sv" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Komprimera PNG online — Förlustfritt, ingen uppladdning" />
+<meta name="twitter:description" content="Krymp PNG-filer förlustfritt i din webbläsare. Transparens bevarad." />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="sv" href="https://pixshrink.gamechill.org/sv/compress-png" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/sv/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>Komprimera PNG online — Förlustfritt, ingen uppladdning</h1>
+    <p class="subtitle">Krymp PNG-filer förlustfritt i din webbläsare. oxipng och libspng hittar mindre deflate-strömmar och tar bort oanvända chunks — pixlar, transparens och färgdjup förblir byte-för-byte identiska med originalet.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/sv/">Komprimera en PNG nu</a>
+      <a class="btn btn-ghost" href="#how">Så fungerar det</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10–35%</strong><span>typisk förlustfri besparing</span></div>
+      <div class="stat"><strong>oxipng</strong><span>produktionsklassencoder</span></div>
+      <div class="stat"><strong>Pixel-perfekt</strong><span>bit-för-bit identisk utdata</span></div>
+    </div>
+
+    <article id="how">
+      <h2>Vad betyder "förlustfri" PNG-komprimering?</h2>
+      <p>PNG är redan ett förlustfritt format — varje originalpixel överlever avkodning intakt. Vad oxipng- och libspng-encodrar gör är att hitta ett mindre sätt att uttrycka samma pixeldata.</p>
+
+      <h2>Hur mycket kan en PNG krympa?</h2>
+      <p>Det beror helt på bilden. En plattfärgslogotyp med transparens kan minska 50–80%. Ett foto sparat som PNG krymper vanligtvis bara 5–15%, eftersom brus i foton besegrar palettbaserade trick.</p>
+
+      <h2>Vad händer med transparens?</h2>
+      <p>Alfakanaler bevaras exakt. PNG:s 8-bitars alfa överlever round-trip, och Pixshrink "för-multiplicerar" inget som skulle ändra hur din bild komponeras mot sin bakgrund.</p>
+
+      <h2>När ska man använda ett annat format istället</h2>
+      <p>Om du kontrollerar filens destination, överväg att konvertera PNG till <a href="/compress-webp">WebP</a> för ytterligare 25–35% besparing vid samma kvalitet, eller till <a href="/compress-avif">AVIF</a> för 40–50%.</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>Vanliga frågor</h2>
+
+      <details>
+        <summary>Ändrar förlustfri komprimering min bild?</summary>
+        <p>Nej. Avkodade pixlar är bit-för-bit identiska.</p>
+      </details>
+      <details>
+        <summary>Varför krymper min PNG bara 5%?</summary>
+        <p>Foton har hög entropi. Omkoda till JPEG, WebP eller AVIF för verklig minskning.</p>
+      </details>
+      <details>
+        <summary>Bevaras alfatransparens?</summary>
+        <p>Ja. 8- och 16-bitars alfakanaler passerar oförändrade.</p>
+      </details>
+      <details>
+        <summary>Är det säkert att komprimera PNG i bulk?</summary>
+        <p>Ja. Släpp en mapp, varje fil bearbetas oberoende.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — gratis, privat bildkomprimering i webbläsaren.</div>
+    <div class="links">
+      <a href="/sv/">Hem</a>
+      <a href="/sv/compress-jpeg">Komprimera JPEG</a>
+      <a href="/sv/compress-webp">Komprimera WebP</a>
+      <a href="/sv/compress-avif">Komprimera AVIF</a>
+      <a href="/sv/compress-gif">Komprimera GIF</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink PNG-kompressor",
+      "url": "https://pixshrink.gamechill.org/sv/compress-png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "Kräver modern webbläsare med WebAssembly-stöd",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "sv",
+      "description": "Gratis PNG-kompressor i webbläsaren med oxipng och libspng. Förlustfri, ingen uppladdning, bevarar transparens.",
+      "featureList": ["Förlustfri", "Ingen uppladdning", "Bevarar alfa", "Batchbearbetning"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "sv",
+      "mainEntity": [
+        {"@type": "Question", "name": "Ändrar förlustfri min bild?", "acceptedAnswer": {"@type": "Answer", "text": "Nej. Pixlar identiska bit-för-bit."}},
+        {"@type": "Question", "name": "PNG bara 5%?", "acceptedAnswer": {"@type": "Answer", "text": "Foton har hög entropi. Omkoda till JPEG, WebP eller AVIF."}},
+        {"@type": "Question", "name": "Bevaras alfa?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. 8/16-bitars alfakanaler bevaras."}},
+        {"@type": "Question", "name": "Bulkkomprimering?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Varje fil bearbetas oberoende."}}
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

@@ -23,6 +23,9 @@ import { DropZone } from './components/DropZone';
 import { BatchQueue } from './components/BatchQueue';
 import { SettingsPanel } from './components/SettingsPanel';
 import { Features } from './components/Features';
+import { AboutSection } from './components/AboutSection';
+import { FAQSection } from './components/FAQSection';
+import { Footer } from './components/Footer';
 import { createCompressorPool, type CompressorPool } from './features/compressor/client';
 import { toMozjpegOptions } from './features/compressor/mozjpeg';
 import {
@@ -460,12 +463,18 @@ export default function App() {
             <DropZone onFiles={addFiles} />
           )}
         </div>
-        {!hasItems && (
-          <div className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-6 sm:pb-20">
-            <Features />
-          </div>
-        )}
+        {/* Visible SEO content. Same on empty state and queue state so
+            crawlers see it regardless of which version they land on. */}
+        <div className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-6 sm:pb-20">
+          {!hasItems && <Features />}
+          <AboutSection />
+          <FAQSection />
+        </div>
       </main>
+
+      {/* Site footer (brand + landing links + privacy tagline + social
+          placeholders). Always rendered, regardless of queue state. */}
+      <Footer />
 
       {hasItems && (
         <footer className="sticky bottom-0 z-10 border-t border-border bg-bg/85 px-4 py-3 backdrop-blur-md sm:px-6">

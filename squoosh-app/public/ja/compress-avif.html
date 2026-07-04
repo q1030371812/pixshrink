@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AVIFをオンラインで圧縮 — 次世代コーデック | Pixshrink</title>
+<meta name="description" content="AVIFファイルをオンラインで圧縮、アップロード不要。ブラウザベースのlibavif + rav1eエンコーダーが同じ知覚品質でWebPより20〜30%小さい次世代AVIFファイルを生成。無料、プライベート。" />
+<link rel="canonical" href="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="AVIFをオンラインで圧縮 — 次世代コーデック" />
+<meta property="og:description" content="ブラウザでAVIFを縮小。同じ品質でWebPより20〜30%小さい。アップロード不要、登録不要。" />
+<meta property="og:url" content="https://pixshrink.gamechill.org/compress-avif" />
+<meta property="og:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<meta property="og:locale" content="ja" />
+<meta property="og:site_name" content="Pixshrink" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AVIFをオンラインで圧縮 — 次世代コーデック" />
+<meta name="twitter:description" content="ブラウザでAVIFを縮小。同じ品質でWebPより20〜30%小さい。アップロード不要、登録不要。" />
+<meta name="twitter:image" content="https://pixshrink.gamechill.org/og-image.svg" />
+<link rel="alternate" hreflang="ja" href="https://pixshrink.gamechill.org/ja/compress-avif" />
+<style>
+  :root { --brand: #0d9488; --brand-dark: #0f766e; --bg: #f8fafc; --fg: #0f172a; --muted: #475569; --border: #e2e8f0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", Roboto, sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+  .container { max-width: 880px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .logo { width: 32px; height: 32px; border-radius: 8px; background: var(--brand); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+  .brand { font-weight: 800; font-size: 20px; color: var(--brand-dark); text-decoration: none; }
+  h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+  .subtitle { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 8px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 16px; }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-ghost { background: #fff; color: var(--brand-dark); border: 1px solid var(--border); }
+  article h2 { font-size: 24px; margin-top: 40px; margin-bottom: 12px; }
+  article p { font-size: 17px; color: var(--fg); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .stat strong { display: block; font-size: 22px; color: var(--brand-dark); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  .faq { margin-top: 32px; }
+  .faq details { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .faq summary { font-weight: 600; cursor: pointer; font-size: 17px; }
+  .faq p { margin: 12px 0 0; color: var(--muted); }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; }
+  footer a { color: var(--brand-dark); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { h1 { font-size: 30px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <span class="logo">P</span>
+    <a class="brand" href="/ja/">Pixshrink</a>
+  </header>
+
+  <main>
+    <h1>AVIFをオンラインで圧縮 — 次世代コーデック</h1>
+    <p class="subtitle">AV1コーデックをラップするlibavifでAVIFファイルを再エンコードまたは再圧縮。一致した知覚品質で、AVIFは通常WebPより20〜30%小さく、JPEGより50%以上小さくなります。</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="/ja/">今すぐAVIFを圧縮</a>
+      <a class="btn btn-ghost" href="#how">仕組み</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>20〜30%</strong><span>WebPより小さい</span></div>
+      <div class="stat"><strong>libavif + AV1</strong><span>リファレンスエンコーダー</span></div>
+      <div class="stat"><strong>10/12ビット</strong><span>色深度、広色域</span></div>
+    </div>
+
+    <article id="how">
+      <h2>AVIFとは何か、そしてなぜ気にする必要があるのか？</h2>
+      <p>AVIF（AV1画像ファイル形式）は、AV1ビデオコーデックをベースにした静止画像コンテナです。Web上のJPEGとWebPを置き換えるためにゼロから設計されました：より良いイントラ予測、より大きなブロック変換、フィルムグレイン合成、10ビットおよび12ビット色ネイティブサポート。圧縮の改善は実在し、ベンチマークで目に見えます——Netflix、YouTube、その他ほとんどの大規模コンテンツサイトは今、デコード可能なブラウザのユーザーにAVIFを提供しています。</p>
+      <p>Pixshrinkはlibavifを使用し、これはAV1エンコーダー（デフォルトrav1e）をラップします。大手サイトと同じコーデックと、クリーンなブラウザ内インターフェースが得られます。</p>
+
+      <h2>実際、AVIFはどのくらい小さいですか？</h2>
+      <p>典型的な製品写真のバッチでは、JPEG品質80からAVIF品質50（SSIM2で知覚的に等価）に切り替えると、ファイルサイズを約50%削減できます。デフォルトのWebPから一致品質のAVIFに切り替えると、通常さらに20〜30%削減されます。ランディングページのヒーロー画像の場合、これは280&nbsp;KBと95&nbsp;KBのロードの差であり、Core Web VitalsとLighthouseスコアに直接反映されます。</p>
+      <p><strong>speed</strong>スライダーはエンコーダープリセットを制御します。Speed 0が最も遅く最小；Speed 6が高速でわずかに大きい。Speed 4は一回限りの作業の適切なデフォルト；Speed 8はバッチ処理に適しています。</p>
+
+      <h2>ブラウザとツールのサポート</h2>
+      <p>AVIFはChrome 85+、Firefox 93+、Edge 121+、Safari 16+（2022年リリース）でサポートされています。グローバルウェブ母集団のカバレッジは現在95%を優に超えています。古いブラウザをサポートする必要がある場合、正しいパターンは<a href="/compress-webp">WebP</a>または<a href="/compress-jpeg">JPEG</a>フォールバック付きの<code>&lt;picture&gt;</code>要素を提供することです——Pixshrinkの同じページで、1回のアップロードから3つすべてを生成できます。</p>
+
+      <h2>他に必要なかもしれないフォーマット</h2>
+      <p>色ずれなしの完全な透明度のためには、<a href="/compress-png">PNG</a>无损が依然として安全な選択肢です。アニメーションの場合、AVIFはサポートしていますが、<a href="/compress-gif">GIF</a>やアニメーションWebPほどツールが成熟していません——本当に追加の節約が必要な場合を除き、アニメーションWebPから始めてください。</p>
+    </article>
+
+    <section class="faq" aria-label="FAQ">
+      <h2>よくある質問</h2>
+
+      <details>
+        <summary>PixshrinkはどのAV1エンコーダーを使用していますか？</summary>
+        <p>デフォルトのAV1エンコーダーとしてrav1eを備えたlibavifを使用します。これはほとんどの本番サーバーが使用するエンコーダーパスと同じで、ブラウザで動作するようにWebAssemblyにコンパイルされています。</p>
+      </details>
+      <details>
+        <summary>AVIFはWebPより小さいですか？</summary>
+        <p>はい。一致した知覚品質で、AVIFは通常WebPより20〜30%小さく、JPEGより約50%小さくなります。代償はエンコード時間とわずかに限定されたツールエコシステムです。</p>
+      </details>
+      <details>
+        <summary>どのブラウザがAVIFを表示できますか？</summary>
+        <p>Chrome 85+、Edge（すべての最新バージョン）、Firefox 93+、Safari 16+、Opera、および過去3年間にリリースされたすべてのモバイルブラウザ。古いブラウザの場合は、WebPまたはJPEGフォールバックを使用してください。</p>
+      </details>
+      <details>
+        <summary>AVIFは透明度とアニメーションをサポートしていますか？</summary>
+        <p>両方ともサポートします。8ビットおよび10ビットアルファがサポートされており、AVIFは複数のフレームを運ぶことができますが、今日のほとんどの用途ではアニメーションWebPがより安全な選択肢です。</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Pixshrink — 無料、プライベート、ブラウザ内画像圧縮。</div>
+    <div class="links">
+      <a href="/ja/">ホーム</a>
+      <a href="/ja/compress-jpeg">JPEGを圧縮</a>
+      <a href="/ja/compress-png">PNGを圧縮</a>
+      <a href="/ja/compress-webp">WebPを圧縮</a>
+      <a href="/ja/compress-gif">GIFを圧縮</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pixshrink AVIF コンプレッサー",
+      "url": "https://pixshrink.gamechill.org/ja/compress-avif",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (browser)",
+      "browserRequirements": "WebAssemblyとAV1デコードをサポートするモダンブラウザが必要",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": "ja",
+      "description": "libavifとAV1コーデックを使用した無料ブラウザ内AVIFコンプレッサー。一致品質でWebPより20〜30%小さい。アップロード不要。",
+      "featureList": ["AV1コーデック", "10/12ビット色", "アップロード不要", "アルファサポート"]
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "ja",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "PixshrinkはどのAV1エンコーダーを使用していますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "デフォルトのAV1エンコーダーとしてrav1eを備えたlibavifを使用しており、ブラウザで動作するようにWebAssemblyにコンパイルされています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "AVIFはWebPより小さいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。一致した知覚品質で、AVIFは通常WebPより20〜30%小さく、JPEGより約50%小さくなります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "どのブラウザがAVIFを表示できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "Chrome 85+、Edge、Firefox 93+、Safari 16+、およびすべてのモダンモバイルブラウザ。" }
+        },
+        {
+          "@type": "Question",
+          "name": "AVIFは透明度とアニメーションをサポートしていますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "両方ともサポートします。8ビットおよび10ビットアルファがサポートされており、AVIFは複数のフレームを運ぶことができます。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>
