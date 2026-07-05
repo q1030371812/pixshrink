@@ -10,6 +10,7 @@ import {
   Layers,
   Check,
 } from 'lucide-react';
+import { useI18n } from '../i18n/useI18n';
 
 interface DropZoneProps {
   onFiles: (files: File[]) => void;
@@ -23,6 +24,7 @@ const isImage = (f: File) =>
   f.type.startsWith('image/') || IMAGE_EXT.test(f.name);
 
 export function DropZone({ onFiles, disabled }: DropZoneProps) {
+  const { t } = useI18n();
   const [hover, setHover] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -40,11 +42,6 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
       event.preventDefault();
       setHover(false);
       if (disabled) return;
-      // Only accept file drops -- folders are intentionally NOT walked.
-      // A "pick files" picker that opens a folder view and still asks
-      // the user to multi-select the contents is a bad UX, so we drop
-      // folder support entirely. The native picker can already pick
-      // hundreds of files in one go.
       submit(event.dataTransfer.files);
     },
     [disabled, onFiles, submit]
@@ -64,17 +61,13 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
       <div className="flex flex-col">
         <span className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent-strong shadow-sm">
           <Cpu size={12} strokeWidth={2.4} />
-          Runs in your browser
+          {t.privacyBadge}
         </span>
         <h1 className="mt-5 text-[34px] font-semibold leading-[1.05] tracking-tight text-text-strong sm:text-[44px]">
-          Shrink photos to the size you need,
-          <br className="hidden sm:block" />
-          <span className="text-accent-strong">without uploading a single one.</span>
+          {t.heroTitle}
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
-          Drop in JPEG, PNG, WebP, or AVIF, drag the quality slider, and download the
-          whole batch as a single ZIP. Every byte is re-encoded inside this tab -- the
-          originals never touch a server.
+          {t.heroSub}
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -95,23 +88,21 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
               className="absolute inset-0 -translate-x-full bg-gradient-to-r from-white/0 via-white/35 to-white/0 transition-transform duration-700 group-hover:translate-x-full"
             />
             <Upload size={16} strokeWidth={2.6} />
-            Select images
+            {t.ctaStart}
           </button>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[13px] text-text">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent-soft px-2.5 py-1 font-semibold text-accent-strong">
             <Layers size={12} strokeWidth={2.4} />
-            Batch-friendly
+            {t.featuresTitle}
           </span>
-          <span className="text-muted">
-            A few or a few thousand -- the queue keeps moving while you keep working.
-          </span>
+          <span className="text-muted">{t.feature3Body}</span>
         </div>
 
         <div className="mt-2.5 inline-flex items-center gap-1.5 text-[13px] text-muted">
           <FilePlus2 size={12} className="text-accent" strokeWidth={2.4} />
-          <span>Or paste straight from the clipboard with <kbd className="rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10.5px] font-semibold text-text-strong">Ctrl</kbd> / <kbd className="rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10.5px] font-semibold text-text-strong">⌘</kbd> + V</span>
+          <span>{t.pasteHint}</span>
         </div>
 
         <ul className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px]">
@@ -119,19 +110,19 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
             <span className="grid h-5 w-5 place-items-center rounded-full bg-accent-soft text-accent-strong">
               <ShieldCheck size={12} strokeWidth={2.4} />
             </span>
-            Stays on your device
+            {t.feature1Title}
           </li>
           <li className="inline-flex items-center gap-1.5 font-medium text-text">
             <span className="grid h-5 w-5 place-items-center rounded-full bg-amber-soft text-amber">
               <Zap size={12} strokeWidth={2.4} />
             </span>
-            Handles large batches
+            {t.feature2Title}
           </li>
           <li className="inline-flex items-center gap-1.5 font-medium text-text">
             <span className="grid h-5 w-5 place-items-center rounded-full bg-amber-soft text-amber">
               <ImageIcon size={12} strokeWidth={2.4} />
             </span>
-            PNG / JPEG / WebP / AVIF / GIF / BMP
+            {t.heroBullet3}
           </li>
         </ul>
       </div>
@@ -165,7 +156,6 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
             : 'border-border bg-surface hover:border-accent/50 hover:bg-surface',
         ].join(' ')}
       >
-        {/* dot grid backdrop */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 dot-grid opacity-50"
@@ -176,7 +166,6 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
               'radial-gradient(ellipse at center, black 30%, transparent 80%)',
           }}
         />
-        {/* corner brackets */}
         <CornerBracket pos="tl" />
         <CornerBracket pos="tr" />
         <CornerBracket pos="bl" />
@@ -203,10 +192,10 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
         </div>
 
         <p className="mt-6 text-base font-semibold text-text-strong">
-          {hover ? 'Release to add to the queue' : 'Drop images here'}
+          {hover ? t.dropzoneActive : t.dropzoneIdle}
         </p>
         <p className="mt-1.5 text-[13px] text-muted">
-          Keep this tab open -- the queue finishes on its own
+          {t.dropzoneHint}
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5">
@@ -220,11 +209,9 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
           ))}
         </div>
 
-        {/* in-zone secondary action — just a styled hint, not a separate
-            button: the entire drop area is already clickable. */}
         <div className="mt-5 flex items-center gap-1.5 text-[12px] font-medium text-accent-strong">
           <Check size={13} strokeWidth={2.6} />
-          <span>Pick a few or a few thousand</span>
+          <span>{t.queuePickHint}</span>
         </div>
 
         <input

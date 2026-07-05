@@ -55,6 +55,55 @@ const zh = {
   faqTitle: '常见问题',
   faqSub: '关于 Pixshrink 如何处理你的图片，一一解答。',
   footerPrivacyTagline: '以隐私为核心设计，文件始终保留在你的设备上。',
+  // FEATURES section
+  featuresKicker: '为什么选择 Pixshrink',
+  featuresHeadline: '一个滑块，一个 ZIP，零上传。',
+  featuresSub: '一次性拖入上百张图片，选个质量值，然后去忙别的。等你回来拿一个整齐的 ZIP。除非你主动操作，否则一切都在本地完成。',
+  feature1Chip: '隐私优先',
+  feature1Title: '文件永不离开你的设备',
+  feature1Body: '解码与编码全部在这个标签页内完成。无需上传、无远程队列、无跟踪像素 —— 你的照片始终留在本机。',
+  feature2Chip: '专为批量而生',
+  feature2Title: '一次处理成百上千张图片',
+  feature2Body: '扔进一千张 JPEG，队列继续推进的同时你也可以继续干别的事。整个过程标签页始终保持流畅响应。',
+  feature3Chip: '一个滑块',
+  feature3Title: '单一质量旋钮',
+  feature3Body: '色度子采样、渐进式扫描、霍夫曼表 —— 全部已锁定为合理默认值。你只需要拖动那个滑块。',
+  feature3Footer: '队列完成后，一键打包下载整个 ZIP，每个文件名都会带 -min 后缀。',
+  // Actions and status
+  actionCompressAgain: '再次压缩',
+  actionRetry: '重试失败项',
+  actionDownload: '下载',
+  actionRemove: '移除',
+  statusPending: '排队中',
+  statusProcessing: '处理中',
+  statusDone: '已完成',
+  statusError: '出错',
+  // Format options
+  formatKeepOriginal: '保留原格式',
+  formatJpeg: 'JPEG',
+  formatPng: 'PNG',
+  formatWebp: 'WebP',
+  formatAvif: 'AVIF',
+  formatGif: 'GIF',
+  formatBmp: 'BMP（无损）',
+  // Dropzone / batch hints
+  batchAddHint: '继续添加图片',
+  batchSoftLimit: '提示：处理这么多图片需要一些时间，你可以同时继续添加文件。',
+  batchHardLimit: '已达到 5,000 张图片的上限。请先清空或压缩当前队列。',
+  untitledImage: '未命名图片',
+  pasteHint: '也可以直接用 Ctrl/Cmd + V 从剪贴板粘贴',
+  queuePickHint: '几张也行，几千张也行',
+  zipDownloading: '正在打包 ZIP…',
+  // Settings / quality
+  settingsReset: '重置',
+  qualityResetHint: '恢复默认质量值 75',
+  qualityHigh: '高质量保真',
+  qualityBalanced: '平衡',
+  qualityAggressive: '更小体积',
+  qualitySmaller: '更小',
+  qualityBalancedShort: '平衡',
+  qualitySharper: '更清晰',
+  qualityResubmitHint: '拖动滑块后，点击"再次压缩"即可用新数值重新编码整个队列。',
   formatBytes: (b: number) =>
     b < 1024
       ? b + ' B'
@@ -66,6 +115,7 @@ const zh = {
   localizingPromise: '正在翻译界面...',
   unsupportedFormat: (f: string) => '不支持的格式：' + f,
   fileTooLarge: (mb: number, max: number) => mb.toFixed(1) + ' MB 超过 ' + max + ' MB 上限',
+  zipReadyFor: (n: number) => n + ' 张图片已就绪',
 };
 
 export default zh;

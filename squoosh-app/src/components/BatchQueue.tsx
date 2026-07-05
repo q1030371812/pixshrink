@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import type { CompressionItem } from '../lib/types';
 import { formatBytes, percentSaved } from '../lib/format';
+import { useI18n } from '../i18n/useI18n';
 
 interface BatchQueueProps {
   items: CompressionItem[];
@@ -20,11 +21,12 @@ interface BatchQueueProps {
 }
 
 export function BatchQueue({ items, onRemove, onDownload, busy }: BatchQueueProps) {
+  const { t } = useI18n();
   if (items.length === 0) {
     return (
       <div className="grid place-items-center rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
         <Inbox size={28} className="text-muted-2" />
-        <p className="mt-2 text-sm text-muted">No images yet</p>
+        <p className="mt-2 text-sm text-muted">{t.queueEmpty}</p>
       </div>
     );
   }
@@ -33,7 +35,7 @@ export function BatchQueue({ items, onRemove, onDownload, busy }: BatchQueueProp
     <section className="overflow-hidden rounded-2xl border border-border bg-surface shadow-soft">
       <header className="flex items-center justify-between border-b border-border bg-surface-2/60 px-4 py-3">
         <h2 className="text-sm font-semibold text-text-strong">
-          Queue
+          {t.queueTitle}
           <span className="ml-2 rounded-full bg-surface-3 px-2 py-0.5 text-xs font-medium text-text-strong">
             {items.length}
           </span>
@@ -41,7 +43,7 @@ export function BatchQueue({ items, onRemove, onDownload, busy }: BatchQueueProp
         {busy && (
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent-strong">
             <Loader2 size={12} className="animate-spin" />
-            Working
+            {t.statusProcessing}
           </span>
         )}
       </header>
@@ -63,11 +65,9 @@ function Row({
   onRemove: (id: string) => void;
   onDownload: (item: CompressionItem) => void;
 }) {
+  const { t } = useI18n();
   const [thumb, setThumb] = useState<string | null>(null);
 
-  // Build a small object URL for the first frame of the source file. We
-  // intentionally do not draw through the worker -- thumbnails are visual
-  // decoration, not a decode of the full-resolution buffer.
   useEffect(() => {
     const url = URL.createObjectURL(item.file);
     setThumb(url);
@@ -87,20 +87,12 @@ function Row({
     <li className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-surface-2/50">
       <div className="checkerboard relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl border border-border">
         {thumb ? (
-          <img
-            src={thumb}
-            alt=""
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
+          <img src={thumb} alt="" className="h-full w-full object-cover" loading="lazy" />
         ) : (
           <ImageIcon size={18} className="text-muted" />
         )}
         {isWorking && (
-          <span
-            aria-hidden
-            className="absolute inset-0 grid place-items-center bg-surface/70 backdrop-blur-[1px]"
-          >
+          <span aria-hidden className="absolute inset-0 grid place-items-center bg-surface/70 backdrop-blur-[1px]">
             <Loader2 size={18} className="animate-spin text-accent" />
           </span>
         )}
@@ -118,9 +110,7 @@ function Row({
           {item.width && item.height && (
             <>
               <span className="opacity-50">·</span>
-              <span className="tabular-nums">
-                {item.width}×{item.height}
-              </span>
+              <span className="tabular-nums">{item.width}×{item.height}</span>
             </>
           )}
           {isDone && item.output && (
@@ -152,8 +142,8 @@ function Row({
             type="button"
             onClick={() => onDownload(item)}
             className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-accent-soft hover:text-accent-strong focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label={`Download ${item.name}`}
-            title="Download"
+            aria-label={`${t.downloadAll} ${item.name}`}
+            title={t.downloadAll}
           >
             <Download size={15} />
           </button>
@@ -162,9 +152,9 @@ function Row({
           type="button"
           onClick={() => onRemove(item.id)}
           className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-danger-soft hover:text-danger focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label={`Remove ${item.name}`}
-            title="Remove"
-          >
+          aria-label={`${t.removeFile} ${item.name}`}
+          title={t.removeFile}
+        >
           <X size={15} />
         </button>
       </div>
@@ -179,11 +169,12 @@ function StatusBadge({
   status: CompressionItem['status'];
   error?: string;
 }) {
+  const { t } = useI18n();
   if (status === 'processing') {
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-1.5 py-0.5 text-[10px] font-semibold text-accent-strong">
         <Loader2 size={9} className="animate-spin" />
-        Working
+        {t.statusProcessing}
       </span>
     );
   }
@@ -191,7 +182,7 @@ function StatusBadge({
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-1.5 py-0.5 text-[10px] font-semibold text-accent-strong">
         <CheckCircle2 size={9} />
-        Done
+        {t.statusDone}
       </span>
     );
   }
@@ -202,14 +193,14 @@ function StatusBadge({
         title={error}
       >
         <AlertCircle size={9} />
-        <span className="truncate">Failed</span>
+        <span className="truncate">{t.statusError}</span>
       </span>
     );
   }
   return (
     <span className="inline-flex items-center gap-1 rounded-full bg-surface-3 px-1.5 py-0.5 text-[10px] font-semibold text-muted">
       <FileImage size={9} />
-      Queued
+      {t.statusPending}
     </span>
   );
 }

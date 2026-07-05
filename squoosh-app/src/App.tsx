@@ -34,6 +34,7 @@ import {
   defaultBatchSettings,
 } from './lib/types';
 import { useTheme } from './lib/theme';
+import { useI18n } from './i18n/useI18n';
 
 const RESIZE_OFF = { enabled: false } as const;
 
@@ -64,6 +65,7 @@ function outputName(src: string): string {
 }
 
 export default function App() {
+  const { t } = useI18n();
   const [theme, toggleTheme] = useTheme();
   const [items, setItems] = useState<CompressionItem[]>([]);
   const [settings, setSettings] = useState<BatchSettings>(defaultBatchSettings);
@@ -385,16 +387,16 @@ export default function App() {
     if (running) {
       return {
         icon: <Loader2 size={14} className="animate-spin" />,
-        text: `Processing ${counts.processing}/${items.length}`,
+        text: `${t.statusProcessing} ${counts.processing}/${items.length}`,
       };
     }
     if (counts.done > 0 && counts.idle === 0 && counts.error === 0) {
-      return { icon: <Play size={14} />, text: 'Compress again' };
+      return { icon: <Play size={14} />, text: t.actionCompressAgain };
     }
     if (counts.error > 0 && counts.idle === 0 && counts.done === 0) {
-      return { icon: <Play size={14} />, text: 'Retry failed' };
+      return { icon: <Play size={14} />, text: t.actionRetry };
     }
-    return { icon: <Play size={14} />, text: 'Compress' };
+    return { icon: <Play size={14} />, text: t.compressButton };
   })();
 
   return (

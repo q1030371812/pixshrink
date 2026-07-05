@@ -1,6 +1,7 @@
 import { Moon, Sun } from 'lucide-react';
 import type { Theme } from '../lib/theme';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { useI18n } from '../i18n/useI18n';
 
 interface TopBarProps {
   theme: Theme;
@@ -8,6 +9,8 @@ interface TopBarProps {
 }
 
 export function TopBar({ theme, onToggleTheme }: TopBarProps) {
+  const { t } = useI18n();
+  const themeToggleLabel = theme === 'dark' ? t.themeLight : t.themeDark;
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-bg/75 px-4 backdrop-blur-md sm:px-6">
       <div className="flex items-center gap-3">
@@ -17,7 +20,7 @@ export function TopBar({ theme, onToggleTheme }: TopBarProps) {
             Pixshrink
           </span>
           <span className="mt-0.5 hidden text-[11px] text-muted sm:block">
-            Local image compressor
+            {t.tagline}
           </span>
         </div>
       </div>
@@ -26,8 +29,8 @@ export function TopBar({ theme, onToggleTheme }: TopBarProps) {
         <button
           type="button"
           onClick={onToggleTheme}
-          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-          title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          aria-label={themeToggleLabel}
+          title={themeToggleLabel}
           className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/80 text-text backdrop-blur transition-colors hover:border-accent/40 hover:text-accent-strong focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}

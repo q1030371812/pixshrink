@@ -126,6 +126,56 @@ export type Dict = {
   faqTitle?: string;
   faqSub?: string;
   footerPrivacyTagline?: string;
+
+  // Feature grid (Features.tsx 3-card layout)
+  featuresKicker?: string;
+  featuresHeadline?: string;
+  featuresSub?: string;
+  feature1Chip?: string;
+  feature1Title?: string;
+  feature1Body?: string;
+  feature2Chip?: string;
+  feature2Title?: string;
+  feature2Body?: string;
+  feature3Chip?: string;
+  feature3Title?: string;
+  feature3Body?: string;
+  feature3Footer?: string;
+
+  // DropZone / Settings / App.tsx action labels
+  actionCompressAgain?: string;
+  actionRetry?: string;
+  actionDownload?: string;
+  actionRemove?: string;
+  statusPending?: string;
+  statusProcessing?: string;
+  statusDone?: string;
+  statusError?: string;
+  formatKeepOriginal?: string;
+  formatJpeg?: string;
+  formatPng?: string;
+  formatWebp?: string;
+  formatAvif?: string;
+  formatGif?: string;
+  formatBmp?: string;
+  batchAddHint?: string;
+  batchSoftLimit?: string;
+  batchHardLimit?: string;
+  untitledImage?: string;
+  pasteHint?: string;
+  queuePickHint?: string;
+  zipDownloading?: string;
+  zipReadyFor?: (n: number) => string;
+  settingsReset?: string;
+  qualityResetHint?: string;
+  qualityHigh?: string;
+  qualityBalanced?: string;
+  qualityAggressive?: string;
+  qualitySmaller?: string;
+  qualityBalancedShort?: string;
+  qualitySharper?: string;
+  qualityResubmitHint?: string;
+
   formatBytes: (b: number) => string;
   formatPercent: (n: number) => string;
   savedPercent: (n: number) => string;

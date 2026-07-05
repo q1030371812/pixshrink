@@ -1,23 +1,21 @@
 import { useState } from 'react';
 import { Gauge, RotateCcw, RefreshCw } from 'lucide-react';
 import { BatchSettings, defaultBatchSettings } from '../lib/types';
+import { useI18n } from '../i18n/useI18n';
 
 interface SettingsPanelProps {
   value: BatchSettings;
   onChange: (next: BatchSettings) => void;
-  /** Disables the panel during a batch run so the user cannot change mid-flight. */
   disabled?: boolean;
 }
 
-// Quality is the single knob we expose. We label the slider with a
-// human-friendly tier (Crisp / Balanced / Aggressive) so the user has a
-// hint beyond the bare number.
-const qualityLabel = (q: number) =>
-  q >= 85 ? 'High fidelity' : q >= 65 ? 'Balanced' : 'Smaller files';
+// Quality tier labels (translated).
+function qualityLabelKey(q: number): 'qualityHigh' | 'qualityBalanced' | 'qualityAggressive' {
+  if (q >= 85) return 'qualityHigh';
+  if (q >= 65) return 'qualityBalanced';
+  return 'qualityAggressive';
+}
 
-// Rough visual hint: the slider thumb changes colour and a tiny badge
-// shifts to mirror the trade-off. We are not promising a byte count, just
-// a sense of "left = aggressive, right = conservative".
 const qualityTone = (q: number): 'rose' | 'amber' | 'teal' =>
   q >= 85 ? 'teal' : q >= 65 ? 'amber' : 'rose';
 
@@ -28,9 +26,10 @@ const toneClass: Record<ReturnType<typeof qualityTone>, string> = {
 };
 
 export function SettingsPanel({ value, onChange, disabled }: SettingsPanelProps) {
+  const { t } = useI18n();
   const [hoverReset, setHoverReset] = useState(false);
   const quality = value.quality;
-  const label = qualityLabel(quality);
+  const tier = qualityLabelKey(quality);
   const tone = qualityTone(quality);
 
   return (
@@ -40,7 +39,7 @@ export function SettingsPanel({ value, onChange, disabled }: SettingsPanelProps)
           <span className="grid h-7 w-7 place-items-center rounded-lg bg-accent-soft text-accent-strong">
             <Gauge size={14} strokeWidth={2.2} />
           </span>
-          <h2 className="text-sm font-semibold text-text-strong">Compression</h2>
+          <h2 className="text-sm font-semibold text-text-strong">{t.settingsTitle}</h2>
         </div>
         <button
           type="button"
@@ -49,22 +48,22 @@ export function SettingsPanel({ value, onChange, disabled }: SettingsPanelProps)
           onMouseLeave={() => setHoverReset(false)}
           disabled={disabled}
           className="inline-flex items-center gap-1 text-xs font-medium text-text transition-colors hover:text-accent-strong focus:outline-none focus-visible:underline disabled:opacity-50"
-          title="Reset to default quality 75"
+          title={t.qualityResetHint}
         >
           <RotateCcw size={11} className={hoverReset ? 'animate-spin-once' : ''} />
-          Reset
+          {t.settingsReset}
         </button>
       </header>
 
       <div className="rounded-xl border border-border bg-surface-2 p-4">
         <div className="mb-3 flex items-baseline justify-between">
-          <span className="text-sm font-medium text-text-strong">Quality</span>
+          <span className="text-sm font-medium text-text-strong">{t.qualityLabel}</span>
           <div className="flex items-baseline gap-2">
             <span className="text-3xl font-semibold tabular-nums tracking-tight text-text-strong">
               {quality}
             </span>
             <span className={['rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider', toneClass[tone]].join(' ')}>
-              {label}
+              {t[tier]}
             </span>
           </div>
         </div>
@@ -78,22 +77,20 @@ export function SettingsPanel({ value, onChange, disabled }: SettingsPanelProps)
           onChange={(e) => onChange({ quality: Number(e.target.value) })}
           style={{ ['--range-pct' as string]: `${quality}%` }}
           className="w-full"
-          aria-label="JPEG quality"
+          aria-label={t.qualityLabel}
         />
 
         <div className="mt-2 flex justify-between text-[10px] font-semibold uppercase tracking-wider text-text">
-          <span>Smaller</span>
-          <span>Balanced</span>
-          <span>Sharper</span>
+          <span>{t.qualitySmaller}</span>
+          <span>{t.qualityBalancedShort}</span>
+          <span>{t.qualitySharper}</span>
         </div>
 
         <p className="mt-3.5 flex items-start gap-2 rounded-lg border border-accent/20 bg-accent-soft/60 px-2.5 py-2 text-[12px] leading-relaxed text-text">
           <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-white">
             <RefreshCw size={11} strokeWidth={2.6} />
           </span>
-          <span>
-            Drag the slider, then hit <span className="font-semibold text-accent-strong">Compress</span> again to re-encode the whole queue with the new value.
-          </span>
+          <span>{t.qualityResubmitHint}</span>
         </p>
       </div>
     </section>
